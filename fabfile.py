@@ -2,7 +2,7 @@ from fabric.api import local, run, env
 
 env.hosts = ['mcmun@mcmun.org']
 
-FILES = ['index.html', 'css/splash.css', 'img/dove.png', 'img/email.png', 'img/facebook.png', 'img/logo.png', 'img/twitter.png', 'css/fonts/*']
+FILES = ['index.html', 'css/splash.css', 'img/dove.png', 'img/email.png', 'img/facebook.png', 'img/logo.png', 'img/twitter.png', 'css/fonts/*', 'img/logo_red.png']
 
 def prepare():
 	local('lessc css/splash.less -x > css/splash.css')
