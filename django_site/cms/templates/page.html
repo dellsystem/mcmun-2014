@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+	{% if page.show_nav %}
+		<h1>{{ page.long_name }}</h1>
+	{% endif %}
+	{% if page.content %}
+		{% load markup %}
+		{{ page.content|markdown }}
+	{% else %}
+		{% include "under-construction.html" %}
+	{% endif %}
+{% endblock %}

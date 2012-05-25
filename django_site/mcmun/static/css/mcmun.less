@@ -1,0 +1,122 @@
+@import "fonts.less";
+@import "variables.less";
+@import "menu.less";
+@import "mixins.less";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: #000;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	color: #222;
+	width: 100%;
+	background-image: url('../img/montreal.jpg');
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: top left;
+	overflow-y: scroll; // to eliminate the jostling when switching pages
+}
+
+.container {
+	margin: 0 auto;
+	width: 900px;
+}
+
+#header {
+	z-index: 2;
+	.container;
+	background-image: url('../img/dove.png');
+	background-repeat: no-repeat;
+	background-position: 0 20px;
+	height: 320px;
+}
+
+#masthead {
+	position: relative;
+	padding-top: 20px;
+	padding-left: 50px;
+	.title {
+		position: absolute;
+		top: 40px;
+		right: 180px;
+		color: #FFF;
+		#raleway;
+		font-weight: normal;
+		text-shadow: #000 0 2px 0;
+		text-align: right;
+		.top {
+			font-size: 2.1em;
+		}
+		.middle {
+			font-size: 5.7em;
+		}
+		.bottom {
+			font-size: 2.1em;
+			font-weight: bold;
+		}
+	}
+}
+
+#content {
+	width: 900px;
+	margin: 0 auto;
+	padding: 30px;
+	h1 {
+		padding-bottom: 10px;
+		#raleway;
+		font-size: 3.5em;
+	}
+	overflow: auto;
+	background: #FFF;
+	margin-bottom: 30px;
+}
+
+#carousel {
+	width: 840px;
+	height: 240px;
+	padding: 30px;
+	#gradient(#FFF, #F5F5F5);
+	box-shadow: 0px 2px 10px 1px rgba(0, 0, 0, 0.35);
+	margin-bottom: 30px;
+	#carousel-image {
+		float: left;
+		width: 600px;
+		height: 240px;
+		background: #CCC;
+		&.registration {
+			background-image: url('../img/registration.png');
+		}
+		&.welcome {
+			background-image: url('../img/welcome.png');
+		}
+		&.committees {
+			background-image: url('../img/committees.png');
+		}
+	}
+	#carousel-blocks {
+		float: left;
+		height: 100%;
+		width: 240px;
+		div {
+			height: 80px;
+			#raleway;
+			font-size: 2.0em;
+			font-weight: bold;
+			text-transform: uppercase;
+			line-height: 80px;
+			text-align: right;
+			background: #333;
+			color: #FFF;
+			padding-right: 30px;
+			&:hover {
+				background: #444;
+				cursor: pointer;
+			}
+		}
+	}
+}

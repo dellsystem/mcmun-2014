@@ -1,0 +1,65 @@
+- fields: {long_name: Home, short_name: home, show_nav: false, content: ''}
+  model: cms.page
+  pk: 1
+- fields: {long_name: About, short_name: about, show_nav: true, content: ''}
+  model: cms.page
+  pk: 2
+- fields: {long_name: Registration, short_name: registration, show_nav: true, content: ''}
+  model: cms.page
+  pk: 3
+- fields: {long_name: At the conference, short_name: conference, show_nav: true, content: ''}
+  model: cms.page
+  pk: 4
+- fields: {long_name: Sponsors, short_name: sponsors, show_nav: true, content: ''}
+  model: cms.page
+  pk: 5
+- fields: {long_name: Meet the secretariat, short_name: secretariat, show_nav: true, content: ''}
+  model: cms.page
+  pk: 6
+- fields: {long_name: About McGill, short_name: mcgill, show_nav: true, content: ''}
+  model: cms.page
+  pk: 7
+- fields: {long_name: Payment policy, short_name: payment, show_nav: true, content: ''}
+  model: cms.page
+  pk: 8
+- fields: {position: 1, content: ''}
+  model: cms.parentpage
+  pk: 1
+- fields: {position: 2, content: ''}
+  model: cms.parentpage
+  pk: 2
+- fields: {position: 3, content: ''}
+  model: cms.parentpage
+  pk: 3
+- fields: {position: 4, content: ''}
+  model: cms.parentpage
+  pk: 4
+- fields: {position: 5, content: ''}
+  model: cms.parentpage
+  pk: 5
+- fields: {parent: 2, position: 1, content: ''}
+  model: cms.subpage
+  pk: 6
+- fields: {parent: 3, position: 1, content: ''}
+  model: cms.subpage
+  pk: 8
+- fields: {parent: 2, position: 2, content: ''}
+  model: cms.subpage
+  pk: 7
+
+
+- fields:
+    date_joined: 2012-05-25 03:28:22.223415+00:00
+    email: i@ite.com
+    first_name: ''
+    groups: []
+    is_active: true
+    is_staff: true
+    is_superuser: true
+    last_login: 2012-05-25 03:28:22.223415+00:00
+    last_name: ''
+    password: pbkdf2_sha256$10000$VZlTAjygjrwP$qiZTLw6WLFoFW9ywNcRhuQuRWKROkLaDUCxJkTYpdhQ=
+    user_permissions: []
+    username: admin
+  model: auth.user
+  pk: 1

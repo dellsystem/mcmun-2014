@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+	<link rel="stylesheet/less" type="text/css" href="{{ STATIC_URL }}css/mcmun.less" />
+	<script src="{{ STATIC_URL }}js/less.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script src="{{ STATIC_URL }}js/mcmun.js"></script>
+</head>
+<body>
+	<div id="header">
+		<div id="masthead">
+			<img src="{{ STATIC_URL }}img/logo.png" />
+			<div class="title">
+				<p class="top">McGill Model United Nations</span>
+				<p class="middle">McMUN 2013</span>
+				<p class="bottom">January 24th - 27th, Montreal</span>
+			</div>
+		</div>
+	</div>
+	<div id="menu">
+		<ul>
+			{% for page in pages %}
+				<li><a href="/{{ page.short_name }}">{{ page.long_name }}</a>
+					{% if page.subpages.all %}
+						<ul>
+							{% for subpage in page.subpages.all %}
+								<li><a href="/{{ subpage.short_name }}">{{ subpage.long_name }}</a></li>
+							{% endfor %}
+						</ul>
+					{% endif %}
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+	<div id="content">
+		{% block content %}{% endblock %}
+	</div>
+</body>
+</html>
