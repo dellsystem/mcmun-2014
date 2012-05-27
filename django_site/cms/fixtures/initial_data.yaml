@@ -1,65 +1,392 @@
-- fields: {long_name: Home, short_name: home, show_nav: false, content: ''}
-  model: cms.page
-  pk: 1
-- fields: {long_name: About, short_name: about, show_nav: true, content: ''}
-  model: cms.page
-  pk: 2
-- fields: {long_name: Registration, short_name: registration, show_nav: true, content: ''}
-  model: cms.page
-  pk: 3
-- fields: {long_name: At the conference, short_name: conference, show_nav: true, content: ''}
-  model: cms.page
-  pk: 4
-- fields: {long_name: Sponsors, short_name: sponsors, show_nav: true, content: ''}
-  model: cms.page
-  pk: 5
-- fields: {long_name: Meet the secretariat, short_name: secretariat, show_nav: true, content: ''}
-  model: cms.page
-  pk: 6
-- fields: {long_name: About McGill, short_name: mcgill, show_nav: true, content: ''}
-  model: cms.page
-  pk: 7
-- fields: {long_name: Payment policy, short_name: payment, show_nav: true, content: ''}
-  model: cms.page
-  pk: 8
-- fields: {position: 1, content: ''}
-  model: cms.parentpage
-  pk: 1
-- fields: {position: 2, content: ''}
-  model: cms.parentpage
-  pk: 2
-- fields: {position: 3, content: ''}
-  model: cms.parentpage
-  pk: 3
-- fields: {position: 4, content: ''}
-  model: cms.parentpage
-  pk: 4
-- fields: {position: 5, content: ''}
-  model: cms.parentpage
-  pk: 5
-- fields: {parent: 2, position: 1, content: ''}
-  model: cms.subpage
-  pk: 6
-- fields: {parent: 3, position: 1, content: ''}
-  model: cms.subpage
-  pk: 8
-- fields: {parent: 2, position: 2, content: ''}
-  model: cms.subpage
-  pk: 7
-
-
-- fields:
-    date_joined: 2012-05-25 03:28:22.223415+00:00
-    email: i@ite.com
-    first_name: ''
-    groups: []
-    is_active: true
-    is_staff: true
-    is_superuser: true
-    last_login: 2012-05-25 03:28:22.223415+00:00
-    last_name: ''
-    password: pbkdf2_sha256$10000$VZlTAjygjrwP$qiZTLw6WLFoFW9ywNcRhuQuRWKROkLaDUCxJkTYpdhQ=
-    user_permissions: []
-    username: admin
-  model: auth.user
-  pk: 1
+[
+    {
+        "pk": 1,
+        "model": "cms.page",
+        "fields": {
+            "content": "<div id=\"carousel\">\r\n\t<div id=\"carousel-image\" class=\"registration\">\r\n\t</div>\r\n\t<div id=\"carousel-blocks\">\r\n\t\t<div data-image=\"registration\">Registration</div>\r\n\t\t<div data-image=\"welcome\">Welcome</div>\r\n\t\t<div data-image=\"committees\">Committees</div>\r\n\t</div>\r\n</div>\r\n\r\n<p>More stuff here blah blah</p>",
+            "long_name": "Home",
+            "short_name": "home",
+            "show_nav": false
+        }
+    },
+    {
+        "pk": 2,
+        "model": "cms.page",
+        "fields": {
+            "content": "",
+            "long_name": "About",
+            "short_name": "about",
+            "show_nav": true
+        }
+    },
+    {
+        "pk": 3,
+        "model": "cms.page",
+        "fields": {
+            "content": "",
+            "long_name": "Registration",
+            "short_name": "registration",
+            "show_nav": true
+        }
+    },
+    {
+        "pk": 4,
+        "model": "cms.page",
+        "fields": {
+            "content": "",
+            "long_name": "Attending McMUN",
+            "short_name": "attending",
+            "show_nav": true
+        }
+    },
+    {
+        "pk": 5,
+        "model": "cms.page",
+        "fields": {
+            "content": "",
+            "long_name": "Sponsors",
+            "short_name": "sponsors",
+            "show_nav": true
+        }
+    },
+    {
+        "pk": 6,
+        "model": "cms.page",
+        "fields": {
+            "content": "",
+            "long_name": "Meet the secretariat",
+            "short_name": "secretariat",
+            "show_nav": true
+        }
+    },
+    {
+        "pk": 7,
+        "model": "cms.page",
+        "fields": {
+            "content": "",
+            "long_name": "About McGill",
+            "short_name": "mcgill",
+            "show_nav": true
+        }
+    },
+    {
+        "pk": 8,
+        "model": "cms.page",
+        "fields": {
+            "content": "",
+            "long_name": "Payment policy",
+            "short_name": "payment",
+            "show_nav": true
+        }
+    },
+    {
+        "pk": 9,
+        "model": "cms.page",
+        "fields": {
+            "content": "",
+            "long_name": "Welcome letter",
+            "short_name": "welcome",
+            "show_nav": true
+        }
+    },
+    {
+        "pk": 10,
+        "model": "cms.page",
+        "fields": {
+            "content": "",
+            "long_name": "About montreal",
+            "short_name": "montreal",
+            "show_nav": true
+        }
+    },
+    {
+        "pk": 11,
+        "model": "cms.page",
+        "fields": {
+            "content": "",
+            "long_name": "About McMUN",
+            "short_name": "mcmun",
+            "show_nav": true
+        }
+    },
+    {
+        "pk": 12,
+        "model": "cms.page",
+        "fields": {
+            "content": "",
+            "long_name": "Committees",
+            "short_name": "committees",
+            "show_nav": true
+        }
+    },
+    {
+        "pk": 13,
+        "model": "cms.page",
+        "fields": {
+            "content": "",
+            "long_name": "Venue",
+            "short_name": "venue",
+            "show_nav": true
+        }
+    },
+    {
+        "pk": 14,
+        "model": "cms.page",
+        "fields": {
+            "content": "",
+            "long_name": "Schedule",
+            "short_name": "schedule",
+            "show_nav": true
+        }
+    },
+    {
+        "pk": 15,
+        "model": "cms.page",
+        "fields": {
+            "content": "",
+            "long_name": "Social events",
+            "short_name": "social-events",
+            "show_nav": true
+        }
+    },
+    {
+        "pk": 16,
+        "model": "cms.page",
+        "fields": {
+            "content": "",
+            "long_name": "Checklist",
+            "short_name": "checklist",
+            "show_nav": true
+        }
+    },
+    {
+        "pk": 17,
+        "model": "cms.page",
+        "fields": {
+            "content": "",
+            "long_name": "Scholarships",
+            "short_name": "scholarships",
+            "show_nav": true
+        }
+    },
+    {
+        "pk": 18,
+        "model": "cms.page",
+        "fields": {
+            "content": "",
+            "long_name": "Travel",
+            "short_name": "travel",
+            "show_nav": true
+        }
+    },
+    {
+        "pk": 19,
+        "model": "cms.page",
+        "fields": {
+            "content": "",
+            "long_name": "Food",
+            "short_name": "food",
+            "show_nav": true
+        }
+    },
+    {
+        "pk": 20,
+        "model": "cms.page",
+        "fields": {
+            "content": "",
+            "long_name": "List of committees",
+            "short_name": "committees-list",
+            "show_nav": true
+        }
+    },
+    {
+        "pk": 21,
+        "model": "cms.page",
+        "fields": {
+            "content": "",
+            "long_name": "Rules of procedure",
+            "short_name": "rops",
+            "show_nav": true
+        }
+    },
+    {
+        "pk": 22,
+        "model": "cms.page",
+        "fields": {
+            "content": "",
+            "long_name": "Position papers",
+            "short_name": "position-papers",
+            "show_nav": true
+        }
+    },
+    {
+        "pk": 1,
+        "model": "cms.parentpage",
+        "fields": {
+            "position": 1
+        }
+    },
+    {
+        "pk": 2,
+        "model": "cms.parentpage",
+        "fields": {
+            "position": 2
+        }
+    },
+    {
+        "pk": 3,
+        "model": "cms.parentpage",
+        "fields": {
+            "position": 3
+        }
+    },
+    {
+        "pk": 4,
+        "model": "cms.parentpage",
+        "fields": {
+            "position": 4
+        }
+    },
+    {
+        "pk": 12,
+        "model": "cms.parentpage",
+        "fields": {
+            "position": 5
+        }
+    },
+    {
+        "pk": 5,
+        "model": "cms.parentpage",
+        "fields": {
+            "position": 6
+        }
+    },
+    {
+        "pk": 9,
+        "model": "cms.subpage",
+        "fields": {
+            "position": 1,
+            "parent": 2
+        }
+    },
+    {
+        "pk": 8,
+        "model": "cms.subpage",
+        "fields": {
+            "position": 1,
+            "parent": 3
+        }
+    },
+    {
+        "pk": 13,
+        "model": "cms.subpage",
+        "fields": {
+            "position": 1,
+            "parent": 4
+        }
+    },
+    {
+        "pk": 18,
+        "model": "cms.subpage",
+        "fields": {
+            "position": 1,
+            "parent": 5
+        }
+    },
+    {
+        "pk": 20,
+        "model": "cms.subpage",
+        "fields": {
+            "position": 1,
+            "parent": 12
+        }
+    },
+    {
+        "pk": 14,
+        "model": "cms.subpage",
+        "fields": {
+            "position": 2,
+            "parent": 4
+        }
+    },
+    {
+        "pk": 19,
+        "model": "cms.subpage",
+        "fields": {
+            "position": 2,
+            "parent": 5
+        }
+    },
+    {
+        "pk": 21,
+        "model": "cms.subpage",
+        "fields": {
+            "position": 2,
+            "parent": 12
+        }
+    },
+    {
+        "pk": 6,
+        "model": "cms.subpage",
+        "fields": {
+            "position": 3,
+            "parent": 2
+        }
+    },
+    {
+        "pk": 15,
+        "model": "cms.subpage",
+        "fields": {
+            "position": 3,
+            "parent": 4
+        }
+    },
+    {
+        "pk": 22,
+        "model": "cms.subpage",
+        "fields": {
+            "position": 3,
+            "parent": 12
+        }
+    },
+    {
+        "pk": 10,
+        "model": "cms.subpage",
+        "fields": {
+            "position": 4,
+            "parent": 2
+        }
+    },
+    {
+        "pk": 16,
+        "model": "cms.subpage",
+        "fields": {
+            "position": 4,
+            "parent": 4
+        }
+    },
+    {
+        "pk": 11,
+        "model": "cms.subpage",
+        "fields": {
+            "position": 5,
+            "parent": 2
+        }
+    },
+    {
+        "pk": 17,
+        "model": "cms.subpage",
+        "fields": {
+            "position": 5,
+            "parent": 4
+        }
+    },
+    {
+        "pk": 7,
+        "model": "cms.subpage",
+        "fields": {
+            "position": 6,
+            "parent": 2
+        }
+    }
+]
