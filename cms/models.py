@@ -2,6 +2,7 @@ from django.db import models
 import markdown
 import os
 
+
 class Page(models.Model):
 	# Used in the URL and on the filesystem (no spaces)
 	short_name = models.CharField(max_length=50, unique=True)
@@ -21,12 +22,14 @@ class Page(models.Model):
 	def get_absolute_url(self):
 		return ('cms.views.main', [self.short_name])
 
+
 class ParentPage(Page):
 	class Meta:
 		ordering = ['position']
 
 	# Determines the ordering in the menu bar
 	position = models.PositiveIntegerField(unique=True)
+
 
 class SubPage(Page):
 	class Meta:

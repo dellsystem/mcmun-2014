@@ -1,8 +1,4 @@
 $(document).ready(function() {
-	var rotateTimeout = 3500;
-	var firstDiv = $('#carousel-blocks div')[0];
-	var timeout;
-
 	// Staff coordinator application form
 	if ($('#staff-coordinator-form').length) {
 		// Hide the ones that don't always need to be filled
@@ -65,41 +61,58 @@ $(document).ready(function() {
 		});
 	}
 
-	$('#carousel-blocks div').click(function () {
-		clearTimeout(timeout);
-		$('.active').removeClass();
-		$(this).addClass('active');
-		$('#carousel-image').removeClass().addClass($(this).attr('data-image'));
-		timeout = setTimeout(rotateCarousel, rotateTimeout);
-	});
-
-
+	var rotateTimeout = 3500;
+	var firstDiv = $('#carousel .slide')[0];
 	var rotateCarousel = function () {
-		var nextDiv = $('#carousel-blocks .active').next()[0] || firstDiv;
-		timeout = setTimeout(rotateCarousel, rotateTimeout);
-		$(nextDiv).click();
+		var nextDiv = $('#carousel .active').next()[0] || firstDiv;
+		setTimeout(rotateCarousel, rotateTimeout);
+		$('.active').removeClass('active');
+		$(nextDiv).addClass('active');
 	};
 
 	timeout = setTimeout(rotateCarousel, rotateTimeout);
 
-	// Show the person's title upon hovering over the photo
-	$('#sec-bios').delegate('.photo', 'mouseenter', function (event) {
-		var title = $(this).next().find('h3').text();
-		$(this).append('<div class="title-hover">' + title + '</div>');
-		$('.title-hover').fadeIn(300);
-	});
+    if ($('#sec-bios').length) {
+	    // Show the person's title upon hovering over the photo
+	    $('#sec-bios').delegate('.photo', 'mouseenter', function (event) {
+		    var title = $(this).next().find('h3').text();
+		    $(this).append('<div class="title-hover">' + title + '</div>');
+		    $('.title-hover').fadeIn(300);
+	    })
+	    .delegate('.photo', 'mouseleave', function (event) {
+		    $('.title-hover').remove();
+	    })
+	    .delegate('.photo', 'click', function (event) {
+		    $('.active').removeClass('active');
+		    $('.bio').hide();
+		    $(this).addClass('active').next().show();
+	    });
 
-	$('#sec-bios').delegate('.photo', 'mouseleave', function (event) {
-		$('.title-hover').remove();
-	});
+	    var hash = window.location.hash;
 
-	$('#sec-bios').delegate('.photo', 'click', function (event) {
-		$('.active').removeClass('active');
-		$('.bio').hide();
-		$(this).addClass('active').next().show();
-	});
+        // Hacky deep-linking
+        if (hash) {
+            var desiredBio = $('#sec-bios').find(hash);
+            if (desiredBio) {
+                $('.bio').hide();
+		        $(desiredBio).addClass('active').next().show();
+            }
+        }
+
+	    // Replace everyone with a photo of Abdaal
+	    if (hash === '#abdaal' && $(hash).length) {
+	        $('.photo img').attr('src', '/static/img/sec/lolabdaal.jpg');
+
+            // Also replace all the bios
+            $('.bio p').remove();
+            $('.bio').append('<p>ALL HAIL GLORIOUS LEADER</p>');
+            
+            $('#sec-bios').scrollTop();
+	    }
+	}
 
 	var delegationFee = 75;
+    var taxRate = 1.14975;
 
 	$('#fee-calculator').delegate('select', 'change', function (event) {
 		var numDelegates = parseInt($('#num-delegates option:checked').val(), 10);
@@ -107,7 +120,7 @@ $(document).ready(function() {
 
 		// Only show the fee information stuff when everything has been selected
 		if (numDelegates > 0 && registrationType !== '') {
-			var delegateFee, totalFee, deposit, remainder;
+			var delegateFee, preTaxFee, totalFee, deposit, remainder;
 
 			switch (registrationType) {
 				case 'priority':
@@ -122,10 +135,12 @@ $(document).ready(function() {
 			}
 
 			if (delegateFee) {
-				totalFee = numDelegates * delegateFee + delegationFee;
+				preTaxFee = numDelegates * delegateFee + delegationFee;
+                totalFee = taxRate * preTaxFee;
 				deposit = delegationFee + (numDelegates * delegateFee) * 0.5;
 				remainder = totalFee - deposit;
-				$('#fee-information').text('Your total fee, for ' + numDelegates + ' delegates and ' + registrationType + ' registration, is $' + totalFee.toFixed(2) + '. If you wish to pay using the tiered system, your deposit would be $' + deposit.toFixed(2) + ', and the remainder would be $' + remainder.toFixed(2) + '.');
+
+				$('#fee-information').text('Your total fee, for ' + numDelegates + ' delegates and ' + registrationType + ' registration, is $' + totalFee.toFixed(2) + ' ($' + preTaxFee.toFixed(2) + ' before taxes). If you wish to pay using the tiered system, your deposit would be $' + deposit.toFixed(2) + ', and the remainder would be $' + remainder.toFixed(2) + '.');
 			} else {
 				// Someone is mucking about with the form
 				$('#fee-information').text("Please stop messing with the form. There's nothing interesting here.");

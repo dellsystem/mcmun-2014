@@ -1,30 +1,35 @@
+#menu-wrapper {
+    #gradient(#FFF, #EEE);
+}
+
 #menu {
+    .secondary-font;
 	z-index: 3;
-	position: absolute;
-	top: 260px;
-	width: 100%;
-	height: 35px;
-	.grey-bg(@menuBgRgb, @menuBgAlpha);
-	text-align: center;
-	color: @menuText;
-	ul {
+	position: relative;
+	height: @menuHeight;
+    .container;
+    ul {
 		list-style-type: none;
-	}
+    }
 	> ul li {
+        ul li a {
+            // A hack to make the hover height the same
+            height: 35px;
+        }
+
 		.inline-block;
 		a {
 			display: block;
-			height: 35px;
+			height: @menuHeight;
 			padding: 0 20px;
-			font-size: 1.5em;
-			line-height: 35px;
-			#raleway;
-			font-weight: bold;
+			font-size: 1.2em;
+			line-height: @menuHeight;
+			//font-weight: bold;
 			text-transform: lowercase;
 			text-decoration: none;
-			color: #FFF;
+			color: @menuText;
 			&:hover {
-				.grey-bg(@menuHoverBgRgb, @menuHoverBgAlpha);
+				background: @lighterGrey;
 			}
 		}
 		ul {
@@ -33,11 +38,12 @@
 		&:hover > ul, > ul:hover {
 			display: block;
 			position: absolute;
-			top: 35px;
+			top: @menuHeight;
 		}
 		> ul li {
+            height: 35px !important;
 			display: block;
-			background: @menuDropdownBg;
+			background: lighten(@lighterGrey, 7%);
 			text-align: left;
 			font-size: 9px;
 		}

@@ -1,6 +1,6 @@
 Dear %(first_name)s,
 
-Your registration for %(school_name)s at McMUN 2013 has been approved.
+Your registration for %(school_name)s at McMUN 2014 has been approved.
 
 Our records indicate that your delegation is comprised of %(num_delegates)d delegates, that your desired payment is %(payment_method)s (%(payment_type)s registration), and that you wish to pay the total balance of $%(total_balance)s %(currency)s %(tiered_or_not)s.
 
@@ -19,4 +19,4 @@ Please keep this email for your records.
 
 Looking forward to seeing you in January,
 
-the McMUN 2013 Secretariat
+the McMUN 2014 Secretariat

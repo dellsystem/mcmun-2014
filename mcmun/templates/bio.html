@@ -1,0 +1,20 @@
+{% load extras %}
+{% load markup %}
+
+<div id="sec-bios">
+	<div class="bio" style="display: block">
+		{{ page.content|markdown }}
+	</div>
+
+    {% for bio in bios %}
+    <div class="photo" id="{{ bio.slug }}">
+	    <img src="static/img/{{ bio_type }}/{{ bio.slug }}.jpg" alt="{{ bio.name }}" />
+    </div>
+    <div class="bio">
+	    <h2>{{ bio.name }} <a href="#{{ bio.slug }}">&para;</a></h2>
+	    <h3>{{ bio.position }}</h3>
+	    <p><a href="mailto:{{ bio.email }}@mcmun.org">{{ bio.email }}@mcmun.org</a></p>
+	    {{ bio.bio|markdown }}
+    </div>
+    {% endfor %}
+</div>

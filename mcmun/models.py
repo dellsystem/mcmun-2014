@@ -1,3 +1,5 @@
+# coding: utf-8
+
 from decimal import Decimal
 
 from django.db import models
@@ -129,7 +131,7 @@ class RegisteredSchool(models.Model):
 
 	def send_success_email(self):
 		# Send out email to user (receipt of registration)
-		receipt_subject = 'Successful registration for McMUN 2013'
+		receipt_subject = 'Successful registration for McMUN 2014'
 		receipt_message_filename = 'registration_success'
 		receipt_context = {
 			'first_name': self.first_name,
@@ -183,6 +185,35 @@ class ScholarshipApp(models.Model):
 
 	def __unicode__(self):
 		return self.school.school_name
+
+
+"""
+Just an abstract base class to avoid having to type all this out twice
+(I'll add a Coordinator model soon)
+"""
+class OrganisingMember(models.Model):
+    name = models.CharField(max_length=100)
+    position = models.CharField(max_length=100)
+    bio = models.TextField()
+    slug = models.SlugField()
+
+    class Meta:
+        abstract = True
+
+
+class SecretariatMember(OrganisingMember):
+    email = models.CharField(max_length=100, help_text="Just the part that goes before @mcmun.org")
+
+    def __unicode__(self):
+        return u'%s – %s' % (self.name, self.position)
+
+    def get_absolute_url(self):
+        return '/secretariat#%s' % self.slug
+
+
+class Coordinator(OrganisingMember):
+    def __unicode__(self):
+        return self.name
 
 
 @receiver(models.signals.pre_save, sender=RegisteredSchool, dispatch_uid="approve_schools")

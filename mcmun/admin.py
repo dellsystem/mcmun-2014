@@ -1,6 +1,7 @@
 from django.contrib import admin
 
-from mcmun.models import RegisteredSchool, ScholarshipApp
+from mcmun.models import RegisteredSchool, ScholarshipApp, SecretariatMember, \
+    Coordinator
 
 
 class RegisteredSchoolAdmin(admin.ModelAdmin):
@@ -10,5 +11,8 @@ class RegisteredSchoolAdmin(admin.ModelAdmin):
 	list_filter = ('is_approved', 'use_online_payment')
 	exclude = ('account',)
 
+
 admin.site.register(RegisteredSchool, RegisteredSchoolAdmin)
 admin.site.register(ScholarshipApp)
+admin.site.register(SecretariatMember)
+admin.site.register(Coordinator)

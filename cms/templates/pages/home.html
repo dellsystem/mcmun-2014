@@ -1,35 +1,19 @@
 <div id="carousel">
-	<div id="carousel-image" class="charity">
-	</div>
-	<div id="carousel-blocks">
-		<div data-image="charity" class="active"><span>Right To Play</span><a href="{{ STATIC_URL }}files/mcmun-right-to-play.pdf">Find out more about our conference charity (PDF)</a></div>
-		<div data-image="ambassador"><span>The Ambassador</span><a href="/static/files/ambassador-issue-1.pdf">Download the first issue of McMUN's official publication (PDF)</a></div>
-		<div data-image="committees"><span>Committees</span><a href="/committees-list">26 innovative committees</a></div>
-	</div>
+    <div class="slide active">
+        <img src="{{ STATIC_URL }}img/carousel/oc.jpg" />
+        <span>Celebrating 25 years of excellence</span>
+    </div>
+    <div class="slide">
+        <img src="{{ STATIC_URL }}img/carousel/committees.jpg" />
+        <span>27 innovative committees</span>
+    </div>
+    <div class="slide">
+        <img src="{{ STATIC_URL }}img/carousel/collaboration.jpg" />
+        <span>1400 delegates</span>
+    </div>
+    <div class="slide">
+        <img src="{{ STATIC_URL }}img/carousel/keynote.jpg" />
+        <span>Distinguished speakers</span>
+    </div>
 </div>
 
-<div class="link-block">
-	<img src="/static/img/rtp.png" alt="" />
-	<a href="{{ STATIC_URL }}files/mcmun-right-to-play.pdf">McMUN 2013's official charity (PDF)</a>
-</div>
-
-<div class="link-block">
-	<img src="/static/img/brochure.png" alt="" />
-	<a href="/about">McMUN brochure</a>
-</div>
-
-<div class="link-block">
-	<img src="/static/img/staralliance.png" alt="" />
-	<a href="/flights">Star Alliance</a>
-</div>
-
-<div id="staffing-signup">
-	<form method="post" action="{% url submit_signup 'staff' %}">
-		{% csrf_token %}
-		<input type="text" name="email" placeholder="example@example.com" />
-		<input type="text" name="name" placeholder="First Last" />
-		<input type="submit" name="submit" value="Sign up" />
-	</form>
-	<p>Interested in staffing for McMUN? Sign up for our staff listserv here:</p>
-	<p>For further details please contact our Chief of Staff at staff@mcmun.org.</p>
-</div>

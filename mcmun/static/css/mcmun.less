@@ -14,17 +14,18 @@ img {
 }
 
 body {
-	background-color: @bodyBg;
 	#sans-serif;
-	font-size: 12px;
+	font-size: 13px;
 	color: @bodyText;
 	width: 100%;
-	background-image: url('../img/montreal.jpg');
-	background-size: 100%;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-position: top left;
-	overflow-y: scroll; // to eliminate the jostling when switching pages
+    background-color: @bodyBg;
+    background-image: url('../img/montreal.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: top left;
+    overflow-y: scroll;
+    height: 100%;
 }
 
 .container {
@@ -32,46 +33,26 @@ body {
 	width: @containerWidth;
 }
 
-#header {
-	.container;
-	background-image: url('../img/dove.png');
-	background-repeat: no-repeat;
-	background-position: 0 20px;
-	height: 320px;
-}
-
 #masthead {
-	position: relative;
-	padding-top: 20px;
-	padding-left: 50px;
+    text-align: center;
+    padding-top: 40px;
+    position: relative;
 	.title {
-		position: absolute;
-		top: 35px;
-		right: 180px;
-		color: #FFF;
-		#raleway;
+        margin: 25px 0;
+        background: rgba(0, 0, 0, 0.8);
+        width: 100%;
+        height: 30px;
+        color: @white;
+		.header-font;
 		font-weight: normal;
-		text-shadow: @headerTextShadow 0 2px 0;
-		text-align: right;
-		.top {
-			font-size: 2.1em;
-			// Needed for proper sizing in Windows
-			line-height: 1.2em;
-		}
-		.middle {
-			font-size: 5.7em;
-			line-height: 1.0em;
-		}
-		.bottom {
-			font-size: 2.1em;
-			font-weight: bold;
-			line-height: 1.2em;
-		}
+        font-size: 1.4em;
+        line-height: 30px;
 	}
 	.social-media {
+        display: none;
 		position: absolute;
 		right: 0px;
-		bottom: -10px;
+        top: 40px;
 		a {
 			text-decoration: none;
 			.inline-block;
@@ -93,13 +74,29 @@ body {
 	}
 }
 
+a {
+    color: @lightBlue;
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+        color: @darkBlue;
+    }
+}
+
+
+#content-wrapper {
+    width: 100%;
+    background: @contentBg;
+    min-height: 200px;
+}
+
 #content {
+    .container;
+    padding-top: 30px;
 	position: relative;
-	width: 900px;
-	margin: 0 auto;
-	padding: 30px;
 	font-size: 13px;
 	h1, h2, h3, h4, h5, h6 {
+        .secondary-font;
 		padding-top: 25px;
 		padding-bottom: 10px;
 		clear: both;
@@ -107,7 +104,6 @@ body {
 	h1 {
 		padding-top: 0;
 		font-size: 3.5em;
-		#raleway;
 	}
 	h1 + h2 {
 		padding-top: 10px;
@@ -123,7 +119,6 @@ body {
 		color: @darkGrey;
 	}
 	overflow: auto;
-	background: @contentBg;
 	margin-bottom: 30px;
 	ul, ol {
 		margin: 10px 0 10px 20px;
@@ -162,14 +157,6 @@ body {
 		top: 5px;
 		font-size: 1.5em;
 	}
-	a {
-		color: @lightBlue;
-		text-decoration: none;
-		&:hover {
-			text-decoration: underline;
-			color: @darkBlue;
-		}
-	}
 	table {
 		width: 100%;
 		border: 1px solid @lighterGrey;
@@ -197,7 +184,6 @@ body {
 	}
 	blockquote {
 		font-size: 1.4em;
-		#raleway;
 		font-weight: bold;
 		margin: 0 50px;
 		text-align: center;
@@ -209,78 +195,33 @@ body {
 }
 
 #carousel {
-	position: relative;
-	width: 840px;
-	height: 240px;
-	padding: 30px;
-	#gradient(@carouselBgStart, @carouselBgEnd);
-	box-shadow: 0px 2px 10px 1px rgba(0, 0, 0, 0.35);
-	margin-bottom: 30px;
-	#carousel-image {
-		float: left;
-		width: 600px;
-		height: 240px;
-		&.charity {
-			background-image: url('../img/mcparte_rtp.png');
-		}
-		&.ambassador {
-			background-image: url('../img/ambassador.png');
-		}
-		&.committees {
-			background-image: url('../img/welcome.jpg');
-		}
-	}
-	#carousel-blocks {
-		float: left;
-		height: 100%;
-		width: 240px;
-		div {
-			height: 80px;
-			#raleway;
-			font-size: 1.6em;
-			font-weight: bold;
-			text-transform: uppercase;
-			line-height: 80px;
-			text-align: right;
-			background: @carouselBg;
-			color: @carouselText;
-			padding-right: 30px;
-			&:hover {
-				background: @carouselHoverBg;
-				cursor: pointer;
-			}
-			&.active {
-				background: @carouselActiveBg;
-				a {
-					display: block;
-				}
-			}
-			a {
-				padding-left: 10px;
-				text-transform: none;
-				text-decoration: none;
-				font-size: 0.9em;
-				color: @white;
-				text-align: left;
-				.hidden;
-				z-index: 5;
-				position: absolute;
-				bottom: 30px;
-				left: 30px;
-				right: 270px;
-				height: 40px;
-				line-height: 40px;
-				.grey-bg(10, 0.8);
-				&:after {
-					// A space and a &raquo;
-					content: "\00a0\00BB";
-				}
-				&:hover {
-					.grey-bg(30, 0.6);
-				}
-			}
-		}
-	}
+    margin-top: -30px;
+    position: relative;
+    height: 250px;
+
+    .slide {
+        .hidden;
+
+        &.active {
+            display: block !important;
+        }
+
+        span {
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            text-align: center;
+            width: 100%;
+            font-size: 2.0em;
+            .header-font;
+            color: white;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 2px black;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 5px 0;
+        }
+    }
 }
 
 .link-block {
@@ -301,7 +242,6 @@ body {
 		.grey-bg(@linkBlockBgRgb, @linkBlockBgAlpha);
 		text-decoration: none;
 		font-size: 1.3em;
-		#raleway;
 		font-weight: bold;
 		&:hover {
 			.grey-bg(@linkBlockBgHoverRgb, @linkBlockBgHoverAlpha);
@@ -315,12 +255,14 @@ body {
 
 #sec-bios {
 	width: 600px;
+    height: 460px;
+    overflow-y: scroll;
 	.bio {
 		position: absolute;
-		width: 300px;
-		height: 500px;
+		width: 330px;
+		height: 460px;
 		top: 60px;
-		right: 30px;
+		right: 0px;
 		.hidden;
 		h3 {
 			padding-top: 0px;
@@ -425,4 +367,29 @@ body {
 
 .separated-cells td {
     border-top: 1px solid lighten(@lighterGrey, 5%);
+}
+
+#search-box {
+    position: absolute;
+    top: 7px;
+    right: 0px;
+    input {
+        width: 170px;
+        outline: 0;
+        border: 1px solid #CCC;
+        padding: 3px;
+        padding-left: 20px;
+        background-image: url('../img/search.png');
+        background-repeat: no-repeat;
+        background-position: 0 6px;
+        height: 19px;
+        &:focus {
+            border: 1px solid @lightBlue;
+        }
+    }
+}
+
+#footer {
+    margin-top: 30px;
+    text-align: center;
 }

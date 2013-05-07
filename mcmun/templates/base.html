@@ -1,7 +1,8 @@
 <!doctype html>
 <html>
 <head>
-	<meta name="description" content="Model United Nations conference held in Montreal, January 24-27 2013. Organised by McGill international relations organisation (IRSAM)." />
+	<meta name="description" content="Model United Nations conference held in Montreal, January 24-27 2014. Organised by McGill international relations organisation (IRSAM)." />
+    <link href="http://fonts.googleapis.com/css?family=Cinzel|Lato|Rouge+Script" rel="stylesheet" type="text/css" />
 	{% if debug %}
 	<link rel="stylesheet/less" type="text/css" href="{{ STATIC_URL }}css/mcmun.less" />
 	<script src="{{ STATIC_URL }}js/less.min.js"></script>
@@ -10,45 +11,60 @@
 	{% endif %}
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script src="{{ STATIC_URL }}js/mcmun.js"></script>
-	<title>McMUN 2013 :: {{ page.long_name }}</title>
+	<title>McMUN 2014 :: {{ page.long_name }}</title>
 	<!-- Background image by Anirudh Koul -
 	http://www.flickr.com/photos/anirudhkoul/788832193/sizes/l/in/photostream/
 	You can view this repository's source on Github:
-	https://github.com/dellsystem/mcmun-2013 -->
+	https://github.com/dellsystem/mcmun-2014-->
 </head>
 <body>
-	<div id="header">
-		<div id="masthead">
-			<a href="/"><img src="{{ STATIC_URL }}img/logo.png" /></a>
-			<div class="title">
-				<p class="top">McGill Model United Nations</span>
-				<p class="middle">McMUN 2013</span>
-				<p class="bottom">January 24th - 27th, Montreal</span>
-			</div>
-			<div class="social-media">
-				<a href="https://twitter.com/#!/mcmun2013" class="twitter" title="Find us on Twitter">&nbsp;</a>&nbsp;
-				<a href="https://facebook.com/pages/McMUN/62890916494" class="facebook" title="Find us on Facebook">&nbsp;</a>&nbsp;
-				<a href="mailto:it@mcmun.org" class="email" title="Email us at it@mcmun.org">&nbsp;</a>
-			</div>
-		</div>
-	</div>
-	<div id="menu">
-		<ul>
-			{% for page in pages %}
-				<li><a href="/{{ page.short_name }}">{{ page.long_name }}</a>
-					{% if page.subpages.all %}
-						<ul>
-							{% for subpage in page.subpages.all %}
-								<li><a href="/{{ subpage.short_name }}">{{ subpage.long_name }}</a></li>
-							{% endfor %}
-						</ul>
-					{% endif %}
-				</li>
-			{% endfor %}
-		</ul>
-	</div>
-	<div id="content">
-		{% block content %}{% endblock %}
-	</div>
+    <div id="header">
+        <div id="masthead">
+            <a href="/"><img src="{{ STATIC_URL }}img/header.png" /></a>
+            <div class="social-media">
+                <a href="https://twitter.com/#!/mcmun2014" class="twitter" title="Find us on Twitter">&nbsp;</a>&nbsp;
+                <a href="https://facebook.com/pages/McMUN/62890916494" class="facebook" title="Find us on Facebook">&nbsp;</a>&nbsp;
+                <a href="mailto:it@mcmun.org" class="email" title="Email us at it@mcmun.org">&nbsp;</a>
+            </div>
+            <div class="title">
+                <p>McGill Model United Nations Assembly : : January 23-26, Montreal</p>
+            </div>
+        </div>
+        {# In case some page wants to add other stuff to the header #}
+        {% block header %}{% endblock %}
+    </div>
+    <div id="menu-wrapper">
+        <div id="menu">
+            <ul>
+            {% for page in pages %}
+                <li><a href="/{{ page.short_name }}">{{ page.long_name }}</a>
+                {% if page.subpages.all %}
+                    <ul>
+                        {% for subpage in page.subpages.all %}
+                            <li><a href="/{{ subpage.short_name }}">{{ subpage.long_name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                </li>
+            {% endfor %}
+            </ul>
+            <div id="search-box">
+                <form action="/search" method="get">
+                    <input type="text" name="query" />
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="content-wrapper">
+        <div id="content">
+            {% block content %}{% endblock %}
+            <br />
+            <div id="footer">
+                <p class="right-float"><a href="#header">Back to top</a></p>
+                <p>&copy; McMUN 2014. Source available on <a href="https://github.com/dellsystem/mcmun-2014">GitHub</a>.</p>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Search results</h1>
+
+{% if results %}
+<ul>
+    {% for result in results %}
+    <li><a href="{{ result.get_absolute_url }}">{{ result }}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No results found for {{ query }}. Try again with a different query.</p>
+{% endif %}
+{% endblock %}
