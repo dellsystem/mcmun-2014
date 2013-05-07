@@ -24,7 +24,7 @@ coordinator_choices = (
 
 non_coordinator_choices = (
 	('log-or-com', 'Logistical or committees staff'),
-	('log', 'Logistatical staff only'),
+	('log', 'Logistical staff only'),
 	('com', 'Committees staff only'),
 	('com-then-log', 'Committees staff first, then logistical staff'),
 	('log-then-com', 'Logistical staff first, then committees staff'),
