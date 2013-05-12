@@ -29,7 +29,7 @@
 			text-decoration: none;
 			color: @menuText;
 			&:hover {
-				background: @lighterGrey;
+				background: lighten(@lighterGrey, 10%);
 			}
 		}
 		ul {
@@ -43,9 +43,12 @@
 		> ul li {
             height: 35px !important;
 			display: block;
-			background: lighten(@lighterGrey, 7%);
+			background: lighten(@lighterGrey, 10%);
 			text-align: left;
 			font-size: 9px;
+            a:hover {
+                background: lighten(@lighterGrey, 5%);
+            }
 		}
 	}
 }
