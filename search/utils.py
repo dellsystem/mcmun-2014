@@ -45,6 +45,9 @@ def get_query(query_string, search_fields):
 
 
 def get_results(query_string):
+    if not query_string:
+        return
+
     results = []
     for search_model, search_fields in settings.SEARCH_MODELS:
         model = loading.get_model(*search_model.split('.', 1))
