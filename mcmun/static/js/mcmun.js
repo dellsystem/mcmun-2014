@@ -109,6 +109,14 @@ $(document).ready(function() {
             
             $('#sec-bios').scrollTop();
 	    }
+
+        // Pikachu. Should probably be abstracted into a function
+        if (hash === '#pikachu') {
+            $('.photo img').attr('src', '/static/img/sec/pikachu.png');
+            $('.bio p').remove();
+            $('.bio').append('<p>I LOVE PIKACHU</p>');
+            $('#sec-bios').scrollTop();
+        }
 	}
 
 	var delegationFee = 75;
