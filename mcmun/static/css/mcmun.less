@@ -254,13 +254,15 @@ a {
 }
 
 #sec-bios {
+    @panelHeight: 600px;
+
 	width: 600px;
-    height: 530px;
+    height: @panelHeight;
     overflow-y: scroll;
 	.bio {
 		position: absolute;
 		width: 330px;
-		height: 530px;
+		height: @panelHeight;
 		top: 60px;
 		right: 0px;
 		.hidden;

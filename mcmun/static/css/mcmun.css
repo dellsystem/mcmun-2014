@@ -55,7 +55,7 @@ a{color:#1598c7;text-decoration:none;}a:hover{text-decoration:underline;color:#0
 #carousel .slide span{display:block;position:absolute;bottom:0;left:0;text-align:center;width:100%;font-size:2.0em;font-family:Cinzel,sans-serif;color:white;text-transform:uppercase;text-shadow:2px 2px 2px black;background:rgba(0, 0, 0, 0.5);padding:5px 0;}
 .link-block{display:inline-block;zoom:1;*display:inline;height:200px;position:relative;}.link-block a{z-index:2;position:absolute;left:0px;bottom:0px;text-align:center;height:50px;width:283px;display:block;line-height:50px;color:#FFF !important;background:#000000;background:rgba(0, 0, 0, 0.9);text-decoration:none;font-size:1.3em;font-weight:bold;}.link-block a:hover{background:#141414;background:rgba(20, 20, 20, 0.8);text-decoration:none !important;}
 .link-block+.link-block{margin-left:21px;}
-#sec-bios{width:600px;height:530px;overflow-y:scroll;}#sec-bios .bio{position:absolute;width:330px;height:530px;top:60px;right:0px;display:none;}#sec-bios .bio h3{padding-top:0px;color:#555555;padding-bottom:10px;}
+#sec-bios{width:600px;height:600px;overflow-y:scroll;}#sec-bios .bio{position:absolute;width:330px;height:600px;top:60px;right:0px;display:none;}#sec-bios .bio h3{padding-top:0px;color:#555555;padding-bottom:10px;}
 #sec-bios .photo{display:inline-block;zoom:1;*display:inline;cursor:pointer;position:relative;}#sec-bios .photo img{border:5px solid #ffffff;}
 #sec-bios .photo.active img{border-color:#000000;}
 #sec-bios .photo:hover img{border-color:#d40000;}
