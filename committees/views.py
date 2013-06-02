@@ -14,6 +14,9 @@ from committees.utils import get_committee_from_email
 
 def view(request, slug):
 	committee = get_object_or_404(Committee, slug=slug)
+    if not committee.is_visible:
+        raise Http404
+
 	# If the user is a member of the dais, show a link to the uploads page
 	is_dais = get_committee_from_email(request.user.username) == committee
 

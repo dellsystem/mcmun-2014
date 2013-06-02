@@ -24,6 +24,8 @@ class Committee(models.Model):
 	slug = models.CharField(max_length=20, unique=True)
 	description = models.TextField()
 	category = models.ForeignKey(Category)
+	# Committees should be hidden until they are released
+	is_visible = models.BooleanField(default=False)
 
 	def __unicode__(self):
 		return self.name

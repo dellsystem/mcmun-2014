@@ -2,7 +2,15 @@
     <h2>{{ category.name }}</h2>
     <ul id="committees-grid">
         {% for committee in category.committee_set.all %}
+        {% if committee.is_visible %}
             <li><a href="{% url committees.views.view committee.slug %}"><img src="{{ STATIC_URL }}img/committees/{{ committee.slug }}.png" /><br />{{ committee.name }}</a></li>
+        {% else %}
+            <li>
+                <img src="{{ STATIC_URL }}img/unreleased-committee.png" />
+                <br />
+                Coming soon
+            </li>
+        {% endif %}
         {% endfor %}
     </ul>
 {% endfor %}
