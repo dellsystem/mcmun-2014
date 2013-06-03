@@ -1,3 +1,7 @@
+{% load markup %}
+
+{{ page.content|markdown }}
+
 {% for category in categories %}
     <h2>{{ category.name }}</h2>
     <ul id="committees-grid">
