@@ -73,7 +73,7 @@ hr{margin:15px 0;}
 #staff-dates .invited{background:#dff4fc;}
 #committees-grid{list-style-type:none;}#committees-grid li{vertical-align:top;display:inline-block;zoom:1;*display:inline;width:200px;text-align:center;}#committees-grid li img{height:100px;}
 .separated-cells td{border-top:1px solid #d9d9d9;}
-#search-box{position:absolute;top:7px;right:0px;}#search-box input{width:170px;outline:0;border:1px solid #CCC;padding:3px;padding-left:20px;background-image:url('../img/search.png');background-repeat:no-repeat;background-position:0 6px;height:19px;}#search-box input:focus{border:1px solid #1598c7;}
+#search-box{position:absolute;top:7px;right:0px;}#search-box input{width:150px;outline:0;border:1px solid #CCC;padding:3px;padding-left:20px;background-image:url('../img/search.png');background-repeat:no-repeat;background-position:0 6px;height:19px;}#search-box input:focus{border:1px solid #1598c7;}
 #footer{margin:0 auto;width:960px;padding:30px;text-align:center;background:rgba(0, 0, 0, 0.8);color:#ffffff;}
 .row{clear:left;padding:20px 0;}
 .one-third{float:left;width:280px;text-align:center;padding:0 20px;}.one-third h2{line-height:1.0em;text-transform:uppercase;}.one-third h2 small{font-size:16px;color:#777777;text-transform:lowercase;}
