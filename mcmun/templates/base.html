@@ -21,13 +21,15 @@
     <div id="header">
         <div id="masthead">
             <a href="/"><img src="{{ STATIC_URL }}img/header.png" /></a>
-            <div class="social-media">
-                <a href="https://twitter.com/#!/mcmun2014" class="twitter" title="Find us on Twitter">&nbsp;</a>&nbsp;
-                <a href="https://facebook.com/pages/McMUN/62890916494" class="facebook" title="Find us on Facebook">&nbsp;</a>&nbsp;
-                <a href="mailto:it@mcmun.org" class="email" title="Email us at it@mcmun.org">&nbsp;</a>
-            </div>
             <div class="title">
                 <p>McGill Model United Nations Assembly : : January 23-26, Montreal</p>
+            </div>
+            <div id="social-media-wrapper">
+                <div id="social-media">
+                    <a href="https://twitter.com/#!/mcmun2014" class="twitter" title="Find us on Twitter">&nbsp;</a>&nbsp;
+                    <a href="https://facebook.com/pages/McMUN/62890916494" class="facebook" title="Find us on Facebook">&nbsp;</a>&nbsp;
+                    <a href="mailto:it@mcmun.org" class="email" title="Email us at it@mcmun.org">&nbsp;</a>
+                </div>
             </div>
         </div>
         {# In case some page wants to add other stuff to the header #}
@@ -58,12 +60,11 @@
     <div id="content-wrapper">
         <div id="content">
             {% block content %}{% endblock %}
-            <br />
-            <div id="footer">
-                <p class="right-float"><a href="#header">Back to top</a></p>
-                <p>&copy; McMUN 2014. Source available on <a href="https://github.com/dellsystem/mcmun-2014">GitHub</a>.</p>
-            </div>
         </div>
+    </div>
+    <div id="footer">
+        <p class="right-float"><a href="#header">Back to top</a></p>
+        <p>&copy; McMUN 2014. Source available on <a href="https://github.com/dellsystem/mcmun-2014">GitHub</a>.</p>
     </div>
 </div>
 </body>
