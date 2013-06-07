@@ -32,8 +32,8 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:13px;colo
 #social-media .facebook{background-image:url('../img/facebook.png');}
 #social-media .email{background-image:url('../img/email.png');}
 a{color:#1598c7;text-decoration:none;}a:hover{text-decoration:underline;color:#0e6382;}
-#content-wrapper{margin:0 auto;width:960px;background:#ffffff;min-height:200px;padding:0 30px;margin-bottom:50px;}
-#content{margin:0 auto;width:960px;margin-bottom:70px;padding-top:30px;position:relative;font-size:13px;overflow:auto;margin-bottom:30px;}#content ul,#content ol{margin:10px 0 10px 20px;}#content ul.horizontal,#content ol.horizontal{margin-left:0;}#content ul.horizontal li,#content ol.horizontal li{display:inline-block;zoom:1;*display:inline;}
+#content-wrapper{margin:0 auto;width:960px;background:#ffffff;min-height:200px;padding:0 30px;}
+#content{margin:0 auto;width:960px;padding:30px 0;position:relative;font-size:13px;overflow:auto;}#content ul,#content ol{margin:10px 0 10px 20px;}#content ul.horizontal,#content ol.horizontal{margin-left:0;}#content ul.horizontal li,#content ol.horizontal li{display:inline-block;zoom:1;*display:inline;}
 h1,h2,h3,h4,h5,h6{font-family:'Open Sans',sans-serif;padding-top:25px;padding-bottom:10px;clear:both;}
 h1{padding-top:0;font-size:3.5em;}
 h1+h2{padding-top:10px;}
