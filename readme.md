@@ -202,6 +202,7 @@ Source information for the images:
   [McMUN Facebook page](https://www.facebook.com/pages/McMUN/62890916494).
 * The photos on the "Social events" page were taken during McParte at
   previous McMUNs.
+* The three black-and-white icons on the homepage are from the [Brightmix](http://www.brightmix.com/blog/more-icons-in-the-brightmix-icon-set-free-for-all/) icon set, and are available under the WTFPL.
 * The rest of the images - primarily, variations of the logo and the contact
   icons in the header - were created by myself in Inkscape. I don't really
   care if you use the contact icons yourself, but the logo variations are
