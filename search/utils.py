@@ -14,20 +14,20 @@ def normalize_query(query_string,
     ''' Splits the query string in invidual keywords, getting rid of unecessary spaces
         and grouping quoted words together.
         Example:
-        
+
         >>> normalize_query('  some random  words "with   quotes  " and   spaces')
         ['some', 'random', 'words', 'with quotes', 'and', 'spaces']
-    
+
     '''
-    return [normspace(' ', (t[0] or t[1]).strip()) for t in findterms(query_string)] 
+    return [normspace(' ', (t[0] or t[1]).strip()) for t in findterms(query_string)]
 
 
 def get_query(query_string, search_fields):
     ''' Returns a query, that is a combination of Q objects. That combination
         aims to search keywords within a model by testing the given search fields.
-    
+
     '''
-    query = None # Query to search for every search term        
+    query = None # Query to search for every search term
     terms = normalize_query(query_string)
     for term in terms:
         or_query = None # Query to search for a given term in each field
@@ -48,10 +48,18 @@ def get_results(query_string):
     if not query_string:
         return
 
-    results = []
+    all_results = []
     for search_model, search_fields in settings.SEARCH_MODELS:
         model = loading.get_model(*search_model.split('.', 1))
         q = get_query(query_string, search_fields)
-        results.extend(model.objects.filter(q))
+        results = model.objects.filter(q)
 
-    return results
+        # If the model defines an is_searchable method, filter by that
+        is_searchable = getattr(model, 'is_searchable', None)
+        if callable(is_searchable):
+            results = [r for r in results if r.is_searchable()]
+
+        # Otherwise, the model is assumed to be searchable by default
+        all_results.extend(results)
+
+    return all_results

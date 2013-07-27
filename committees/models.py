@@ -27,6 +27,9 @@ class Committee(models.Model):
 	# Committees should be hidden until they are released
 	is_visible = models.BooleanField(default=False)
 
+	class Meta:
+		ordering = ('category', 'id')
+
 	def __unicode__(self):
 		return self.name
 
@@ -34,8 +37,8 @@ class Committee(models.Model):
 	def get_absolute_url(self):
 		return ('committee_view', [self.slug])
 
-	class Meta:
-		ordering = ('category', 'id')
+	def is_searchable(self):
+		return self.is_visible
 
 
 class CommitteeApplication(models.Model):
