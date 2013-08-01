@@ -58,7 +58,8 @@
 {% if school.committeeassignment_set.count %}
 <h2 id="committee-assignments">Committee assignments</h2>
 <p>Please ensure that you enter a delegate's name for each position that you have been assigned, by January 12. Once you have filled in the delegate name(s) for each position, make sure to upload the relevant position paper, by January 23.</p>
-<p>Please check that any delegate names that have been entered are entered correctly, as you will not be able to change anything once submitted except by contacting <a href="mailto:charge@mcmun.org">charge@mcmun.org</a>. You do not have to enter all the names at once.</p>
+<p>Please check that any delegate names that have been entered are entered
+correctly, as you will not be able to change anything once submitted except by contacting <a href="mailto:chargee@mcmun.org">chargee@mcmun.org</a>. You do not have to enter all the names at once.</p>
 <form action="{% url assignments %}" method="post" enctype="multipart/form-data">
 {% for m in management_forms %}{{ m }}{% endfor %}
 {% csrf_token %}
@@ -115,12 +116,12 @@
 <dl>
 	<dt>Nov. 1</dt>
 	<dd>Scholarship application deadline.</dd>
-
-	<dt>Nov. 18</dt>
 	<dd>Registration closes and waiting list opens.</dd>
 	<dd>Deposit due.</dd>
+
+	<dt>Nov. 1</dt>
 	<dd>Visa invitation letters request deadline.</dd>
-	<dd>Applications for the following committees are due: <a href="/committees/brics">BRICS</a>, <a href="/committees/ad-hoc">Ad-Hoc</a>, <a href="/committees/wall-street">Wall Street</a>, <a href="/committees/frost-nixon">Frost/Nixon</a>.</dd>
+	<!--<dd>Applications for the following committees are due: <a href="/committees/brics">BRICS</a>, <a href="/committees/ad-hoc">Ad-Hoc</a>, <a href="/committees/wall-street">Wall Street</a>, <a href="/committees/frost-nixon">Frost/Nixon</a>.</dd>-->
 
 	<dt>Dec. 1</dt>
 	<dd>Remainder of payment due.</dd>
@@ -154,7 +155,7 @@
 <h2 id="committees">Committee preferences</h2>
 
 {% if committees_form %}
-<p>Please select your committee preferences, with your most desirable committee ranked first. The deadline for selecting your committee preferences is <strong>midnight on November 18</strong>. After that date, you will have to contact charge@mcmun.org if you wish to change your preferences.</p>
+<p>Please select your committee preferences, with your most desirable committee ranked first. The deadline for selecting your committee preferences is <strong>midnight on November 18</strong>. After that date, you will have to contact chargee@mcmun.org if you wish to change your preferences.</p>
 
 <p><strong>You have indicated the following committee preferences:</strong></p>
 
@@ -192,10 +193,10 @@
 	<li>{{ school.committee_5 }}</li>
 </ul>
 
-<p>Please contact charge@mcmun.org if you have any questions or wish to change your preferences.</p>
+<p>Please contact chargee@mcmun.org if you have any questions or wish to change your preferences.</p>
 
 {% else %}
-<p>You have not indicated any committee preferences. Please contact charge@mcmun.org if you would like to set preferences.</p>
+<p>You have not indicated any committee preferences. Please contact chargee@mcmun.org if you would like to set preferences.</p>
 {% endif %}
 
 {% endif %}
@@ -227,20 +228,18 @@
 {% else %}
 <p>You have indicated that there are <strong>{{ school.num_pub_crawl }}</strong> delegate{{ school.num_pub_crawl|pluralize }} interested in attending Pub Crawl and <strong>{{ school.num_non_alcohol }}</strong> delegate{{ school.num_non_alcohol|pluralize }} who would prefer to attend a non-alcoholic event instead.</p>
 
-<p>If you need to make changes to these numbers, please contact Daniel Stysis at <a href="charge@mcmun.org">charge@mcmun.org</a>.</p>
+<p>If you need to make changes to these numbers, please contact Loreena Percy at <a href="chargee@mcmun.org">chargee@mcmun.org</a>.</p>
 {% endif %}
 
-{% comment %}
 <div id="scholarship">
 	<h2>Scholarship application</h2>
 	{% if form %}
 		{% include 'scholarship_form.html' %}
 	{% else %}
-		<p>Thank you for completing the scholarship application. You will receive information regarding the status of your scholarship by December 1<sup>st</sup>. If you have any questions or wish to change or add information to your application, please do not hesitate to contact our Chargé D’Affaires, Daniel Stysis at charge@mcmun.org.</p>
+		<p>Thank you for completing the scholarship application. You will receive information regarding the status of your scholarship by December 1<sup>st</sup>. If you have any questions or wish to change or add information to your application, please do not hesitate to contact our Chargée d’Affaires, Loreena Percy at charge@mcmun.org.</p>
 		<p><em>It is required that all scholarship recipients stay at the Sheraton during the conference.</em></p>
 	{% endif %}
 </div>
-{% endcomment %}
 {% else %}
 <p>Unfortunately there's nothing for you to see here. Please move along.</p>
 {% endif %}

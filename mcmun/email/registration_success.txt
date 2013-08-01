@@ -1,8 +1,8 @@
 Dear %(first_name)s,
 
-Thank you for registering for McMUN 2014! Once your registration for %(school_name)s has been approved by our Chargé d'Affaires, Daniel Stysis, you will promptly receive an email containing your invoice as well as payment instructions on the method you selected. 
+Thank you for registering for McMUN 2014! Once your registration for %(school_name)s has been approved by our Chargée d'Affaires, Loreena Percy, you will promptly receive an email containing your invoice as well as payment instructions on the method you selected. 
 
-If you have any questions about the registration process, require a visa/invitation letter, or wish to correct an error in your registration, please contact charge@mcmun.org.
+If you have any questions about the registration process, require a visa/invitation letter, or wish to correct an error in your registration, please contact Loreena at chargee@mcmun.org.
 
 Looking forward to seeing you in January,
 

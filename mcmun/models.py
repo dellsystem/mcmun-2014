@@ -30,6 +30,7 @@ class RegisteredSchool(models.Model):
 	use_online_payment = models.BooleanField()
 	use_tiered = models.BooleanField(default=False)
 	use_priority = models.BooleanField(default=False)
+	want_mobile_app = models.BooleanField(default=False, verbose_name="Would you be interested in substituting your printed delegate handbook with an integrated mobile app? (iOS and Android)")
 
 	amount_paid = models.DecimalField(default=Decimal(0), max_digits=6, decimal_places=2)
 
@@ -101,7 +102,7 @@ class RegisteredSchool(models.Model):
 		if self.is_international():
 			delegate_fee = 50
 		else:
-			delegate_fee = 80 if self.use_priority else 95
+			delegate_fee = 85 if self.use_priority else 95
 
 		return delegate_fee
 
@@ -140,7 +141,7 @@ class RegisteredSchool(models.Model):
 
 		send_email.delay(receipt_subject, receipt_message_filename, [self.email], context=receipt_context)
 
-		# Send out email to Stysis, myself (link to approve registration)
+		# Send email to Charge, finance, me (link to approve registration)
 		approve_subject = 'New registration for McMUN'
 		approve_message_filename = 'registration_approve'
 		approve_context = {

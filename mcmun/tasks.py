@@ -49,7 +49,7 @@ def generate_invoice(school_id, username, password):
 
 	# Send out an email to the user explaining that their account has been approved
 	# CC myself just in case they forget the password or whatever
-	invoice_subject = 'Invoice for McMUN 2013'
+	invoice_subject = 'Invoice for McMUN 2014'
 	invoice_message_filename = 'invoice'
 
 	invoice_id = 'MC13' + str(school_id).zfill(3)

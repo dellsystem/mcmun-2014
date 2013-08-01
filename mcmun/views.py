@@ -28,7 +28,7 @@ def registration(request):
 				registered_school.pays_convenience_fee = True
 				registered_school.save()
 
-				# Send emails to user, stysis, myself
+				# Send emails to user, charge, myself
 				registered_school.send_success_email()
 
 			data = {
@@ -90,7 +90,7 @@ def dashboard(request):
 				form = ScholarshipForm()
 
 		# If we haven't passed the committee prefs deadline, show the form
-		prefs_deadline = datetime.datetime(2012, 11, 19) # Nov 18 midnight
+		prefs_deadline = datetime.datetime(2013, 11, 19) # Nov 18 midnight
 		if datetime.datetime.now() < prefs_deadline:
 			committees_form = CommitteePrefsForm(instance=school)
 	elif request.user.is_staff:

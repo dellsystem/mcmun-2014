@@ -186,7 +186,7 @@
 				<tr{% if school.use_tiered %} class="bottom-border"{% endif %}>
 					<td colspan="3" class="right-border">
 						<div class="right-align">
-							<p><strong>TOTAL{% if not school.use_tiered %} (due&nbsp;<u>{% if school.use_priority %}October 1{% else %}November 18{% endif %}</u>){% endif %}</strong><p>
+							<p><strong>TOTAL{% if not school.use_tiered %} (due&nbsp;<u>{% if school.use_priority %}October 1{% else %}November 1{% endif %}</u>){% endif %}</strong><p>
 							<p><em>{% if school.get_currency == 'CAD' %}Canadian delegations must pay in Canadian dollars.{% else %}Delegations located outside of Canada must pay in US dollars.{% endif %}</em></p>
 						</div>
 					</td>
@@ -196,7 +196,7 @@
 				<tr class="bottom-border">
 					<td colspan="3" class="right-border">
 						<div class="right-align">
-							<p><strong>REQUIRED DEPOSIT (due&nbsp;<u>{% if school.use_priority and not school.is_international %}October 1{% else %}November 18{% endif %})</u></strong><p>
+							<p><strong>REQUIRED DEPOSIT (due&nbsp;<u>{% if school.use_priority and not school.is_international %}October 1{% else %}November 1{% endif %})</u></strong><p>
 							{% if school.pays_convenience_fee and school.use_online_payment %}
 							<p>This includes the 3% convenience fee of ${{ school.get_deposit_convenience_fee }} {{ school.get_currency }}.</p>
 							{% endif %}
@@ -244,24 +244,24 @@
 
 			<p>The $75 club registration fee is a one-time non-refundable fee per delegation. If you decide not to join us at McMUN 2014:</p>
 			<ul>
-				<li>Before November 18th, your refund will be the payment received minus the $75 club registration fee.</li>
+				<li>Before November 1st, your refund will be the payment received minus the $75 club registration fee.</li>
 				<li>Before January 1st, your refund will be the payment received minus the deposit of {{ school.get_deposit }}.</li>
 			</ul>
 			<p>Please note that after January 1st there are no refunds under any circumstances.</p>
 
 			<p>&nbsp;</p>
 			<h2>Contacting McMUN</h2>
-			<p>If you have any questions about your invoice or registration please contact Lea El Houssami, Chief Financial Officer, or Daniel Stysis, Charg&eacute; d'Affaires, respectively.</p>
+			<p>If you have any questions about your invoice or registration please contact Eileen Bui, Chief Financial Officer, or Loreena Percy, Charg&eacute;e d'Affaires, respectively.</p>
 			<p>&nbsp;</p>
 			<table class="center-align">
 				<tr>
 					<td>
 						<p>
-							Daniel Stysis
+							Loreena Percy
 							<br />
-							Charg&eacute; d'Affaires
+							Charg&eacute;e d'Affaires
 							<br />
-							Email: charge@mcmun.org
+							Email: chargee@mcmun.org
 							<br />
 							Office: (514) 398-6816
 							<br />
@@ -270,7 +270,7 @@
 					</td>
 					<td>
 						<p>
-							Lea El Houssami
+							Eileen Bui
 							<br />
 							Chief Financial Officer
 							<br />
@@ -279,7 +279,8 @@
 							Office: (514) 398-6816
 							<br />
 							Fax: (514) 398-2160
-						</p></td>
+						</p>
+					</td>
 				</tr>
 			</table>
 			<h2>
