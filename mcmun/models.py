@@ -193,28 +193,28 @@ Just an abstract base class to avoid having to type all this out twice
 (I'll add a Coordinator model soon)
 """
 class OrganisingMember(models.Model):
-    name = models.CharField(max_length=100)
-    position = models.CharField(max_length=100)
-    bio = models.TextField()
-    slug = models.SlugField()
+	name = models.CharField(max_length=100)
+	position = models.CharField(max_length=100)
+	bio = models.TextField()
+	slug = models.SlugField()
 
-    class Meta:
-        abstract = True
+	class Meta:
+		abstract = True
 
 
 class SecretariatMember(OrganisingMember):
-    email = models.CharField(max_length=100, help_text="Just the part that goes before @mcmun.org")
+	email = models.CharField(max_length=100, help_text="Just the part that goes before @mcmun.org")
 
-    def __unicode__(self):
-        return u'%s – %s' % (self.name, self.position)
+	def __unicode__(self):
+		return u'%s – %s' % (self.name, self.position)
 
-    def get_absolute_url(self):
-        return '/secretariat#%s' % self.slug
+	def get_absolute_url(self):
+		return '/secretariat#%s' % self.slug
 
 
 class Coordinator(OrganisingMember):
-    def __unicode__(self):
-        return self.name
+	def __unicode__(self):
+		return self.name
 
 
 @receiver(models.signals.pre_save, sender=RegisteredSchool, dispatch_uid="approve_schools")
