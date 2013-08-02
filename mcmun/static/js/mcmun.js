@@ -1,4 +1,32 @@
+var localStorageSupported = function() {
+  try {
+      return 'localStorage' in window && window['localStorage'] !== null;
+    } catch (e) {
+        return false;
+    }
+}
+
 $(document).ready(function() {
+    // Promo video stuff
+    var isLocalStorageSupported = localStorageSupported();
+    if (!isLocalStorageSupported || !localStorage.getItem('seen_promo')) {
+        var overlay = document.createElement('div');
+        overlay.id = 'overlay';
+        overlay.innerHTML = '<div class="content">' +
+            '<h1>If you haven\'t seen our promo video ...</h1>' +
+            '<iframe width="960" height="540"' +
+            'src="//www.youtube.com/embed/vAm-3UWzz64" frameborder="0"' +
+            'allowfullscreen></iframe>' +
+            '</div>' +
+            '<div class="close">×</div>';
+        $('body').append(overlay);
+
+        if (isLocalStorageSupported) {
+            // Don't force the user to watch the video again
+            localStorage.setItem('seen_promo', true);
+        }
+    }
+
 	// Staff coordinator application form
 	if ($('#staff-coordinator-form').length) {
 		// Hide the ones that don't always need to be filled

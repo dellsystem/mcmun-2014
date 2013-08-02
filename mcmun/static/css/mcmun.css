@@ -80,3 +80,7 @@ hr{margin:15px 0;}
 .major-heading{color:#1598c7;font-size:2.3em;text-align:center;}
 .silver-heading{color:#C0C0C0;text-shadow:1px 1px 1px rgba(0, 0, 0, 0.5);font-size:2.3em;font-weight:normal;padding-top:0;}
 .unclear{clear:none;}
+#overlay{position:fixed;left:0;right:0;top:0;bottom:0;background:rgba(0, 0, 0, 0.8);z-index:100;}#overlay .content{position:absolute;left:50%;margin-left:-480px;top:50%;margin-top:-290px;text-align:center;}
+#overlay h1{color:#fff;margin-bottom:10px;font-size:30px;}
+#overlay .close{position:absolute;top:10px;right:10px;font-size:3.5em;color:#fff;cursor:pointer;}#overlay .close:hover{color:#aaa;}
+.red-text,.red-text:hover{color:#d40000;}
