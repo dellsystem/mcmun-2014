@@ -11,9 +11,7 @@ def search(request):
     data = {
         'query': query,
         'results': results,
-        'page': {
-            'long_name': 'Search results for %s' % query,
-        }
+        'title': 'Search results for %s' % query,
     }
 
     return render(request, 'search/results.html', data)

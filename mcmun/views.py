@@ -32,9 +32,7 @@ def registration(request):
 				registered_school.send_success_email()
 
 			data = {
-				'page': {
-					'long_name': 'Succcessful registration'
-				}
+				'title': 'Succcessful registration'
 			}
 
 			return render(request, "registration_success.html", data)
@@ -43,9 +41,7 @@ def registration(request):
 
 	data = {
 		'form': form,
-		'page': {
-			'long_name': 'Registration',
-		},
+		'title': 'Registration',
 		'min_num_delegates': MIN_NUM_DELEGATES,
 		'max_num_delegates': MAX_NUM_DELEGATES,
 	}
@@ -113,9 +109,7 @@ def dashboard(request):
 		'committees_form': committees_form,
 		'form': form,
 		# Needed to show the title (as base.html expects the CMS view)
-		'page': {
-			'long_name': 'Your dashboard',
-		},
+		'title': 'Your dashboard',
 	}
 
 	return render(request, "dashboard.html", data)
