@@ -14,9 +14,15 @@ $(document).ready(function() {
         overlay.id = 'overlay';
         overlay.innerHTML = '<div class="content">' +
             '<h1>If you haven\'t seen our promo video ...</h1>' +
-            '<iframe width="960" height="540"' +
-            'src="//www.youtube.com/embed/vAm-3UWzz64" frameborder="0"' +
-            'allowfullscreen></iframe>' +
+            '<object width="960" height="540">' +
+            '<param name="movie"' +
+                   'value="http://www.youtube.com/v/vAm-3UWzz64">' +
+            '<param name="allowScriptAccess" value="always"></param>' +
+            '<embed src="http://www.youtube.com/v/vAm-3UWzz64"' +
+                   'type="application/x-shockwave-flash"' +
+                   'allowscriptaccess="always"' +
+                   'width="960" height="540"></embed>' +
+            '</object>' +
             '</div>' +
             '<div class="close">×</div>';
         $('body').append(overlay);
