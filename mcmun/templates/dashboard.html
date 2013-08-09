@@ -3,6 +3,8 @@
 {% block content %}
 <h1>Your dashboard</h1>
 
+{% include 'merchandise-banner.html' %}
+
 {% if unfilled_assignments %}
 <div class="alert">
     <p>You have unfilled committee assignments! Please indicate the names of the delegates who will be occupying each country or character assignment in the <a href="#committee-assignments"><strong>Committee assignments</strong></a> section below, needed for badge-printing purposes.</p>

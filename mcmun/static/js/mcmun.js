@@ -201,4 +201,21 @@ $(document).ready(function() {
 			}
 		});
 	}
+
+    // Make sure that a size is selected when ordering a shirt, or a bundle
+    // containing a shirt.
+    var merchandiseForms = $('.merchandise-form');
+    if (merchandiseForms.length) {
+        merchandiseForms.filter(function () {
+            return $(this).find('#id_size').length;
+        }).submit(function () {
+            var size = $(this).find('#id_size').val();
+
+            if (!size) {
+                alert('You must select a size!');
+                return false;
+            }
+        });
+    }
+
 });

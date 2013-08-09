@@ -8,6 +8,8 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^$', 'cms.views.main', name='home'),
     url(r'^dashboard', 'mcmun.views.dashboard', name='dashboard'),
+    url(r'^merchandise-submit', 'merchandise.views.submit', name='merchandise_submit'),
+    url(r'^merchandise-order', 'merchandise.views.order', name='merchandise_order'),
     url(r'^merchandise', 'merchandise.views.main', name='merchandise'),
     url(r'^event-registration', 'mcmun.views.events', name='events'),
     url(r'^committee-prefs', 'mcmun.views.committee_prefs', name='committee_prefs'),

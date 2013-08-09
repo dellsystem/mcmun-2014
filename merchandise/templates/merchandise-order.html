@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% load merchandise_extras %}
+
+{% block content %}
+<p>
+    <a href='{% url merchandise %}'>
+    &laquo; Back to merchandise overview page
+    </a>
+</p>
+
+<h1>Order merchandise</h1>
+
+{% if submit %}
+<div class='center-align'>
+    <h2 class='red-text'>Your order has been updated.</h2>
+</div>
+{% endif %}
+
+<p>Ready to place your order? Use the form below to add/delete items from your
+order. You'll be able to submit your order before the end of August.</p>
+
+<p>You can use the comment fields for anything. We would recommend using them to
+keep track of who on your delegation ordered what, and who has or hasn't paid.</p>
+
+{% for thing, orders, form in bundles %}
+    {% include 'merchandise-form.html' with merch_type='bundle' %}
+{% endfor %}
+
+{% for thing, orders, form in items %}
+    {% include 'merchandise-form.html' with merch_type='item' %}
+{% endfor %}
+{% endblock %}

@@ -4,6 +4,10 @@
 {% load merchandise_extras %}
 
 {% block content %}
+{% if user.registeredschool_set.count %}
+{% include 'merchandise-banner.html' %}
+{% endif %}
+
 <h1>Merchandise</h1>
 
 <p>
@@ -30,7 +34,7 @@ The online shop will be open from August 1st 2013 to November 24th, 2013.
 
 {% for bundle in bundles %}
 <h2>{{ bundle.name}} {{ bundle.online_price|price }}
-    <span class='red-letters'>(save {{ bundle.get_amount_saved|price }})</span>
+    <span class='red-text'>(save {{ bundle.get_amount_saved|price }})</span>
 </h2>
 {{ bundle.description|markdown }}
 <br />

@@ -1,5 +1,17 @@
 from django.db import models
 
+from mcmun.constants import MAX_NUM_DELEGATES
+from mcmun.models import RegisteredSchool
+
+
+SIZE_CHOICES = (
+    ('S', 'S'),
+    ('M', 'M'),
+    ('L', 'L'),
+    ('XL', 'XL'),
+    ('XXL', 'XXL'),
+)
+
 
 class PriceField(models.DecimalField):
     description = 'Exactly what it says on the tin'
@@ -10,6 +22,15 @@ class PriceField(models.DecimalField):
         models.DecimalField.__init__(self, *args, **kwargs)
 
 
+class QuantityField(models.IntegerField):
+    description = 'Between 1 and MAX_NUM_DELEGATES'
+
+    def __init__(self, *args, **kwargs):
+        kwargs['default'] = 1
+        kwargs['choices'] = ((n, n) for n in xrange(1, MAX_NUM_DELEGATES + 1))
+        models.IntegerField.__init__(self, *args, **kwargs)
+
+
 class Item(models.Model):
     name = models.CharField(max_length=50)
     online_price = PriceField()
@@ -17,6 +38,9 @@ class Item(models.Model):
     description = models.TextField()
     slug = models.SlugField()
     is_limited = models.BooleanField()
+    # This is a lot less fun than the abstractified monstrosity I was going to
+    # go with but honestly, it's probably easier to work with in the long run.
+    has_size = models.BooleanField(default=False)
 
     def __unicode__(self):
         return self.name
@@ -39,3 +63,51 @@ class Bundle(models.Model):
         user, but where's the fun in that?"""
         expected_price = sum(item.online_price for item in self.items.all())
         return expected_price - self.online_price
+
+    def has_size(self):
+        return self.items.filter(has_size=True).exists()
+
+
+class ItemOrder(models.Model):
+    school = models.ForeignKey(RegisteredSchool)
+    item = models.ForeignKey(Item, related_name='orders')
+    quantity = QuantityField()
+    comment = models.CharField(max_length=255, null=True, blank=True)
+    size = models.CharField(max_length=2, choices=SIZE_CHOICES, null=True,
+                            blank=True)
+    bundle_order = models.ForeignKey('BundleOrder', null=True, blank=True,
+                                     related_name='item_orders')
+
+
+    class Meta:
+        ordering = ('item', 'school')
+
+    def __unicode__(self):
+        return '%s x %d - %s' % (self.item, self.quantity, self.school)
+
+    def get_description(self):
+        """Used by the __unicode__ method on BundleOrder."""
+        return '%s (%s)' % (self.name, self.size) if self.size else self.name
+
+
+class BundleOrder(models.Model):
+    """Creating a BundleOrder also creates the necessary ItemOrders."""
+    school = models.ForeignKey(RegisteredSchool)
+    bundle = models.ForeignKey(Bundle, related_name='orders')
+    quantity = QuantityField()
+    comment = models.CharField(max_length=255, null=True, blank=True)
+
+    class Meta:
+        ordering = ('bundle', 'school')
+
+    def __unicode__(self):
+        return self.bundle.name
+
+    def size(self):
+        for item_order in self.item_orders.filter(item__has_size=True):
+            return item_order.size
+
+    def create_item_orders(self, size):
+        for item in self.bundle.items.all():
+            self.item_orders.create(school=self.school, item=item,
+                                    quantity=self.quantity, size=size)
