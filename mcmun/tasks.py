@@ -68,4 +68,4 @@ def generate_invoice(school_id, username, password):
 
 	attachment_filenames = [pdf_filename]
 
-	send_email.delay(invoice_subject, invoice_message_filename, [school.email], context=invoice_context, bcc=[settings.IT_EMAIL, settings.CHARGE_EMAIL], attachment_filenames=attachment_filenames)
+	send_email.delay(invoice_subject, invoice_message_filename, [school.email], context=invoice_context, bcc=[settings.IT_EMAIL, settings.CHARGE_EMAIL, settings.FINANCE_EMAIL], attachment_filenames=attachment_filenames)
