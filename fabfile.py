@@ -27,3 +27,6 @@ def dump():
 def reset():
     local("rm db.sqlite")
     local("python manage.py syncdb")
+
+def static():
+    local("python manage.py collectstatic --noinput")
