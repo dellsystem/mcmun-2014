@@ -48,6 +48,27 @@ mcmun/settings.py, and you probably don't want to use the development
 server. [Gunicorn](http://gunicorn.org/) is a good choice. You can serve
 static content using nginx or Apache or whatever web server you're using.
 
+#### Configuration file
+
+You'll need to create a conf.py file in the mcmun/ directory. The following
+need to be defined:
+
+* `DEBUG`: Boolean.
+* `DB_ENGINE`: 'django.db.backends.sqlite3', for example.
+* `DB_NAME`: The DB name, or path to sqlite3 file.
+* `DB_USER`
+* `DB_PASSWORD`
+* `DB_HOST`
+* `DB_PORT`
+* `MEDIA_ROOT`
+* `STATIC_ROOT`
+* `SECRET_KEY`
+* `EMAIL_PASSWORD` (used with gmail). TODO: Consider defining the email address
+  itself in conf.py as well.
+* `ADMIN_PREFIX`: Typically 'admin'.
+* `COOKIE_DOMAIN`: '.mcmun.org', for example. TODO: should anything
+  domain-related be defined here?
+
 ### Editing content
 
 There is a homegrown content management system application installed. It
