@@ -35,13 +35,16 @@ hair loss) that may arise from the usage of this codebase.
 ### Setting it up
 
 You'll need to install a bunch of dependencies, preferrably with pip:
-Django, Markdown, celery, xhtml2pdf, fabric, maybe some others. I'll create
-a requirements.txt file for this later. For development, using SQLite should
-be fine, so just run `python manage.py syncdb` and create the superuser.
-Then, to run the development server locally at port 8000, run `fab up` (or
-`python manage.py runserver` if you don't have Fabric installed or just like
-typing). You will then be able to access the website at
-<http://localhost:8000>.
+
+```
+pip install -r requirements.txt
+```
+
+For development, using SQLite should be fine, so just run `python manage.py
+syncdb` and create the superuser.  Then, to run the development server locally
+at port 8000, run `fab up` (or `python manage.py runserver` if you don't have
+Fabric installed or just like typing). You will then be able to access the
+website at <http://localhost:8000>.
 
 For production, you'll want to edit the database settings in
 mcmun/settings.py, and you probably don't want to use the development
