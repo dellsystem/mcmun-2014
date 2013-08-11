@@ -1,25 +1,31 @@
+import django.conf.global_settings as DEFAULT_SETTINGS
 import djcelery
 import logging
-import django.conf.global_settings as DEFAULT_SETTINGS
+
+from mcmun import conf
 
 
-DEBUG = True
+DEBUG = conf.DEBUG
 TEMPLATE_DEBUG = DEBUG
 
 INTERNAL_IPS = (
 	'127.0.0.1',
 )
 
+ADMINS = (
+    ('IT', 'it@mcmun.org'),
+)
+
 MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '',                      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': conf.DB_ENGINE,
+        'NAME': conf.DB_NAME,
+        'USER': conf.DB_USER,
+        'PASSWORD': conf.DB_PASSWORD,
+        'HOST': conf.DB_HOST,
+        'PORT': conf.DB_PORT,
     }
 }
 
@@ -51,7 +57,7 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = 'EDIT THIS'
+MEDIA_ROOT = conf.MEDIA_ROOT
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -62,7 +68,7 @@ MEDIA_URL = '/'
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = 'EDIT THIS'
+STATIC_ROOT = conf.STATIC_ROOT
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -84,7 +90,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'EDIT THIS'
+SECRET_KEY = conf.SECRET_KEY
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -172,19 +178,15 @@ EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'it@mcmun.org'
-EMAIL_HOST_PASSWORD = 'EDIT THIS'
+EMAIL_HOST_PASSWORD = conf.EMAIL_PASSWORD
 
 IT_EMAIL = 'it@mcmun.org'
 CHARGE_EMAIL = 'charge@mcmun.org'
 FINANCE_EMAIL = 'finance@mcmun.org'
 
-ADMIN_URL = 'http://www.mcmun.org/EDIT THIS/'
+ADMIN_URL = conf.ADMIN_URL
 
-ADMINS = (
-    ('IT', 'it@mcmun.org'),
-)
-
-CSRF_COOKIE_DOMAIN = ".mcmun.org"
+CSRF_COOKIE_DOMAIN = conf.COOKIE_DOMAIN
 DEFAULT_FROM_EMAIL = 'it@mcmun.org'
 
 logging.getLogger('xhtml2pdf')
