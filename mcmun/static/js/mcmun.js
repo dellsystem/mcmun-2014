@@ -31,6 +31,10 @@ $(document).ready(function() {
             // Don't force the user to watch the video again
             localStorage.setItem('seen_promo', true);
         }
+
+        $('#overlay .close').click(function () {
+            $('#overlay').hide();
+        });
     }
 
 	// Staff coordinator application form
