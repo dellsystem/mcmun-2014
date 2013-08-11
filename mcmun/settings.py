@@ -184,7 +184,7 @@ IT_EMAIL = 'it@mcmun.org'
 CHARGE_EMAIL = 'charge@mcmun.org'
 FINANCE_EMAIL = 'finance@mcmun.org'
 
-ADMIN_URL = conf.ADMIN_URL
+ADMIN_URL = 'http://www.mcmun.org/%s' % conf.ADMIN_PREFIX
 
 CSRF_COOKIE_DOMAIN = conf.COOKIE_DOMAIN
 DEFAULT_FROM_EMAIL = 'it@mcmun.org'

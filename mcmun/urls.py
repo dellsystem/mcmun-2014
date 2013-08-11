@@ -1,8 +1,9 @@
 from django.conf.urls import patterns, include, url
+from django.contrib import admin
+
+from mcmun.conf import ADMIN_PREFIX
 from mcmun.pages import pages
 
-# Uncomment the next two lines to enable the admin:
-from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -14,7 +15,7 @@ urlpatterns = patterns('',
     url(r'^event-registration', 'mcmun.views.events', name='events'),
     url(r'^committee-prefs', 'mcmun.views.committee_prefs', name='committee_prefs'),
     url(r'^assignments', 'mcmun.views.assignments', name='assignments'),
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^%s/' % ADMIN_PREFIX, include(admin.site.urls)),
     url(r'^committees/', include('committees.urls')),
     url(r'^staff-application/', include('staffapps.urls')),
     url(r'^signups/', include('signups.urls')),
