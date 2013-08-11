@@ -12,6 +12,8 @@ INTERNAL_IPS = (
 	'127.0.0.1',
 )
 
+ALLOWED_HOSTS = conf.ALLOWED_HOSTS
+
 ADMINS = (
     ('IT', 'it@mcmun.org'),
 )

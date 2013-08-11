@@ -68,6 +68,7 @@ need to be defined:
 * `ADMIN_PREFIX`: Typically 'admin'.
 * `COOKIE_DOMAIN`: '.mcmun.org', for example. TODO: should anything
   domain-related be defined here?
+* `ALLOWED_HOSTS`: See Django docs.
 
 ### Editing content
 
