@@ -31,7 +31,7 @@
 				<p>
 					<strong>Email address:</strong> {{ user.username }}
 					<br />
-					<a href="{% url password %}">Change your password</a> :: <a href="{% url logout %}">Log out</a>
+					<a href="{% url 'password' %}">Change your password</a> :: <a href="{% url 'logout' %}">Log out</a>
 				</p>
 			</div>
 		</td>
@@ -62,7 +62,7 @@
 <p>Please ensure that you enter a delegate's name for each position that you have been assigned, by January 12. Once you have filled in the delegate name(s) for each position, make sure to upload the relevant position paper, by January 23.</p>
 <p>Please check that any delegate names that have been entered are entered
 correctly, as you will not be able to change anything once submitted except by contacting <a href="mailto:chargee@mcmun.org">chargee@mcmun.org</a>. You do not have to enter all the names at once.</p>
-<form action="{% url assignments %}" method="post" enctype="multipart/form-data">
+<form action="{% url 'assignments' %}" method="post" enctype="multipart/form-data">
 {% for m in management_forms %}{{ m }}{% endfor %}
 {% csrf_token %}
 <table class="separated-cells">
@@ -161,7 +161,7 @@ correctly, as you will not be able to change anything once submitted except by c
 
 <p><strong>You have indicated the following committee preferences:</strong></p>
 
-<form method="post" action="{% url committee_prefs %}">
+<form method="post" action="{% url 'committee_prefs' %}">
 	{% csrf_token %}
 
 	<fieldset>
@@ -207,7 +207,7 @@ correctly, as you will not be able to change anything once submitted except by c
 
 {% if event_form %}
 <p>If you are interested in attending the Friday night social event, please fill out the form below. Delegates have a choice between <a href="http://www.mcmun.org/social-events#pub-crawl">Pub Crawl</a> and a non-alcoholic event (the details of which will be released closer to the conference itself).</p>
-<form method="post" action="{% url events %}">
+<form method="post" action="{% url 'events' %}">
 	{% csrf_token %}
 
 	<fieldset>

@@ -3,7 +3,7 @@
 <h2>{{ thing }} - {{ thing.online_price|price }}</h2>
 
 {% if orders %}
-<form method='post' action='{% url merchandise_submit %}'>
+<form method='post' action='{% url 'merchandise_submit' %}'>
 {% csrf_token %}
 <input type='hidden' name='merch_type' value='{{ merch_type }}' />
 <table>
@@ -37,7 +37,7 @@
     <img src='/static/img/merchandise/{{ thing.slug }}.png' alt='' />
 </div>
 <div class='merch-order-form'>
-    <form method='post' action='{% url merchandise_submit %}'
+    <form method='post' action='{% url 'merchandise_submit' %}'
           class='merchandise-form'>
         {% csrf_token %}
         <ul>

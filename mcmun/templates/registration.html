@@ -130,13 +130,13 @@ href="mailto:chargee@mcmun.org">chargee@mcmun.org</a>.</p>
 			<dt>
 				<label for="id_use_online_payment">Online payment (via PayPal):</label>
 				<p>You will be emailed instructions on how to complete the payment after your registration is approved. <strong><u>Note that there is a 3% convenience fee for online payments, due to a fee charged to us by PayPal.</u></strong></p>
-				<p>The alternative is to pay by cheque, mailed with one of the main shipping companies. See our <a href="{% url cms 'payment' %}#payment-methods">payment policy page</a> for more information.</p>
+				<p>The alternative is to pay by cheque, mailed with one of the main shipping companies. See our <a href="{% url 'cms' 'payment' %}#payment-methods">payment policy page</a> for more information.</p>
 			</dt>
 			<dd>{{ form.use_online_payment }}</dd>
 
 			<dt>
 				<label for="id_use_tiered">Use the tiered payment system:</label>
-				<p>If you do not wish to pay the full fee up front, select this and you can pay using our tiered system of deposit and remainder. See our <a href="{% url cms 'payment' %}#payment-options">payment policy page</a> for more information..</p>
+				<p>If you do not wish to pay the full fee up front, select this and you can pay using our tiered system of deposit and remainder. See our <a href="{% url 'cms' 'payment' %}#payment-options">payment policy page</a> for more information..</p>
 			</dt>
 			<dd>{{ form.use_tiered }}</dd>
 

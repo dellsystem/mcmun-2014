@@ -16,7 +16,7 @@
 
 {% if is_dais %}
 <div class="center-align">
-	<big><a href="{% url list_papers committee.slug %}">View position papers</a></big>
+	<big><a href="{% url 'list_papers' committee.slug %}">View position papers</a></big>
 </div>
 {% endif %}
 
