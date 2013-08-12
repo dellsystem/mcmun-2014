@@ -11,9 +11,7 @@ You can now log in at http://www.mcmun.org/dashboard to check the details of you
 Username: %(username)s
 Password: %(password)s
 
-After logging in, you will be able to place your order for merchandise. You can
-save your order until you are ready to place it, if necessary. Please note that
-orders must be placed by November 24.
+After logging in, you will be able to place your order for merchandise. You can save your order until you are ready to place it, if necessary. Please note that orders must be placed by November 24.
 
 Your committee assignments will be released in December, subject to full payment being received. After this date, you will also be able to access your committee assignments, enter the names of the delegates who will be attending, and upload position papers from that page.
 

@@ -227,7 +227,8 @@ def approve_schools(sender, instance, **kwargs):
 	if instance.is_approved and instance.account is None:
 		# School does not have an account. Make one!
 		password = generate_random_password()
-		new_account = User.objects.create_user(username=instance.email,
+		username = instance.email[:30]
+		new_account = User.objects.create_user(username=username,
 											   password=password)
 		instance.account = new_account
 
