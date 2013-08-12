@@ -72,6 +72,7 @@ need to be defined:
 * `COOKIE_DOMAIN`: '.mcmun.org', for example. TODO: should anything
   domain-related be defined here?
 * `ALLOWED_HOSTS`: See Django docs.
+* `INSTALLED_APPS`: A tuple, to add to `INSTALLED_APPS` in settings.py.
 
 ### Editing content
 
