@@ -183,7 +183,7 @@ EMAIL_HOST_USER = 'it@mcmun.org'
 EMAIL_HOST_PASSWORD = conf.EMAIL_PASSWORD
 
 IT_EMAIL = 'it@mcmun.org'
-CHARGE_EMAIL = 'charge@mcmun.org'
+CHARGE_EMAIL = 'chargee@mcmun.org'
 FINANCE_EMAIL = 'finance@mcmun.org'
 
 ADMIN_URL = 'http://www.mcmun.org/%s/' % conf.ADMIN_PREFIX
