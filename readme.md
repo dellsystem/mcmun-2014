@@ -1,4 +1,4 @@
-[![McMUN 2014](http://www.mcmun.org/static/img/readme_logo.png)](http://www.mcmun.org)
+[![McMUN 2014](http://www.mcmun.org/static/img/readme-logo.png)](http://www.mcmun.org)
 
 This is the source for the codebase that I originally wrote for the McMUN
 2013 website. It is also being used to power the McMUN 2014 and SSUNS 2013
