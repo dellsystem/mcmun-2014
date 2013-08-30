@@ -1,5 +1,12 @@
 import random
 
+
+def is_spam(data):
+    address = data.get('address', '')
+    phone_number = data.get('phone_number', '')
+    return address.startswith('http://') or phone_number == '123456'
+
+
 def generate_random_password(length=12, allowed_chars='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'):
 	    """
 	    Returns a random string of length characters from the set of a-z, A-Z, 0-9.

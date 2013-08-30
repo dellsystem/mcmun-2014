@@ -11,6 +11,7 @@ from committees.utils import get_committee_from_email
 from mcmun.forms import RegistrationForm, ScholarshipForm, EventForm, CommitteePrefsForm
 from mcmun.constants import MIN_NUM_DELEGATES, MAX_NUM_DELEGATES
 from mcmun.models import RegisteredSchool, ScholarshipApp
+from mcmun.utils import is_spam
 
 
 def home(request):
@@ -23,7 +24,7 @@ def registration(request):
 
 		if form.is_valid():
 			# Simple spam-prevention technique
-			if not request.POST.get('address', '').startswith('http://'):
+			if not is_spam(request.POST):
 				registered_school = form.save()
 				registered_school.pays_convenience_fee = True
 				registered_school.save()
