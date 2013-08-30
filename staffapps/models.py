@@ -45,8 +45,6 @@ logistical_choices = (
 	('food', 'Food staff'),
 )
 
-committees_choices = [(committee.slug, committee.name) for committee in Committee.objects.all()]
-
 
 class StaffApp(models.Model):
 	"""
@@ -92,9 +90,9 @@ class CoordinatorApp(StaffApp):
 
 
 class CommitteesApp(StaffApp):
-	preferred_committee_1 = models.CharField(choices=committees_choices, max_length=20, help_text="Please note that only students in the Faculty of Law will be considered to staff ICC.")
-	preferred_committee_2 = models.CharField(choices=committees_choices, max_length=20)
-	preferred_committee_3 = models.CharField(choices=committees_choices, max_length=20)
+	preferred_committee_1 = models.ForeignKey(Committee, related_name='+')
+	preferred_committee_2 = models.ForeignKey(Committee, related_name='+')
+	preferred_committee_3 = models.ForeignKey(Committee, related_name='+')
 
 	mun_experience = models.TextField(verbose_name="Please describe any previous Model United Nations experience you have. If you do not have any previous Model United Nations experience, please describe any relevant experience (e.g., debating, public speaking, etc.).")
 
