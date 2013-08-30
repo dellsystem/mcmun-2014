@@ -20,11 +20,13 @@ class DelegateAssignmentAdmin(admin.ModelAdmin):
 	committee.short_description = 'Committee'
 	committee.admin_order_field = 'committee_assignment__committee'
 
+
 admin.site.register(Category)
 admin.site.register(Committee)
 admin.site.register(AdHocApplication)
-admin.site.register(BRICSApplication)
-admin.site.register(NixonApplication)
-admin.site.register(WallStreetApplication)
+admin.site.register(DEFCONApplication)
+admin.site.register(ICCApplication)
+admin.site.register(CEAApplication)
+admin.site.register(UFCApplication)
 admin.site.register(CommitteeAssignment, CommitteeAssignmentAdmin)
 admin.site.register(DelegateAssignment, DelegateAssignmentAdmin)

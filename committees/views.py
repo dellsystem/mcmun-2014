@@ -8,7 +8,8 @@ from django.shortcuts import render, get_object_or_404
 from django.views.static import serve
 
 from committees.models import Committee, position_paper_upload_path
-from committees.forms import AdHocAppForm, BRICSAppForm, NixonAppForm, WallStreetAppForm
+from committees.forms import AdHocAppForm, DEFCONAppForm, ICCAppForm, \
+     CEAAppForm, UFCAppForm
 from committees.utils import get_committee_from_email
 
 
@@ -38,9 +39,10 @@ def application(request, slug):
 
     app_forms = {
         'ad-hoc': AdHocAppForm,
-        'brics': BRICSAppForm,
-        'frost-nixon': NixonAppForm,
-        'wall-street': WallStreetAppForm,
+        'defcon': DEFCONAppForm,
+        'ufc': UFCAppForm,
+        'cea': CEAAppForm,
+        'icc': ICCAppForm,
     }
 
     if slug in app_forms:
