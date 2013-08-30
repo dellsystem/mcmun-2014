@@ -1,5 +1,6 @@
-from committees.models import AdHocApplication, BRICSApplication, NixonApplication, WallStreetApplication, \
-	CommitteeAssignment, DelegateAssignment
+from committees.models import AdHocApplication, DEFCONApplication, \
+     ICCApplication, CEAApplication, UFCApplication, CommitteeAssignment, \
+     DelegateAssignment
 
 from django import forms
 
@@ -9,19 +10,24 @@ class AdHocAppForm(forms.ModelForm):
 		model = AdHocApplication
 
 
-class BRICSAppForm(forms.ModelForm):
+class DEFCONAppForm(forms.ModelForm):
 	class Meta:
-		model = BRICSApplication
+		model = DEFCONApplication
 
 
-class NixonAppForm(forms.ModelForm):
+class ICCAppForm(forms.ModelForm):
 	class Meta:
-		model = NixonApplication
+		model = ICCApplication
 
 
-class WallStreetAppForm(forms.ModelForm):
+class CEAAppForm(forms.ModelForm):
 	class Meta:
-		model = WallStreetApplication
+		model = CEAApplication
+
+
+class UFCAppForm(forms.ModelForm):
+	class Meta:
+		model = UFCApplication
 
 
 CommitteeAssignmentFormSet = forms.models.modelformset_factory(CommitteeAssignment,

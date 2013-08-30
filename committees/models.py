@@ -56,55 +56,70 @@ class CommitteeApplication(models.Model):
 	previous_mun_experience = models.TextField(verbose_name="Describe your previous Model UN experience.")
 
 	def __unicode__(self):
-		return "%s for %s" % (self.name, self.committee_name)
+		return '%s from %s' % (self.name, self.school)
+
+
+class UFCApplication(CommitteeApplication):
+	class Meta:
+		verbose_name = 'Committee application: UFC'
+		verbose_name_plural = 'Committee applications: UFC'
+
+	why_you = models.TextField(verbose_name='Why should you be a part of the UFC committee? What skills do you bring that are applicable to the specific mode of conduct?')
+	guillotine = models.TextField(verbose_name='What is a Guillotine?')
+	favourite_figure = models.TextField(verbose_name='Who is your favourite figure (athlete or otherwise) in the UFC?')
+	defend_ufc = models.TextField(verbose_name='In 250 words or less, defend the UFC against a critique that it is a grotesque and violent sideshow. Why do you see it as a legitimate sport organization?')
+
+
+class CEAApplication(CommitteeApplication):
+	class Meta:
+		verbose_name = 'Committee application: CEA (Detroit)'
+		verbose_name_plural = 'Committee applications: CEA (Detroit)'
+
+	why_you = models.TextField(verbose_name='Why should you be part of the United States Council of Economic Advisers? What qualifications do you have for this role?')
+	which_corp = models.TextField(verbose_name='Which multinational corporation would you want to work for and why?')
+	economic_policy = models.TextField(verbose_name='What is the role of the CEA for American economic policy?')
+	auto_industry = models.TextField(verbose_name='Describe in 250 words or less the economic consequences of letting the American auto industry collapse in 2008.')
+
+
+class ICCApplication(CommitteeApplication):
+	class Meta:
+		verbose_name = 'Committee application: ICC'
+		verbose_name_plural = 'Committee applications: ICC'
+
+	why_you = models.TextField(verbose_name='Why should you be part of the International Criminal Court committee? What skills do you have that would be applicable to trial simulation?')
+	world_leader = models.TextField(verbose_name='Name a world leader that you would like to have a meal with and why.')
+	chief_prosecutor = models.TextField(verbose_name='What role does the Chief Prosecutor play within the institutional framework of the ICC?')
+	icc_role = models.TextField(verbose_name='Describe, in 250 words or less, the role the ICC and international law should have in international relations.')
+
+
+class DEFCONApplication(CommitteeApplication):
+	class Meta:
+		verbose_name = 'Committee application: DEFCON'
+		verbose_name_plural = 'Committee applications: DEFCON'
+
+	why_you = models.TextField(verbose_name='Why should you be a part of the DEFCON committee? What can you bring to a war game committee?')
+	juiche = models.TextField(verbose_name='What is Juiche and how does it relate to the international relations of the DPRK?')
+	any_country = models.TextField(verbose_name='If you could lead any country in a war game situation (that is not the United States) which would it be and why?')
+	six_party = models.TextField(verbose_name='Describe, in 250 words or less, what has been achieved through previous Six Party Talks.')
 
 
 class AdHocApplication(CommitteeApplication):
-	# This is used solely for display. Can't actually use self.committee.
-	committee_name = 'the Ad-Hoc Committee of the Secretary-General'
+	class Meta:
+		verbose_name = 'Committee application: Ad-hoc'
+		verbose_name_plural = 'Committee applications: Ad-hoc'
 
-	what_topic = models.TextField(verbose_name="If you were given the opportunity to select the Ad-Hoc committee topic, what topic would you choose?")
-	world_leader_coffee = models.TextField(verbose_name="Who is one living world leader you would like to have a coffee talk with and why?")
-	no_background_knowledge = models.TextField(verbose_name="What will you do if you have no background knowledge of the chosen topic?")
-	# There must be a better way to do this?
-	why_choose_you = models.TextField(verbose_name="Why should you be chosen as a member of %s? What skills can you bring to this committee?" % committee_name)
-
-
-class BRICSApplication(CommitteeApplication):
-	committee_name = 'the BRICS Summit'
-
-	teammate_1_name_email = models.CharField(max_length=255, verbose_name="Name and email of teammate 1")
-	teammate_2_name_email = models.CharField(max_length=255, verbose_name="Name and email of teammate 2")
-	what_topic = models.TextField(verbose_name="What would you choose as the BRICS Summit topic of discussion and why?")
-	why_choose_you = models.TextField(verbose_name="Why should you be chosen as a member of %s? What skills can you bring to this committee?" % committee_name)
-	world_leader_coffee = models.TextField(verbose_name="Who is one living world leader you would like to have a coffee talk with and why?")
-	significance_of_brics = models.TextField(verbose_name="Describe the significance of the BRICS nations in less than 250 words.")
-
-
-class NixonApplication(CommitteeApplication):
-	committee_name = "the Nixon Interviews Joint Crisis"
-
-	why_choose_you = models.TextField(verbose_name="Why should you be chosen as a member of %s? What skills can you bring to this committee?" % committee_name)
-	significance = models.TextField(verbose_name="What is the significance of the interviews held between David Frost and Richard Nixon?")
-	which_side = models.TextField(verbose_name="Which side of the joint crisis would you prefer to be on and why?")
-	frost_ask_nixon = models.TextField(verbose_name="If you were David Frost, what would you have asked Richard Nixon?")
-	nixon_presidency = models.TextField(verbose_name="Describe Richard Nixon's presidency in less than 250 words.")
-
-
-class WallStreetApplication(CommitteeApplication):
-	committee_name = "Wall Street 2008"
-
-	facebook_ipo = models.TextField(verbose_name="In May 2012, Facebook, Inc. held its initial public offering (IPO) at an unprecedented valuation for an internet corporation. Since then, it is arguable that Facebook's IPO failed to match traders' expectations. Do you agree? Also, what are the long-term and the short-term forecasts for Facebook's stock in your opinion? Explain in less than two hundred words.")
-	british_libor = models.TextField(verbose_name="This summer, the British financial system faced heavy scrutiny and damaging accusations of manipulation of the London Interbank Offered Rate (LIBOR). Should the British government get involved? What are the implications of this scandal? Explain in less than two hundred words.")
-	bull_bear = models.TextField(verbose_name="Are you bull-ish or bear-ish? Explain in two sentences or less.")
+	greatest_skill = models.TextField(verbose_name='What is the greatest skill you have and how can that be applied to Model United Nations?')
+	favourite_leader = models.TextField(verbose_name='Who is your favourite military leader and why?')
+	proportional_response = models.TextField(verbose_name='What is the virtue of a proportional response?')
+	why_law = models.TextField(verbose_name='Briefly argue, in 250 words or less, why a law must be obeyed even when it conflicts with morality.')
 
 
 class CommitteeAssignment(models.Model):
 	class Meta:
 		ordering = ('school', 'committee')
-        permissions = (("can_view_papers", "Can view position papers"),)
+		permissions = (("can_view_papers", "Can view position papers"),)
 
-	# Number of delegates is usually 1, except in SOCHUM
+	# Number of delegates is usually 1, except in double-delegation committees
 	school = models.ForeignKey('mcmun.RegisteredSchool')
 	num_delegates = models.IntegerField(default=1)
 	committee = models.ForeignKey(Committee)
