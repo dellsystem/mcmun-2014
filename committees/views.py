@@ -4,7 +4,7 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.http import Http404
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views.static import serve
 
 from committees.models import Committee, position_paper_upload_path
@@ -47,6 +47,8 @@ def application(request, slug):
 
     if slug in app_forms:
         app_form = app_forms[slug]
+    else:
+        return redirect(committee)
 
     if request.method == 'POST':
         form = app_form(request.POST)
