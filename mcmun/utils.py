@@ -4,7 +4,10 @@ import random
 def is_spam(data):
     address = data.get('address', '')
     phone_number = data.get('phone_number', '')
-    return address.startswith('http://') or phone_number == '123456'
+    school_name = data.get('school_name', '')
+    first_name = data.get('first_name', '')
+    return (address.startswith('http://') or phone_number == '123456' or
+            school_name == first_name)
 
 
 def generate_random_password(length=12, allowed_chars='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'):
