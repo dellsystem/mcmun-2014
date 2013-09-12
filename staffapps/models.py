@@ -13,10 +13,11 @@ year_choices = (
 
 coordinator_choices = (
 	('staff-room', 'Staff Room Coordinator'),
-	('page', 'Page Coordinator'),
 	('drc', 'Delegate Resource Center Coordinator'),
-	('events-coord', 'Entertainment and Events Coordinator'),
+	('page', 'Page Coordinator'),
 	('events-tl', 'Entertainment and Events Team Leader'),
+	('events-coord', 'Entertainment and Events Coordinator'),
+	('media', 'Media Team Logistics Coordinator'),
 	('photo', 'Photography Coordinator'),
 	('occc', 'Opening and Closing Ceremonies Coordinator'),
 	('food', 'Food Coordinator'),
@@ -40,7 +41,6 @@ logistical_choices = (
 	('group-leader', 'Group leader (Pub Crawl)'),
 	('venue-staff', 'Venue staff (Pub Crawl)'),
 	('photographer', 'Photographer'),
-	('videographer', 'Videographer'),
 	('occc', 'Opening Ceremonies and Closing Ceremonies staff'),
 	('food', 'Food staff'),
 )
@@ -115,7 +115,6 @@ class LogisticalApp(StaffApp):
 
 	# Not going to go to the trouble of making them show up automatically
 	photography_experience = models.TextField(verbose_name="If you indicated that you're interested in the photographer position, please list any relevant photography experience.", null=True, blank=True)
-	videography_experience = models.TextField(verbose_name="If you indicated that you're interested in the videographer position, please indicate which of the following programs you have experience with: Final Cut Pro 7, Motion 4 or 5, Adobe After Effects, Adobe Photoshop, and Adobe Illustrator.", null=True, blank=True)
 
 	another_position = models.BooleanField(verbose_name="Are you amenable to another position (i.e. an alternative logistical staff position) if not selected for one of the above positions?")
 
