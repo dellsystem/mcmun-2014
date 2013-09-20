@@ -158,7 +158,6 @@ $(document).ready(function() {
 	}
 
 	var delegationFee = 75;
-    var taxRate = 1.14975;
 
 	$('#fee-calculator').delegate('select', 'change', function (event) {
 		var numDelegates = parseInt($('#num-delegates option:checked').val(), 10);
@@ -166,11 +165,11 @@ $(document).ready(function() {
 
 		// Only show the fee information stuff when everything has been selected
 		if (numDelegates > 0 && registrationType !== '') {
-			var delegateFee, preTaxFee, totalFee, deposit, remainder;
+			var delegateFee, totalFee, deposit, remainder;
 
 			switch (registrationType) {
 				case 'priority':
-					delegateFee = 80;
+					delegateFee = 85;
 				break;
 				case 'regular':
 					delegateFee = 95;
@@ -181,12 +180,11 @@ $(document).ready(function() {
 			}
 
 			if (delegateFee) {
-				preTaxFee = numDelegates * delegateFee + delegationFee;
-                totalFee = taxRate * preTaxFee;
+                totalFee = numDelegates * delegateFee + delegationFee;
 				deposit = delegationFee + (numDelegates * delegateFee) * 0.5;
 				remainder = totalFee - deposit;
 
-				$('#fee-information').text('Your total fee, for ' + numDelegates + ' delegates and ' + registrationType + ' registration, is $' + totalFee.toFixed(2) + ' ($' + preTaxFee.toFixed(2) + ' before taxes). If you wish to pay using the tiered system, your deposit would be $' + deposit.toFixed(2) + ', and the remainder would be $' + remainder.toFixed(2) + '.');
+				$('#fee-information').text('Your total fee, for ' + numDelegates + ' delegates and ' + registrationType + ' registration, is $' + totalFee.toFixed(2) + '. If you wish to pay using the tiered system, your deposit would be $' + deposit.toFixed(2) + ', and the remainder would be $' + remainder.toFixed(2) + '.');
 			} else {
 				// Someone is mucking about with the form
 				$('#fee-information').text("Please stop messing with the form. There's nothing interesting here.");
