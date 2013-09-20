@@ -21,6 +21,8 @@ coordinator_choices = (
 	('photo', 'Photography Coordinator'),
 	('occc', 'Opening and Closing Ceremonies Coordinator'),
 	('food', 'Food Coordinator'),
+	('editor-in-chief', 'Editor-in-Chief for The Ambassador'),
+	('senior-editor', 'Senior Editor for The Ambassador'),
 )
 
 non_coordinator_choices = (
