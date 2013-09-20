@@ -78,7 +78,6 @@ class CoordinatorApp(StaffApp):
 	can_drive = models.BooleanField(verbose_name="Can you legally drive in Canada?")
 	leadership = models.TextField(verbose_name="Please describe any previous leadership positions you have held.")
 	why_you = models.TextField(verbose_name="Please outline why you are a good candidate for each preferred position. (Provide a separate answer for each portfolio).")
-	dinner = models.TextField(verbose_name="List 5 people you wish you could go for dinner with. Give a sentence-long explanation for each person.")
 
 	best_trait = models.CharField(max_length=100, verbose_name="What is your best trait? (1 word or phrase)")
 	greatest_fault = models.CharField(max_length=100, verbose_name="What is your greatest fault? (1 word or phrase)")
