@@ -30,3 +30,6 @@ def reset():
 
 def static():
     local("python manage.py collectstatic --noinput")
+
+def restart():
+	local('kill -HUP `cat /tmp/gunicorn.pid`')
