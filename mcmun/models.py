@@ -52,6 +52,8 @@ class RegisteredSchool(models.Model):
 	committee_4 = models.ForeignKey(Committee, blank=True, null=True, related_name="school_4")
 	committee_5 = models.ForeignKey(Committee, blank=True, null=True, related_name="school_5")
 
+	merch_order_final = models.BooleanField(default=False)
+
 	def has_prefs(self):
 		return (self.committee_1 or self.committee_2 or self.committee_3 or
 			self.committee_4 or self.committee_5)
@@ -161,6 +163,19 @@ class RegisteredSchool(models.Model):
 
 	def has_unfilled_assignments(self):
 		return any(not c.is_filled() for c in self.committeeassignment_set.all())
+
+	def get_merch_total_owed(self):
+		item_orders = self.itemorder_set.filter(bundle_order__isnull=True)
+		bundle_orders = self.bundleorder_set.all()
+		total_cost = 0
+
+		for item_order in item_orders:
+			total_cost += item_order.quantity * item_order.item.online_price
+
+		for bundle_order in bundle_orders:
+			total_cost += bundle_order.quantity * bundle_order.bundle.online_price
+
+		return total_cost
 
 	def __unicode__(self):
 		return self.school_name
