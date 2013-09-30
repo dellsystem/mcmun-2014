@@ -89,6 +89,20 @@ class ItemOrder(models.Model):
         """Used by the __unicode__ method on BundleOrder."""
         return '%s (%s)' % (self.name, self.size) if self.size else self.name
 
+    def total_cost(self):
+        if self.bundle_order is not None:
+            cost = self.bundle_order.bundle.online_price * self.quantity
+            return '%s (part of %s)' % (cost, self.bundle_order.bundle)
+        else:
+            cost = self.item.online_price * self.quantity
+            return '%s (%s per item)' % (cost, self.item.online_price)
+
+    def total_owed_by_school(self):
+        return self.school.get_merch_total_owed()
+
+    def is_finalised(self):
+        return self.school.merch_order_final
+
 
 class BundleOrder(models.Model):
     """Creating a BundleOrder also creates the necessary ItemOrders."""

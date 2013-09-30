@@ -48,6 +48,7 @@ def order(request):
         items.append((item, orders, form))
 
     context = {
+        'final': school.merch_order_final,
         'submit': submit,
         'bundles': bundles,
         'items': items,
@@ -68,6 +69,12 @@ def submit(request):
         return redirect(main) # TODO: show an error message of some sort
 
     school = schools[0]
+
+    # Just finalising the order
+    if request.POST.get('finalise'):
+        school.merch_order_final = True
+        school.save()
+        return redirect('/merchandise-order?submit=1')
 
     merch_type = request.POST.get('merch_type')
     delete_id = request.POST.get('delete')

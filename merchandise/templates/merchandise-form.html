@@ -14,7 +14,9 @@
             <th>Size</th>
             {% endif %}
             <th>Comment</th>
+            {% if not final %}
             <th>Actions</th>
+            {% endif %}
         </tr>
     </thead>
     <tbody>
@@ -25,17 +27,23 @@
             <td>{{ order.size }}</td>
             {% endif %}
             <td>{{ order.comment }}</td>
+            {% if not final %}
             <td><button name='delete' value='{{ order.id }}'>Delete</button>
+            {% endif %}
         </tr>
         {% endfor %}
     </tbody>
 </form>
 </table>
+{% else %}
+<p>You have not placed any orders for {{ thing }}.</p>
+<br />
 {% endif %}
 
 <div class='merch-pic'>
     <img src='/static/img/merchandise/{{ thing.slug }}.png' alt='' />
 </div>
+{% if not final %}
 <div class='merch-order-form'>
     <form method='post' action='{% url 'merchandise_submit' %}'
           class='merchandise-form'>
@@ -50,3 +58,4 @@
         <input type='hidden' name='slug' value='{{ thing.slug }}' />
     </form>
 </div>
+{% endif %}
