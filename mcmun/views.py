@@ -27,6 +27,7 @@ def registration(request):
 			if not is_spam(request.POST):
 				registered_school = form.save()
 				registered_school.pays_convenience_fee = True
+				registered_school.use_priority = False  # just in case
 				registered_school.save()
 
 				# Send emails to user, charge, myself
