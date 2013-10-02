@@ -7,7 +7,7 @@
 <p><a href="/committees-list">&laquo; Back to committees</a></p>
 
 <div class="center-align">
-	<img src="{{ STATIC_URL }}img/committees/{{ committee.slug }}.png" />
+    <img src="{{ STATIC_URL }}img/committees/{{ committee.slug }}.png" />
 </div>
 
 <br />
@@ -16,7 +16,7 @@
 
 {% if is_dais %}
 <div class="center-align">
-	<big><a href="{% url 'list_papers' committee.slug %}">View position papers</a></big>
+    <big><a href="{% url 'list_papers' committee.slug %}">View position papers</a></big>
 </div>
 {% endif %}
 

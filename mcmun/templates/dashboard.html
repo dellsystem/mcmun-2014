@@ -13,48 +13,48 @@
 
 {% if school %}
 <table id="dashboard-table">
-	<tr>
-		<td>
-			<div id="profile">
-				<h3>{{ school }}</h3>
+    <tr>
+        <td>
+            <div id="profile">
+                <h3>{{ school }}</h3>
 
-				<p>
-					{{ school.first_name }} {{ school.last_name }}
-					<br />
-					{{ school.address }}
-					<br />
-					{{ school.get_country_display }}
-					<br />
-					{{ school.phone_number }}
-				</p>
-				<br />
-				<p>
-					<strong>Email address:</strong> {{ user.username }}
-					<br />
-					<a href="{% url 'password' %}">Change your password</a> :: <a href="{% url 'logout' %}">Log out</a>
-				</p>
-			</div>
-		</td>
-		<td>
-			<div id="invoice">
-				<h2>Invoice details</h2>
-				<p>
-					<strong>Number of delegates:</strong> {{ school.num_delegates }}
-					<br />
-					<strong>Payment method:</strong> {% if school.use_online_payment %}online payment{% else %}by cheque{% endif %}
-					<br />
-					<strong>Tiered payment:</strong> {% if school.use_tiered %}Yes{% else %}No{% endif %}
-					<br />
-					<strong>Priority registration:</strong> {% if school.use_priority %}Yes{% else %}No{% endif %}
-					<br />
-					<strong>Amount owed:</strong> {{ school.amount_owed }} {{ school.get_currency }}
-					<br />
-					<strong>Amount paid:</strong> ${{ school.amount_paid }} {{ school.get_currency }}
-				</p>
-				<p>Lost your copy of your invoice PDF? Email it@mcmun.org.{% comment %}Eventually I'll make a view to show the PDF to people with the proper permissions. Later.{% endcomment %}</p>
-			</div>
-		</td>
-	</tr>
+                <p>
+                    {{ school.first_name }} {{ school.last_name }}
+                    <br />
+                    {{ school.address }}
+                    <br />
+                    {{ school.get_country_display }}
+                    <br />
+                    {{ school.phone_number }}
+                </p>
+                <br />
+                <p>
+                    <strong>Email address:</strong> {{ user.username }}
+                    <br />
+                    <a href="{% url 'password' %}">Change your password</a> :: <a href="{% url 'logout' %}">Log out</a>
+                </p>
+            </div>
+        </td>
+        <td>
+            <div id="invoice">
+                <h2>Invoice details</h2>
+                <p>
+                    <strong>Number of delegates:</strong> {{ school.num_delegates }}
+                    <br />
+                    <strong>Payment method:</strong> {% if school.use_online_payment %}online payment{% else %}by cheque{% endif %}
+                    <br />
+                    <strong>Tiered payment:</strong> {% if school.use_tiered %}Yes{% else %}No{% endif %}
+                    <br />
+                    <strong>Priority registration:</strong> {% if school.use_priority %}Yes{% else %}No{% endif %}
+                    <br />
+                    <strong>Amount owed:</strong> {{ school.amount_owed }} {{ school.get_currency }}
+                    <br />
+                    <strong>Amount paid:</strong> ${{ school.amount_paid }} {{ school.get_currency }}
+                </p>
+                <p>Lost your copy of your invoice PDF? Email it@mcmun.org.{% comment %}Eventually I'll make a view to show the PDF to people with the proper permissions. Later.{% endcomment %}</p>
+            </div>
+        </td>
+    </tr>
 </table>
 
 {% if school.committeeassignment_set.count %}
@@ -66,49 +66,49 @@ correctly, as you will not be able to change anything once submitted except by c
 {% for m in management_forms %}{{ m }}{% endfor %}
 {% csrf_token %}
 <table class="separated-cells">
-	<thead>
-		<tr>
-			<th>Committee</th>
-			<th>Assignment</th>
-			<th width="20%">Delegate name(s)</th>
-			<th width="25%">Position paper</th>
-		</tr>
-	</thead>
-	<tbody>
-		{% for f, d_f in formset %}
-		{% with c=f.instance %}
-		<tr>
-			<td><a href="{{ c.committee.get_absolute_url }}">{{ c.committee }}</a></td>
-			<td>{{ c.assignment }}</td>
-			<td>
-				{% for d in d_f %}
-					{% if d.instance.delegate_name %}
-						<p>Delegate name: {{ d.instance.delegate_name }}</p>
-						<!-- lol -->
-						<div class="hidden">{{ d.as_p }}</div>
-					{% else %}
-						{{ d.as_p }}
-					{% endif %}
-				{% endfor %}
-			</td>
-			<td>
-				{{ f.id }}
-				{% if c.is_filled %}
-					{{ f.position_paper }}
-				{% else %}
-					You will be able to upload a position paper after submitting the delegate name{{ c.num_delegates|pluralize}} for this position.
-				{% endif %}
-			</td>
-		</tr>
-		{% endwith %}
-		{% endfor %}
-	</tbody>
+    <thead>
+        <tr>
+            <th>Committee</th>
+            <th>Assignment</th>
+            <th width="20%">Delegate name(s)</th>
+            <th width="25%">Position paper</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for f, d_f in formset %}
+        {% with c=f.instance %}
+        <tr>
+            <td><a href="{{ c.committee.get_absolute_url }}">{{ c.committee }}</a></td>
+            <td>{{ c.assignment }}</td>
+            <td>
+                {% for d in d_f %}
+                    {% if d.instance.delegate_name %}
+                        <p>Delegate name: {{ d.instance.delegate_name }}</p>
+                        <!-- lol -->
+                        <div class="hidden">{{ d.as_p }}</div>
+                    {% else %}
+                        {{ d.as_p }}
+                    {% endif %}
+                {% endfor %}
+            </td>
+            <td>
+                {{ f.id }}
+                {% if c.is_filled %}
+                    {{ f.position_paper }}
+                {% else %}
+                    You will be able to upload a position paper after submitting the delegate name{{ c.num_delegates|pluralize}} for this position.
+                {% endif %}
+            </td>
+        </tr>
+        {% endwith %}
+        {% endfor %}
+    </tbody>
 </table>
 
 <p><strong>Please confirm any names that you've filled in before pressing submit. If you leave a field blank, you may fill it in later.</strong></p>
 
 <fieldset class="submit">
-	<input type="submit" name="submit" value="Submit" />
+    <input type="submit" name="submit" value="Submit" />
 </fieldset>
 </form>
 {% endif %}
@@ -116,42 +116,42 @@ correctly, as you will not be able to change anything once submitted except by c
 <h2 id="dates">Important dates</h2>
 
 <dl>
-	<dt>September</dt>
-	<dd>Background guides come online.</dd>
+    <dt>September</dt>
+    <dd>Background guides come online.</dd>
 
-	<dt>Nov. 1</dt>
-	<dd>Scholarship application deadline.</dd>
-	<dd>Registration closes and waiting list opens.</dd>
-	<dd>Deposit due.</dd>
+    <dt>Nov. 1</dt>
+    <dd>Scholarship application deadline.</dd>
+    <dd>Registration closes and waiting list opens.</dd>
+    <dd>Deposit due.</dd>
 
-	<dt>Nov. 18</dt>
-	<dd>Visa invitation letters request deadline.</dd>
-	<!--<dd>Applications for the following committees are due: <a href="/committees/brics">BRICS</a>, <a href="/committees/ad-hoc">Ad-Hoc</a>, <a href="/committees/wall-street">Wall Street</a>, <a href="/committees/frost-nixon">Frost/Nixon</a>.</dd>-->
+    <dt>Nov. 18</dt>
+    <dd>Visa invitation letters request deadline.</dd>
+    <!--<dd>Applications for the following committees are due: <a href="/committees/brics">BRICS</a>, <a href="/committees/ad-hoc">Ad-Hoc</a>, <a href="/committees/wall-street">Wall Street</a>, <a href="/committees/frost-nixon">Frost/Nixon</a>.</dd>-->
 
-	<dt>Dec. 1</dt>
-	<dd>Remainder of payment due.</dd>
-
-    {% comment %}
-	<dt>Dec. 17</dt>
-	<dd>Committee assignments are released.</dd>
-    {% endcomment %}
-
-	<dt>Dec. 21</dt>
-	<dd>Hotel room bookings at the Sheraton are due.</dd>
-
-	<dt>Jan. 1</dt>
-	<dd>Refund request deadline.</dd>
+    <dt>Dec. 1</dt>
+    <dd>Remainder of payment due.</dd>
 
     {% comment %}
-	<dt>Jan. 12</dt>
-	<dd>Delegate badge list due (online submission).</dd>
-
-	<dt>Jan. 23</dt>
-	<dd>Position paper deadline (online submission). You must have submitted a position paper to be eligible for an award.</dd>
+    <dt>Dec. 17</dt>
+    <dd>Committee assignments are released.</dd>
     {% endcomment %}
 
-	<dt>Jan. 23-26</dt>
-	<dd>McMUN 2014.</dd>
+    <dt>Dec. 21</dt>
+    <dd>Hotel room bookings at the Sheraton are due.</dd>
+
+    <dt>Jan. 1</dt>
+    <dd>Refund request deadline.</dd>
+
+    {% comment %}
+    <dt>Jan. 12</dt>
+    <dd>Delegate badge list due (online submission).</dd>
+
+    <dt>Jan. 23</dt>
+    <dd>Position paper deadline (online submission). You must have submitted a position paper to be eligible for an award.</dd>
+    {% endcomment %}
+
+    <dt>Jan. 23-26</dt>
+    <dd>McMUN 2014.</dd>
 </dl>
 
 <h2 id="committees">Committee preferences</h2>
@@ -162,24 +162,24 @@ correctly, as you will not be able to change anything once submitted except by c
 <p><strong>You have indicated the following committee preferences:</strong></p>
 
 <form method="post" action="{% url 'committee_prefs' %}">
-	{% csrf_token %}
+    {% csrf_token %}
 
-	<fieldset>
-	{% for field in committees_form %}
-		<dl>
-			<dt>
-				{{ field.label_tag }}
-			</dt>
-			<dd>
-				{{ field }} {{ field.errors }}
-			</dd>
-		</dl>
-	{% endfor %}
-	</fieldset>
+    <fieldset>
+    {% for field in committees_form %}
+        <dl>
+            <dt>
+                {{ field.label_tag }}
+            </dt>
+            <dd>
+                {{ field }} {{ field.errors }}
+            </dd>
+        </dl>
+    {% endfor %}
+    </fieldset>
 
-	<fieldset class="submit">
-		<input type="submit" name="submit" value="Submit" />
-	</fieldset>
+    <fieldset class="submit">
+        <input type="submit" name="submit" value="Submit" />
+    </fieldset>
 </form>
 {% else %}
 <p>The committee preferences form is now <strong>closed</strong>.</p>
@@ -188,11 +188,11 @@ correctly, as you will not be able to change anything once submitted except by c
 <p>You have indicated your committee preferences to be:</p>
 
 <ul>
-	<li>{{ school.committee_1 }}</li>
-	<li>{{ school.committee_2 }}</li>
-	<li>{{ school.committee_3 }}</li>
-	<li>{{ school.committee_4 }}</li>
-	<li>{{ school.committee_5 }}</li>
+    <li>{{ school.committee_1 }}</li>
+    <li>{{ school.committee_2 }}</li>
+    <li>{{ school.committee_3 }}</li>
+    <li>{{ school.committee_4 }}</li>
+    <li>{{ school.committee_5 }}</li>
 </ul>
 
 <p>Please contact chargee@mcmun.org if you have any questions or wish to change your preferences.</p>
@@ -208,24 +208,24 @@ correctly, as you will not be able to change anything once submitted except by c
 {% if event_form %}
 <p>If you are interested in attending the Friday night social event, please fill out the form below. Delegates have a choice between <a href="http://www.mcmun.org/social-events#pub-crawl">Pub Crawl</a> and a non-alcoholic event (the details of which will be released closer to the conference itself).</p>
 <form method="post" action="{% url 'events' %}">
-	{% csrf_token %}
+    {% csrf_token %}
 
-	<fieldset>
-	{% for field in event_form %}
-		<dl>
-			<dt>
-				{{ field.label_tag }}
-			</dt>
-			<dd>
-				{{ field }} {{ field.errors }}
-			</dd>
-		</dl>
-	{% endfor %}
-	</fieldset>
+    <fieldset>
+    {% for field in event_form %}
+        <dl>
+            <dt>
+                {{ field.label_tag }}
+            </dt>
+            <dd>
+                {{ field }} {{ field.errors }}
+            </dd>
+        </dl>
+    {% endfor %}
+    </fieldset>
 
-	<fieldset class="submit">
-		<input type="submit" name="submit" value="Submit" />
-	</fieldset>
+    <fieldset class="submit">
+        <input type="submit" name="submit" value="Submit" />
+    </fieldset>
 </form>
 {% else %}
 <p>You have indicated that there are <strong>{{ school.num_pub_crawl }}</strong> delegate{{ school.num_pub_crawl|pluralize }} interested in attending Pub Crawl and <strong>{{ school.num_non_alcohol }}</strong> delegate{{ school.num_non_alcohol|pluralize }} who would prefer to attend a non-alcoholic event instead.</p>
@@ -234,13 +234,13 @@ correctly, as you will not be able to change anything once submitted except by c
 {% endif %}
 
 <div id="scholarship">
-	<h2>Scholarship application</h2>
-	{% if form %}
-		{% include 'scholarship_form.html' %}
-	{% else %}
-		<p>Thank you for completing the scholarship application. You will receive information regarding the status of your scholarship by December 1<sup>st</sup>. If you have any questions or wish to change or add information to your application, please do not hesitate to contact our Chargée d’Affaires, Loreena Percy at charge@mcmun.org.</p>
-		<p><em>It is required that all scholarship recipients stay at the Sheraton during the conference.</em></p>
-	{% endif %}
+    <h2>Scholarship application</h2>
+    {% if form %}
+        {% include 'scholarship_form.html' %}
+    {% else %}
+        <p>Thank you for completing the scholarship application. You will receive information regarding the status of your scholarship by December 1<sup>st</sup>. If you have any questions or wish to change or add information to your application, please do not hesitate to contact our Chargée d’Affaires, Loreena Percy at charge@mcmun.org.</p>
+        <p><em>It is required that all scholarship recipients stay at the Sheraton during the conference.</em></p>
+    {% endif %}
 </div>
 {% else %}
 <p>Unfortunately there's nothing for you to see here. Please move along.</p>
