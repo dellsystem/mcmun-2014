@@ -6,51 +6,51 @@
 
 #menu {
     .secondary-font;
-	z-index: 3;
-	position: relative;
-	height: @menuHeight;
+    z-index: 3;
+    position: relative;
+    height: @menuHeight;
     .container;
     ul {
-		list-style-type: none;
+        list-style-type: none;
     }
-	> ul li {
+    > ul li {
         ul li a {
             // A hack to make the hover height the same
             height: 35px;
         }
 
-		.inline-block;
-		a {
-			display: block;
-			height: @menuHeight;
-			padding: 0 20px;
-			font-size: 1.2em;
-			line-height: @menuHeight;
-			//font-weight: bold;
-			text-transform: lowercase;
-			text-decoration: none;
-			color: @menuText;
-			&:hover {
-				background: lighten(@lighterGrey, 10%);
-			}
-		}
-		ul {
-			display: none;
-		}
-		&:hover > ul, > ul:hover {
-			display: block;
-			position: absolute;
-			top: @menuHeight;
-		}
-		> ul li {
+        .inline-block;
+        a {
+            display: block;
+            height: @menuHeight;
+            padding: 0 20px;
+            font-size: 1.2em;
+            line-height: @menuHeight;
+            //font-weight: bold;
+            text-transform: lowercase;
+            text-decoration: none;
+            color: @menuText;
+            &:hover {
+                background: lighten(@lighterGrey, 10%);
+            }
+        }
+        ul {
+            display: none;
+        }
+        &:hover > ul, > ul:hover {
+            display: block;
+            position: absolute;
+            top: @menuHeight;
+        }
+        > ul li {
             height: 35px !important;
-			display: block;
-			background: lighten(@lighterGrey, 10%);
-			text-align: left;
-			font-size: 9px;
+            display: block;
+            background: lighten(@lighterGrey, 10%);
+            text-align: left;
+            font-size: 9px;
             a:hover {
                 background: lighten(@lighterGrey, 5%);
             }
-		}
-	}
+        }
+    }
 }
