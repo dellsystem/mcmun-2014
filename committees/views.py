@@ -9,7 +9,7 @@ from django.views.static import serve
 
 from committees.models import Committee, position_paper_upload_path
 from committees.forms import AdHocAppForm, DEFCONAppForm, ICCAppForm, \
-     CEAAppForm, UFCAppForm
+     CEAAppForm, UFCAppForm, GreatEmpireAppForm
 from committees.utils import get_committee_from_email
 
 
@@ -43,6 +43,7 @@ def application(request, slug):
         'ufc': UFCAppForm,
         'cea': CEAAppForm,
         'icc': ICCAppForm,
+        'great-empire': GreatEmpireAppForm,
     }
 
     if slug in app_forms:

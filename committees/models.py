@@ -103,6 +103,29 @@ class DEFCONApplication(CommitteeApplication):
 	six_party = models.TextField(verbose_name='Describe, in 250 words or less, what has been achieved through previous Six Party Talks.')
 
 
+class GreatEmpireApplication(CommitteeApplication):
+    class Meta:
+        verbose_name = 'Committee application: The Great Empire'
+        verbose_name_plural = 'Committee applications: The Great Empire'
+
+    year = models.CharField(max_length=20, help_text='Year in school')
+    your_family_name = models.CharField(max_length=100)
+    # I don't know how one is supposed to enter a sigil into a text field. yolo?
+    your_family_sigil = models.CharField(max_length=100)
+    your_family_motto = models.CharField(max_length=255)
+    family_history = models.TextField(verbose_name='Please provide a brief history of your family', help_text='e.g., What your family did in the days of the Great Republic; how your family rose and maintained its power; etc.')
+    distribution = models.TextField(verbose_name='How/where are your family holdings distributed?')
+    social_structure = models.TextField(verbose_name='Describe the social structure of your family', help_text='Heredity, hierarchy, what is done with spare heirs, etc')
+    other_orgs = models.TextField(verbose_name='Does your family have any close ties with other organisations?')
+    # So many questions. If I were a delegate, I'd have given up by now
+    religion_importance = models.TextField(verbose_name='Religion: Please rank how important the following religious sects are to your family: Orthodoxy, Inquisitorial Order, Blossoms of Mercy, Knights Devout, Ascetics, Starkists, Other Sects. For Other Sects please describe what sect it is.')
+    guild_importance = models.TextField(verbose_name='Guild: Please rank how important the following guilds are to your family: The Magistrates, the Order of Engineers, The Helots, The Pathfinders, Other Guilds. For other guilds please describe what Guild it is.')
+    welfare_importance = models.TextField(verbose_name='Welfare: Please describe how you envision the Welfare your family has towards serfs, freeman and other low born people.')
+    production_importance = models.TextField(verbose_name='Production: Please describe how you envision your production capabilities and investments as a family.')
+    symbiot_importance = models.TextField(verbose_name='The Symbiot War: Please describe how you envision your production capabilities and investments as a family.')
+    knowledge_importance = models.TextField(verbose_name='Knowledge: Please rank how important the following forms of knowledge are to your family: Accepted, Heretical, Counterintelligence, Other Knowledge. For other knowledge please describe what knowledge it is.')
+
+
 class AdHocApplication(CommitteeApplication):
 	class Meta:
 		verbose_name = 'Committee application: Ad-hoc'

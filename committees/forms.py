@@ -1,6 +1,6 @@
 from committees.models import AdHocApplication, DEFCONApplication, \
-     ICCApplication, CEAApplication, UFCApplication, CommitteeAssignment, \
-     DelegateAssignment
+     ICCApplication, CEAApplication, UFCApplication, GreatEmpireApplication, \
+     CommitteeAssignment, DelegateAssignment
 
 from django import forms
 
@@ -28,6 +28,11 @@ class CEAAppForm(forms.ModelForm):
 class UFCAppForm(forms.ModelForm):
 	class Meta:
 		model = UFCApplication
+
+
+class GreatEmpireAppForm(forms.ModelForm):
+    class Meta:
+        model = GreatEmpireApplication
 
 
 CommitteeAssignmentFormSet = forms.models.modelformset_factory(CommitteeAssignment,
