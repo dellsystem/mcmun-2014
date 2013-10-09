@@ -5,6 +5,7 @@ from mcmun.models import RegisteredSchool
 
 
 SIZE_CHOICES = (
+    ('XS', 'XS'),
     ('S', 'S'),
     ('M', 'M'),
     ('L', 'L'),

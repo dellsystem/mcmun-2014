@@ -33,3 +33,6 @@ def static():
 
 def restart():
     local('kill -HUP `cat /tmp/gunicorn.pid`')
+
+def regen():
+    local('python manage.py regenerate_invoice')
