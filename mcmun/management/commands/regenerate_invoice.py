@@ -18,10 +18,10 @@ class Command(BaseCommand):
 
         confirm = raw_input('School found: %s. Type y to confirm: ' % school)
         if confirm == 'y':
-            self.stdout.write('Exiting.')
-        else:
             account = school.account
             school.account = None
             account.delete()
             school.save()
             self.stdout.write('Invoice regenerated and sent for %s.' % school)
+        else:
+            self.stdout.write('Regeneration cancelled.')
