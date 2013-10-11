@@ -4,7 +4,17 @@ var localStorageSupported = function() {
     } catch (e) {
         return false;
     }
-}
+};
+
+var registerEasterEgg = function(hashName, imageName, message) {
+    if (window.location.hash === '#' + hashName) {
+        $('.photo img').attr('src', '/static/img/sec/' + imageName + '.jpg');
+        $('.bio p').remove();
+        $('.bio').append('<p>' + message + '</p>');
+
+        $('#sec-bios').scrollTop();
+    }
+};
 
 $(document).ready(function() {
     // Promo video stuff
@@ -126,9 +136,8 @@ $(document).ready(function() {
             $(this).addClass('active').next().show();
         });
 
-        var hash = window.location.hash;
-
         // Hacky deep-linking
+        var hash = window.location.hash;
         if (hash) {
             var desiredBio = $('#sec-bios').find(hash);
             if (desiredBio) {
@@ -137,24 +146,10 @@ $(document).ready(function() {
             }
         }
 
-        // Replace everyone with a photo of Abdaal
-        if (hash === '#abdaal' && $(hash).length) {
-            $('.photo img').attr('src', '/static/img/sec/lolabdaal.jpg');
-
-            // Also replace all the bios
-            $('.bio p').remove();
-            $('.bio').append('<p>ALL HAIL GLORIOUS LEADER</p>');
-            
-            $('#sec-bios').scrollTop();
-        }
-
-        // Pikachu. Should probably be abstracted into a function
-        if (hash === '#pikachu') {
-            $('.photo img').attr('src', '/static/img/sec/pikachu.png');
-            $('.bio p').remove();
-            $('.bio').append('<p>I LOVE PIKACHU</p>');
-            $('#sec-bios').scrollTop();
-        }
+        // Register the easter eggs (on the secretariat page)
+        registerEasterEgg('abdaal', 'lolabdaal', 'ALL HAIL GLORIOUS LEADER');
+        registerEasterEgg('pikachu', 'pikachu', 'I LOVE PIKACHU');
+        registerEasterEgg('ryan', 'lolryan', 'you should see me twerking');
     }
 
     var delegationFee = 75;
