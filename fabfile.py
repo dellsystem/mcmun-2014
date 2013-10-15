@@ -33,3 +33,6 @@ def static():
 
 def restart():
     local('kill -HUP `cat /tmp/gunicorn.pid`')
+
+def stats():
+    local('python manage.py get_registration_stats')
