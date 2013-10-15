@@ -58,7 +58,7 @@ class StaffApp(models.Model):
     full_name = models.CharField(max_length=255)
     program = models.CharField(max_length=255)
     year = models.CharField(choices=year_choices, max_length=3)
-    email = models.EmailField()
+    email = models.EmailField(help_text="Please enter your McGill email address. (Note that you must be a McGill student to staff at McMUN; contact staff@mcmun.org if you have any questions.)")
     phone_number = models.CharField(max_length=20)
 
     attend_training = models.BooleanField(verbose_name="Are you available to attend all training sessions?", help_text="<a href=\"/staff-key-dates\">View training session dates &raquo;</a>")
