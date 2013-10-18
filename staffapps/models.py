@@ -52,7 +52,7 @@ how_hear_choices = (
     ('mailing-list', 'Mailing list'),
     ('classroom', 'Classroom announcement'),
     ('friend', 'Through a friend'),
-    ('other', 'Other (please specify'),
+    ('other', 'Other (please specify)'),
 )
 
 
