@@ -47,6 +47,14 @@ logistical_choices = (
     ('food', 'Food staff'),
 )
 
+how_hear_choices = (
+    ('facebook', 'Facebook'),
+    ('mailing-list', 'Mailing list'),
+    ('classroom', 'Classroom announcement'),
+    ('friend', 'Through a friend'),
+    ('other', 'Other (please specify)'),
+)
+
 
 class StaffApp(models.Model):
     """
@@ -95,10 +103,14 @@ class CommitteesApp(StaffApp):
     preferred_committee_2 = models.ForeignKey(Committee, related_name='+')
     preferred_committee_3 = models.ForeignKey(Committee, related_name='+')
 
-    mun_experience = models.TextField(verbose_name="Please describe any previous Model United Nations experience you have. If you do not have any previous Model United Nations experience, please describe any relevant experience (e.g., debating, public speaking, etc.).")
+    mun_experience = models.TextField(verbose_name="Please describe any previous Model United Nations experience you have. If you do not have any previous Model United Nations experience, please describe any relevant experience (e.g., debating, public speaking, etc). 150 words max.")
 
     work_with = models.TextField(verbose_name="Is there anyone in particular you would like to work with?", null=True, blank=True)
     another_position = models.BooleanField(verbose_name="Are you amenable to another position (i.e. an alternative committee or a logistical staff position) if not selected for one of the above committees?")
+
+    best_trait = models.CharField(max_length=100, verbose_name="What is your best trait? (1 word or phrase)")
+    greatest_fault = models.CharField(max_length=100, verbose_name="What is your greatest fault? (1 word or phrase)")
+    how_hear = models.CharField(max_length=20, verbose_name="How did you hear about McMUN?", choices=how_hear_choices)
 
     additional_comments = models.TextField(null=True, blank=True)
 
@@ -112,12 +124,16 @@ class LogisticalApp(StaffApp):
     preferred_position_3 = models.CharField(choices=logistical_choices, max_length=20)
 
     # Need a different verbose_name (mentions carnival, frosh, etc)
-    mun_experience = models.TextField(verbose_name="Please describe any previous Model United Nations experience you have. If you do not have any previous Model United Nations experience, please describe any relevant experience (e.g., debating, public speaking, event planning, frosh or carnival leader, etc.).")
+    mun_experience = models.TextField(verbose_name="Please describe any previous Model United Nations experience you have. If you do not have any previous Model United Nations experience, please describe any relevant experience (e.g., debating, public speaking, event planning, frosh or carnival leader, etc). 150 words max.")
 
-    # Not going to go to the trouble of making them show up automatically
-    photography_experience = models.TextField(verbose_name="If you indicated that you're interested in the photographer position, please list any relevant photography experience.", null=True, blank=True)
+    # Not going to go to the trouble of making this show up automatically
+    photography_experience = models.TextField(verbose_name="If you indicated that you're interested in the photographer position, please list any relevant photography experience. 150 words max.", null=True, blank=True)
 
     another_position = models.BooleanField(verbose_name="Are you amenable to another position (i.e. an alternative logistical staff position) if not selected for one of the above positions?")
+
+    best_trait = models.CharField(max_length=100, verbose_name="What is your best trait? (1 word or phrase)")
+    greatest_fault = models.CharField(max_length=100, verbose_name="What is your greatest fault? (1 word or phrase)")
+    how_hear = models.CharField(max_length=20, verbose_name="How did you hear about McMUN?", choices=how_hear_choices)
 
     additional_comments = models.TextField(null=True, blank=True)
 
