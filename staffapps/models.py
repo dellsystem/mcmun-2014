@@ -47,6 +47,14 @@ logistical_choices = (
     ('food', 'Food staff'),
 )
 
+how_hear_choices = (
+    ('facebook', 'Facebook'),
+    ('mailing-list', 'Mailing list'),
+    ('classroom', 'Classroom announcement'),
+    ('friend', 'Through a friend'),
+    ('other', 'Other (please specify'),
+)
+
 
 class StaffApp(models.Model):
     """
@@ -100,6 +108,10 @@ class CommitteesApp(StaffApp):
     work_with = models.TextField(verbose_name="Is there anyone in particular you would like to work with?", null=True, blank=True)
     another_position = models.BooleanField(verbose_name="Are you amenable to another position (i.e. an alternative committee or a logistical staff position) if not selected for one of the above committees?")
 
+    best_trait = models.CharField(max_length=100, verbose_name="What is your best trait? (1 word or phrase)")
+    greatest_fault = models.CharField(max_length=100, verbose_name="What is your greatest fault? (1 word or phrase)")
+    how_hear = models.CharField(max_length=20, verbose_name="How did you hear about McMUN?", choices=how_hear_choices)
+
     additional_comments = models.TextField(null=True, blank=True)
 
     def __unicode__(self):
@@ -118,6 +130,10 @@ class LogisticalApp(StaffApp):
     photography_experience = models.TextField(verbose_name="If you indicated that you're interested in the photographer position, please list any relevant photography experience. 150 words max.", null=True, blank=True)
 
     another_position = models.BooleanField(verbose_name="Are you amenable to another position (i.e. an alternative logistical staff position) if not selected for one of the above positions?")
+
+    best_trait = models.CharField(max_length=100, verbose_name="What is your best trait? (1 word or phrase)")
+    greatest_fault = models.CharField(max_length=100, verbose_name="What is your greatest fault? (1 word or phrase)")
+    how_hear = models.CharField(max_length=20, verbose_name="How did you hear about McMUN?", choices=how_hear_choices)
 
     additional_comments = models.TextField(null=True, blank=True)
 
