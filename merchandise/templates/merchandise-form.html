@@ -24,7 +24,7 @@
         <tr>
             <td>{{ order.quantity }}</td>
             {% if thing.has_size %}
-            <td>{{ order.size }}</td>
+            <td>{{ order.get_size_display }}</td>
             {% endif %}
             <td>{{ order.comment }}</td>
             {% if not final %}
