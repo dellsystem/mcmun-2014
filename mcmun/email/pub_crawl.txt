@@ -1,0 +1,19 @@
+Dear %(first_name)s,
+
+This email is a confirmation of your registration for Pub Crawl at McMUN 2014.
+
+Number of delegates registered for pub crawl: %(num_delegates)d
+Cost per delegate (including $0.50 processing fee): $%(cost_per_delegate).2f CAD
+Total cost: %(total_cost)s
+
+Our USG-Finance, Eileen Bui, will be in touch with you shortly with detailed
+payment instructions (via PayPal).
+
+If you have any questions, or need to make any changes, please contact Loreena
+Percy at chargee@mcmun.org.
+
+Please keep this email for your records.
+
+Looking forward to seeing you in January,
+
+the McMUN 2014 Secretariat

@@ -2,6 +2,7 @@ import datetime
 
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
+from django.db.models import Sum
 from django_xhtml2pdf.utils import generate_pdf
 from django.shortcuts import render, redirect
 
@@ -68,8 +69,13 @@ def dashboard(request):
         # There should only be one anyway (see comment in models.py)
         school = request.user.registeredschool_set.filter(is_approved=True)[0]
 
-        # Only show it if the user has not entered values yet
-        if school.num_pub_crawl == 0 and school.num_non_alcohol == 0:
+        # Figure out how many delegates have registered for pub crawl so far
+        # (hard cap after ~750 delegates have registered)
+        pub_crawl_total = RegisteredSchool.objects.filter(num_pub_crawl__gt=0)\
+                                                .aggregate(Sum('num_pub_crawl'))
+        num_pub_crawl = pub_crawl_total['num_pub_crawl__sum']
+
+        if not school.pub_crawl_final:
             event_form = EventForm(instance=school)
 
         # Iff there is no scholarship application with this school, show the form
@@ -112,6 +118,7 @@ def dashboard(request):
         'form': form,
         # Needed to show the title (as base.html expects the CMS view)
         'title': 'Your dashboard',
+        'pub_crawl_open': num_pub_crawl < 750,
     }
 
     return render(request, "dashboard.html", data)
@@ -144,8 +151,9 @@ def events(request):
         school = user_schools[0]
         form = EventForm(request.POST, instance=school)
 
-        if form.is_valid():
+        if not school.pub_crawl_final and form.is_valid():
             form.save()
+            school.finalise_pub_crawl()
 
     return redirect(dashboard)
 
