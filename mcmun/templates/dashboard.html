@@ -3,7 +3,17 @@
 {% block content %}
 <h1>Your dashboard</h1>
 
+{% if not school.merch_order_final %}
 {% include 'merchandise-banner.html' %}
+{% endif %}
+
+{% if not school.pub_crawl_final %}
+<div class="center-align">
+    <h2>
+        <a href="#events" class="red-text">Sign up for pub crawl &raquo;</a>
+    </h2>
+</div>
+{% endif %}
 
 {% if unfilled_assignments %}
 <div class="alert">
@@ -205,8 +215,20 @@ correctly, as you will not be able to change anything once submitted except by c
 
 <h2 id="events">Event registration</h2>
 
-{% if event_form %}
+{% if pub_crawl_open and not school.pub_crawl_final %}
 <p>If you are interested in attending the Friday night social event, please fill out the form below. Delegates have a choice between <a href="http://www.mcmun.org/social-events#pub-crawl">Pub Crawl</a> and a non-alcoholic event (the details of which will be released closer to the conference itself).</p>
+<p><strong>This year, it will cost $15.00 CAD (plus PayPal processing fees of
+$0.50) per delegate to attend Pub Crawl.</strong> If you have previously filled
+out the form below, your numbers have been saved, but your order will not be
+finalised (and your spot will not be guaranteed) until you press the "Finalise
+event registration" button. After you have finalised your numbers, you will
+receive a email invoice confirming your registration, and our USG-Finance,
+Eileen Bui, will contact you with detailed payment instructions.</p>
+<p>
+If you have questions or need to change your numbers after finalising, please
+contact the Chargée d'Affaires, Loreena Percy, at <a
+href="mailto:chargee@mcmun.org">chargee@mcmun.org</a>.
+</p>
 <form method="post" action="{% url 'events' %}">
     {% csrf_token %}
 
@@ -224,13 +246,23 @@ correctly, as you will not be able to change anything once submitted except by c
     </fieldset>
 
     <fieldset class="submit">
-        <input type="submit" name="submit" value="Submit" />
+        <input type="submit" name="submit" value="Finalise event registration" />
     </fieldset>
 </form>
-{% else %}
+{% elif school.pub_crawl_final %}
 <p>You have indicated that there are <strong>{{ school.num_pub_crawl }}</strong> delegate{{ school.num_pub_crawl|pluralize }} interested in attending Pub Crawl and <strong>{{ school.num_non_alcohol }}</strong> delegate{{ school.num_non_alcohol|pluralize }} who would prefer to attend a non-alcoholic event instead.</p>
 
+{% if school.num_pub_crawl > 0 %}
+<p>You should have received an email containing an invoice for
+{{ school.get_pub_crawl_total_owed }} CAD confirming your registration.</p>
+{% endif %}
+
 <p>If you need to make changes to these numbers, please contact Loreena Percy at <a href="chargee@mcmun.org">chargee@mcmun.org</a>.</p>
+{% else %}
+<p>We have reached our capacity for online registration for pub crawl and so
+online registration is now <strong>closed</strong>. However, there are 250 spots
+remaining that you will be able to register for at the conference itself! Stay
+tuned for more information about how you can secure a spot at Pub Crawl.</p>
 {% endif %}
 
 <div id="scholarship">

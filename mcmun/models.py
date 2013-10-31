@@ -8,7 +8,8 @@ from django.conf import settings
 from django.dispatch import receiver
 
 from mcmun.utils import generate_random_password
-from mcmun.constants import MIN_NUM_DELEGATES, MAX_NUM_DELEGATES, COUNTRIES, DELEGATION_FEE
+from mcmun.constants import MIN_NUM_DELEGATES, MAX_NUM_DELEGATES, COUNTRIES, \
+                            DELEGATION_FEE, PUB_CRAWL_COST
 from mcmun.tasks import send_email, generate_invoice
 from committees.models import Committee, DelegateAssignment
 
@@ -34,8 +35,9 @@ class RegisteredSchool(models.Model):
 
     amount_paid = models.DecimalField(default=Decimal(0), max_digits=6, decimal_places=2)
 
-    num_pub_crawl = models.IntegerField(default=0, verbose_name="Number of delegates interested in attending Pub Crawl")
+    num_pub_crawl = models.IntegerField(default=0, verbose_name="Number of delegates interested in attending Pub Crawl (cost: $15.50 per delegate)")
     num_non_alcohol = models.IntegerField(default=0, verbose_name="Number of delegates who would prefer to attend a non-alcoholic event instead")
+    pub_crawl_final = models.BooleanField(default=False)
 
     # This should really have been a OneToOneField. Too late now. Next year.
     # Only set iff the user has been approved
@@ -161,6 +163,25 @@ class RegisteredSchool(models.Model):
         print "about to delay the generate_invoice task"
         generate_invoice.delay(self.id, username, password)
 
+    def finalise_pub_crawl(self):
+        self.pub_crawl_final = True
+        self.save()
+
+        if self.num_pub_crawl > 0 :
+            # Send an email containing the invoice (just in the email body)
+            subject = 'Invoice for McMUN 2014 Pub Crawl registration'
+            filename = 'pub_crawl'
+            context = {
+                'first_name': self.first_name,
+                'num_delegates': self.num_pub_crawl,
+                'cost_per_delegate': PUB_CRAWL_COST,
+                'total_cost': self.get_pub_crawl_total_owed(),
+            }
+
+            send_email.delay(subject, filename, [self.email], context=context,
+                             bcc=[settings.IT_EMAIL, settings.CHARGE_EMAIL,
+                                  settings.FINANCE_EMAIL])
+
     def has_unfilled_assignments(self):
         return any(not c.is_filled() for c in self.committeeassignment_set.all())
 
@@ -176,6 +197,9 @@ class RegisteredSchool(models.Model):
             total_cost += bundle_order.quantity * bundle_order.bundle.online_price
 
         return total_cost
+
+    def get_pub_crawl_total_owed(self):
+        return "$%.2f" % (PUB_CRAWL_COST * self.num_pub_crawl)
 
     def __unicode__(self):
         return self.school_name
