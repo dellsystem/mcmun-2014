@@ -52,7 +52,7 @@ how_hear_choices = (
     ('mailing-list', 'Mailing list'),
     ('classroom', 'Classroom announcement'),
     ('friend', 'Through a friend'),
-    ('other', 'Other (please specify)'),
+    ('other', 'Other'),
 )
 
 
@@ -127,7 +127,7 @@ class LogisticalApp(StaffApp):
     mun_experience = models.TextField(verbose_name="Please describe any previous Model United Nations experience you have. If you do not have any previous Model United Nations experience, please describe any relevant experience (e.g., debating, public speaking, event planning, frosh or carnival leader, etc). 150 words max.")
 
     # Not going to go to the trouble of making this show up automatically
-    photography_experience = models.TextField(verbose_name="If you indicated that you're interested in the photographer position, please list any relevant photography experience. 150 words max.", null=True, blank=True)
+    photography_experience = models.TextField(verbose_name="If you indicated that you're interested in the photographer position, please list any relevant photography experience, and indicate whether or not you have your own equipment. 150 words max.", null=True, blank=True)
 
     another_position = models.BooleanField(verbose_name="Are you amenable to another position (i.e. an alternative logistical staff position) if not selected for one of the above positions?")
 

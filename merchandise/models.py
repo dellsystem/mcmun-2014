@@ -10,7 +10,7 @@ SIZE_CHOICES = (
     ('M', 'M'),
     ('L', 'L'),
     ('XL', 'XL'),
-    ('XXL', 'XXL'),
+    ('XX', 'XXL'),
 )
 
 
@@ -118,9 +118,9 @@ class BundleOrder(models.Model):
     def __unicode__(self):
         return self.bundle.name
 
-    def size(self):
+    def get_size_display(self):
         for item_order in self.item_orders.filter(item__has_size=True):
-            return item_order.size
+            return item_order.get_size_display()
 
     def create_item_orders(self, size):
         for item in self.bundle.items.all():
