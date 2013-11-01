@@ -65,15 +65,15 @@ def dashboard(request):
     event_form = None
     committees_form = None
 
+    # Figure out how many delegates have registered for pub crawl so far
+    # (hard cap after ~750 delegates have registered)
+    pub_crawl_total = RegisteredSchool.objects.filter(num_pub_crawl__gt=0)\
+                                            .aggregate(Sum('num_pub_crawl'))
+    num_pub_crawl = pub_crawl_total['num_pub_crawl__sum']
+
     if request.user.registeredschool_set.count():
         # There should only be one anyway (see comment in models.py)
         school = request.user.registeredschool_set.filter(is_approved=True)[0]
-
-        # Figure out how many delegates have registered for pub crawl so far
-        # (hard cap after ~750 delegates have registered)
-        pub_crawl_total = RegisteredSchool.objects.filter(num_pub_crawl__gt=0)\
-                                                .aggregate(Sum('num_pub_crawl'))
-        num_pub_crawl = pub_crawl_total['num_pub_crawl__sum']
 
         if not school.pub_crawl_final:
             event_form = EventForm(instance=school)
