@@ -36,3 +36,6 @@ def restart():
 
 def stats():
     local('python manage.py get_registration_stats')
+
+def pubcrawl():
+    local('python manage.py get_pubcrawl_stats')
