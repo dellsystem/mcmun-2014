@@ -98,7 +98,7 @@ class DEFCONApplication(CommitteeApplication):
         verbose_name_plural = 'Committee applications: DEFCON'
 
     why_you = models.TextField(verbose_name='Why should you be a part of the DEFCON committee? What can you bring to a war game committee?')
-    juiche = models.TextField(verbose_name='What is Juiche and how does it relate to the international relations of the DPRK?')
+    juiche = models.TextField(verbose_name='What is Juche and how does it relate to the international relations of the DPRK?')
     any_country = models.TextField(verbose_name='If you could lead any country in a war game situation (that is not the United States) which would it be and why?')
     six_party = models.TextField(verbose_name='Describe, in 250 words or less, what has been achieved through previous Six Party Talks.')
 
