@@ -127,7 +127,7 @@ class LogisticalApp(StaffApp):
     # Not going to go to the trouble of making this show up automatically
     photography_experience = models.TextField(verbose_name="If you indicated that you're interested in the photographer position, please list any relevant photography experience, and indicate whether or not you have your own equipment. If so, what kind of camera do you own (SLR, brand, model), what lenses, and does it have an external flash? 150 words max.", null=True, blank=True)
     writing_sample = models.TextField(verbose_name="If you're interested in writing for The Ambassador, please copy and paste a sample of your writing here.", null=True, blank=True)
-    page_preferences = models.TextField(verbose_name="If you're interested in being a page, please specify the order of your preferred committee types (GAs and ECOSOCs, SAs, and Crises). If you have any specific committees in mind, please list them here.", null=True, blank=True)
+    page_preferences = models.TextField(verbose_name="If you're interested in being a page, please specify the order of your preferred committee types (GAs, ECOSOCs, SAs). If you have any specific committees in mind, please list them here. If you are interested in being in a Crisis committee, please fill out the comittees staff application instead.", null=True, blank=True)
 
     another_position = models.BooleanField(verbose_name="Are you amenable to another position (i.e. an alternative logistical staff position) if not selected for one of the above positions?")
 
