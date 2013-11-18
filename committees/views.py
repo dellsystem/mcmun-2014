@@ -110,10 +110,11 @@ def list_papers(request, slug):
     # Only the dais for this committee and other admins can access this
     if (get_committee_from_email(request.user.username) == committee
         or request.user.is_staff):
+        assignments = committee.committeeassignment_set.order_by('assignment')
         data = {
             'title': 'Position papers for %s' % committee.name,
             'committee': committee,
-            'assignments': committee.committeeassignment_set.order_by('-position_paper'),
+            'assignments': assignments,
         }
 
         return render(request, 'list_papers.html', data)
