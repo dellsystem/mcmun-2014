@@ -13,7 +13,9 @@
     <div class="bio">
         <h2>{{ bio.name }} <a href="#{{ bio.slug }}">&para;</a></h2>
         <h3>{{ bio.position }}</h3>
+        {% if bio.email %}
         <p><a href="mailto:{{ bio.email }}@mcmun.org">{{ bio.email }}@mcmun.org</a></p>
+        {% endif %}
         {{ bio.bio|markdown }}
     </div>
     {% endfor %}
