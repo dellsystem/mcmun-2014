@@ -94,7 +94,7 @@ def dashboard(request):
                 form = ScholarshipForm()
 
         # If we haven't passed the committee prefs deadline, show the form
-        prefs_deadline = datetime.datetime(2013, 11, 19) # Nov 18 midnight
+        prefs_deadline = datetime.datetime(2013, 11, 20) # Nov 19 midnight
         if datetime.datetime.now() < prefs_deadline:
             committees_form = CommitteePrefsForm(instance=school)
     elif request.user.is_staff:
