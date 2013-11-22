@@ -17,9 +17,10 @@ var registerEasterEgg = function(hashName, imageName, message) {
 };
 
 $(document).ready(function() {
-    // Promo video stuff
+    // Promo video stuff. Don't show for touch devices.
     var isLocalStorageSupported = localStorageSupported();
-    if (!isLocalStorageSupported || !localStorage.getItem('seen_promo')) {
+    if ((!isLocalStorageSupported || !localStorage.getItem('seen_promo')) &&
+        typeof window.orientation == 'undefined') {
         var overlay = document.createElement('div');
         overlay.id = 'overlay';
         overlay.innerHTML = '<div class="content">' +
