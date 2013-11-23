@@ -85,6 +85,6 @@ hr{margin:15px 0;}
 #overlay{position:fixed;left:0;right:0;top:0;bottom:0;background:rgba(0, 0, 0, 0.8);z-index:100;}#overlay .content{position:absolute;left:50%;margin-left:-480px;top:50%;margin-top:-290px;text-align:center;}
 #overlay h1{color:#fff;margin-bottom:10px;font-size:30px;}
 #overlay .close{position:absolute;top:10px;right:10px;font-size:3.5em;color:#fff;cursor:pointer;}#overlay .close:hover{color:#aaa;}
-.red-text,.red-text:hover{color:#d40000;}
+@media only screen and (max-width:760px){#overlay{display:none;}}.red-text,.red-text:hover{color:#d40000;}
 .merch-pic{width:160px;display:inline-block;zoom:1;*display:inline;}.merch-pic img{width:150px;}
 .merch-order-form{vertical-align:top;display:inline-block;zoom:1;*display:inline;}.merch-order-form ul{width:775px;}
