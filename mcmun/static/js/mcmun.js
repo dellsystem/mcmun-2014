@@ -19,7 +19,7 @@ var registerEasterEgg = function(hashName, imageName, message) {
 $(document).ready(function() {
     // Promo video stuff. Hidden on small screens (through CSS).
     var isLocalStorageSupported = localStorageSupported();
-    if ((!isLocalStorageSupported || !localStorage.getItem('seen_promo')) {
+    if (!isLocalStorageSupported || !localStorage.getItem('seen_promo')) {
         var overlay = document.createElement('div');
         overlay.id = 'overlay';
         overlay.innerHTML = '<div class="content">' +
