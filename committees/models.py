@@ -122,7 +122,7 @@ class GreatEmpireApplication(CommitteeApplication):
     guild_importance = models.TextField(verbose_name='Guild: Please rank how important the following guilds are to your family: The Magistrates, the Order of Engineers, The Helots, The Pathfinders, Other Guilds. For other guilds please describe what Guild it is.')
     welfare_importance = models.TextField(verbose_name='Welfare: Please describe how you envision the Welfare your family has towards serfs, freeman and other low born people.')
     production_importance = models.TextField(verbose_name='Production: Please describe how you envision your production capabilities and investments as a family.')
-    symbiot_importance = models.TextField(verbose_name='The Symbiot War: Please describe how you envision your production capabilities and investments as a family.')
+    symbiot_importance = models.TextField(verbose_name="The Symbiot War: Please describe how you envision your family's participation and role in the Symbiot War.")
     knowledge_importance = models.TextField(verbose_name='Knowledge: Please rank how important the following forms of knowledge are to your family: Accepted, Heretical, Counterintelligence, Other Knowledge. For other knowledge please describe what knowledge it is.')
 
 
