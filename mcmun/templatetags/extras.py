@@ -22,6 +22,6 @@ def get_bios(bio_type, page):
 
     return {
         'bio_type': bio_type,
-        'bios': person_type.objects.all(),
+        'bios': person_type.objects.order_by('pk'),
         'page': page,
     }
