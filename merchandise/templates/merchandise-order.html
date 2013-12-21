@@ -11,6 +11,13 @@
 
 <h1>Order merchandise</h1>
 
+<p>
+The online merchandise shop is now <strong>closed</strong>. Please contact
+<a href="mailto:ops@mcmun.org">ops@mcmun.org</a> if you have any questions.
+</p>
+
+{% comment %}
+
 {% if final %}
 <div class='center-align'>
     <h2 class='red-text'>Your order has been finalised.</h2>
@@ -49,4 +56,5 @@ keep track of who on your delegation ordered what.</p>
 {% for thing, orders, form in items %}
     {% include 'merchandise-form.html' with merch_type='item' %}
 {% endfor %}
+{% endcomment %}
 {% endblock %}
