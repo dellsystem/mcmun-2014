@@ -150,6 +150,7 @@ class CommitteeAssignment(models.Model):
     assignment = models.CharField(max_length=255)
     notes = models.TextField(blank=True, null=True)
     position_paper = models.FileField(upload_to=get_position_paper_path, blank=True, null=True)
+    is_voting = models.BooleanField(default=True)
 
     def __unicode__(self):
         return "%s" % self.assignment
