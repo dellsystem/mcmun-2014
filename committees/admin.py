@@ -21,8 +21,18 @@ class DelegateAssignmentAdmin(admin.ModelAdmin):
     committee.admin_order_field = 'committee_assignment__committee'
 
 
+class CommitteeAssignmentInline(admin.StackedInline):
+    model = CommitteeAssignment
+    extra = 20
+    exclude = ('position_paper',)
+
+
+class CommitteeAdmin(admin.ModelAdmin):
+    inlines = [CommitteeAssignmentInline]
+
+
 admin.site.register(Category)
-admin.site.register(Committee)
+admin.site.register(Committee, CommitteeAdmin)
 admin.site.register(AdHocApplication)
 admin.site.register(DEFCONApplication)
 admin.site.register(ICCApplication)
