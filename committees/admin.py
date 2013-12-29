@@ -23,7 +23,7 @@ class DelegateAssignmentAdmin(admin.ModelAdmin):
 
 class CommitteeAssignmentInline(admin.StackedInline):
     model = CommitteeAssignment
-    extra = 20
+    extra = 5
     exclude = ('position_paper',)
 
 
