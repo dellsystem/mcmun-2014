@@ -1,22 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Awards dashboard</h1>
-<h2>{{ committee.name }}</h2>
 <p>
-    This committee has {{ committee.get_num_delegates }} delegates.
+    <a href="{% url 'committee_manage' committee.slug %}">
+        &laquo; Back to committee dashboard
+    </a>
 </p>
-
-<ul>
-    <li>
-        <a href="{% url 'list_papers' committee.slug %}">
-            View position papers
-        </a>
-    </li>
-    <li>
-        <a href="{% url 'committee_awards' committee.slug %}">
-            Choose award winners
-        </a>
-    </li>
-</ul>
+<h1>Awards dashboard</h1>
+<h2>{{ committee }}</h2>
 {% endblock %}
