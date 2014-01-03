@@ -4,7 +4,23 @@
 
 {% block content %}
 
-<p><a href="/committees-list">&laquo; Back to committees</a></p>
+{% if show_manage_link %}
+<p class="right-float">
+    <a href="{% url 'committee_manage' committee.slug %}">
+        {% if user.is_authenticated %}
+            Manage this committee &raquo;
+        {% else %}
+            Login to manage this committee &raquo;
+        {% endif %}
+    </a>
+</p>
+{% endif %}
+
+<p class="left-float">
+    <a href="/committees-list">&laquo; Back to committees</a>
+</p>
+
+<div class="clear"></div>
 
 <div class="center-align">
     <img src="{{ STATIC_URL }}img/committees/{{ committee.slug }}.png" />

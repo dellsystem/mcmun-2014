@@ -1,5 +1,6 @@
 import os
 
+from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -26,6 +27,8 @@ class Committee(models.Model):
     category = models.ForeignKey(Category)
     # Committees should be hidden until they are released
     is_visible = models.BooleanField(default=False)
+    # The user (usually [slug]@mcmun.org) who can manage this committee.
+    manager = models.ForeignKey(User, null=True, blank=True)
 
     class Meta:
         ordering = ('category', 'id')
@@ -37,8 +40,15 @@ class Committee(models.Model):
     def get_absolute_url(self):
         return ('committee_view', [self.slug])
 
+    def allow_manager(self, user):
+        return self.manager == user or user.is_staff
+
     def is_searchable(self):
         return self.is_visible
+
+    def get_num_delegates(self):
+        return self.committeeassignment_set.aggregate(
+            total_delegates=models.Sum('num_delegates'))['total_delegates']
 
 
 class CommitteeApplication(models.Model):
