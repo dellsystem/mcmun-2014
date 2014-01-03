@@ -119,4 +119,4 @@ def list_papers(request, slug):
 
         return render(request, 'list_papers.html', data)
     else:
-        raise Http404
+        raise PermissionDenied
