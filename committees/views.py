@@ -15,15 +15,17 @@ from committees.utils import get_committee_from_email
 
 def view(request, slug):
     committee = get_object_or_404(Committee, slug=slug)
-    if not committee.is_visible:
+    if not (committee.is_visible or committee.is_assignable):
         raise Http404
 
-    # If the user is a member of the dais, show a link to the uploads page
-    is_dais = get_committee_from_email(request.user.username) == committee
+    # If the committee is assignable but not visible, it's a subcommittee
+    # for a joint committee. Just show a link to the umbrella committee, whose
+    # slug should be entered in the description field.
+    is_subcommittee = committee.is_assignable and not committee.is_visible
 
     data = {
         'title': committee.name,
-        'is_dais': is_dais,
+        'is_subcommittee': is_subcommittee,
         'committee': committee,
         'dais_template': 'dais_photos/%s.html' % committee.slug,
         'DAIS_PHOTO_URL': '%simg/dais/%s/' % (settings.STATIC_URL, committee.slug),

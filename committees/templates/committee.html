@@ -5,15 +5,15 @@
 {% block content %}
 
 {% if show_manage_link %}
-<p class="right-float">
-    <a href="{% url 'committee_manage' committee.slug %}">
-        {% if user.is_authenticated %}
-            Manage this committee &raquo;
-        {% else %}
-            Login to manage this committee &raquo;
-        {% endif %}
-    </a>
-</p>
+    <p class="right-float">
+        <a href="{% url 'committee_manage' committee.slug %}">
+            {% if user.is_authenticated %}
+                Manage this committee &raquo;
+            {% else %}
+                Login to manage this committee &raquo;
+            {% endif %}
+        </a>
+    </p>
 {% endif %}
 
 <p class="left-float">
@@ -23,23 +23,28 @@
 <div class="clear"></div>
 
 <div class="center-align">
+    {% if is_subcommittee %}
+    <img src="{{ STATIC_URL }}img/committees/{{ committee.description }}.png" />
+    {% else %}
     <img src="{{ STATIC_URL }}img/committees/{{ committee.slug }}.png" />
+    {% endif %}
 </div>
 
 <br />
 
 <h1>{{ committee.name }}</h1>
 
-{% if is_dais %}
-<div class="center-align">
-    <big><a href="{% url 'list_papers' committee.slug %}">View position papers</a></big>
-</div>
+{% if is_subcommittee %}
+    <p>
+        <a href="{% url 'committee_view' committee.description %}">
+            Learn more about this committee &raquo;
+        </a>
+    </p>
+{% else %}
+    {{ committee.description|markdown:"footnotes,def_list,tables" }}
+
+    <h2>Dais</h2>
+
+    {% include dais_template %}
 {% endif %}
-
-{{ committee.description|markdown:"footnotes,def_list,tables" }}
-
-<h2>Dais</h2>
-
-{% include dais_template %}
-
 {% endblock %}
