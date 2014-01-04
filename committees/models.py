@@ -27,6 +27,9 @@ class Committee(models.Model):
     category = models.ForeignKey(Category)
     # Committees should be hidden until they are released
     is_visible = models.BooleanField(default=False)
+    # Used for ensuring committee assignments for joint committees go to the
+    # specific side of the joint, not the umbrella committee.
+    is_assignable = models.BooleanField(default=True)
     # The user (usually [slug]@mcmun.org) who can manage this committee.
     manager = models.ForeignKey(User, null=True, blank=True)
 
@@ -155,7 +158,9 @@ class CommitteeAssignment(models.Model):
     # Number of delegates is usually 1, except in double-delegation committees
     school = models.ForeignKey('mcmun.RegisteredSchool')
     num_delegates = models.IntegerField(default=1)
-    committee = models.ForeignKey(Committee)
+    committee = models.ForeignKey(Committee, limit_choices_to={
+        'is_assignable': True,
+    })
     # The country or character name, in plain text
     assignment = models.CharField(max_length=255)
     notes = models.TextField(blank=True, null=True)
@@ -184,6 +189,25 @@ class DelegateAssignment(models.Model):
             return "N/A"
 
 
+class Award(models.Model):
+    name = models.CharField(max_length=50)
+    committees = models.ManyToManyField(Committee, limit_choices_to={
+        'is_assignable': True,
+    })
+
+    def __unicode__(self):
+        return self.name
+
+
+class AwardAssignment(models.Model):
+    award = models.ForeignKey(Award, related_name='assignments')
+    committee = models.ForeignKey(Committee)
+    position = models.ForeignKey(CommitteeAssignment, null=True, blank=True)
+
+    def __unicode__(self):
+        return "%s in %s - %s" % (self.award, self.committee.name, self.position)
+
+
 def create_delegate_assignments(sender, instance, created, **kwargs):
     """
     Defines a post_save hook to create the right number of DelegateAssignments
@@ -193,4 +217,22 @@ def create_delegate_assignments(sender, instance, created, **kwargs):
         for i in xrange(instance.num_delegates):
             instance.delegateassignment_set.create()
 
-models.signals.post_save.connect(create_delegate_assignments, sender=CommitteeAssignment)
+models.signals.post_save.connect(create_delegate_assignments,
+    sender=CommitteeAssignment)
+
+
+def update_award_assignments(sender, instance, action, reverse, *args,
+    **kwargs):
+    """
+    Defines an m2m_changed hook to create/remove AwardAssignments as necessary
+    when the list valid committees for an Award is updated.
+    """
+    if not reverse:
+        if action == 'post_add':
+            for committee in instance.committees.all():
+                instance.assignments.get_or_create(committee=committee)
+        elif action == 'pre_clear':
+            instance.assignments.all().delete()
+
+models.signals.m2m_changed.connect(update_award_assignments,
+    sender=Award.committees.through)
