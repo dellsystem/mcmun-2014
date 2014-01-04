@@ -1,8 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>{{ committee }}</h1>
-<h2>Delegate list and position papers</h2>
+<p>
+    <a href="{% url 'committee_manage' committee.slug %}">
+        &laquo; Back to committee dashboard
+    </a>
+</p>
+<h1>View position papers</h1>
+<h2>{{ committee }}</h2>
 
 <table>
     <thead>

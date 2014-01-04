@@ -31,6 +31,10 @@ class CommitteeAdmin(admin.ModelAdmin):
     inlines = [CommitteeAssignmentInline]
 
 
+class AwardAssignmentAdmin(admin.ModelAdmin):
+    list_display = ('award', 'committee', 'position')
+
+
 admin.site.register(Category)
 admin.site.register(Committee, CommitteeAdmin)
 admin.site.register(AdHocApplication)
@@ -41,3 +45,5 @@ admin.site.register(UFCApplication)
 admin.site.register(GreatEmpireApplication)
 admin.site.register(CommitteeAssignment, CommitteeAssignmentAdmin)
 admin.site.register(DelegateAssignment, DelegateAssignmentAdmin)
+admin.site.register(Award)
+admin.site.register(AwardAssignment, AwardAssignmentAdmin)

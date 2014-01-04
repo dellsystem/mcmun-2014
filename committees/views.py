@@ -27,6 +27,7 @@ def view(request, slug):
         'committee': committee,
         'dais_template': 'dais_photos/%s.html' % committee.slug,
         'DAIS_PHOTO_URL': '%simg/dais/%s/' % (settings.STATIC_URL, committee.slug),
+        'show_manage_link': committee.allow_manager(request.user),
     }
 
     return render(request, 'committee.html', data)
@@ -104,6 +105,34 @@ def serve_papers(request, file_name):
 
 
 @login_required
+def manage(request, slug):
+    committee = get_object_or_404(Committee, slug=slug)
+    if not committee.allow_manager(request.user):
+        raise PermissionDenied
+
+    context = {
+        'committee': committee,
+        'title': 'Committee dashboard for %s' % committee.name,
+    }
+
+    return render(request, 'committee_manage.html', context)
+
+
+@login_required
+def awards(request, slug):
+    committee = get_object_or_404(Committee, slug=slug)
+    if not committee.allow_manager(request.user):
+        raise PermissionDenied
+
+    context = {
+        'committee': committee,
+        'title': 'Awards dashboard for %s' % committee.name,
+    }
+
+    return render(request, 'committee_awards.html', context)
+
+
+@login_required
 def list_papers(request, slug):
     committee = get_object_or_404(Committee, slug=slug)
 
@@ -119,4 +148,4 @@ def list_papers(request, slug):
 
         return render(request, 'list_papers.html', data)
     else:
-        raise Http404
+        raise PermissionDenied
