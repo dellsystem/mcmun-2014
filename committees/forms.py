@@ -38,5 +38,9 @@ class GreatEmpireAppForm(forms.ModelForm):
 AwardAssignmentFormset = forms.models.modelformset_factory(AwardAssignment,
     fields=('position',), extra=0)
 
-DelegateAssignmentFormset = forms.models.modelformset_factory(DelegateAssignment,
-    fields=('delegate_name',), extra=0)
+
+CommitteeAssignmentFormset = forms.models.modelformset_factory(
+    CommitteeAssignment, fields=('position_paper',), extra=0)
+
+DelegateAssignmentFormset = forms.models.modelformset_factory(
+    DelegateAssignment, fields=('delegate_name',), extra=0)
