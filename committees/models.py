@@ -201,7 +201,7 @@ class Award(models.Model):
 
 class AwardAssignment(models.Model):
     award = models.ForeignKey(Award, related_name='assignments')
-    committee = models.ForeignKey(Committee)
+    committee = models.ForeignKey(Committee, related_name='awards')
     position = models.ForeignKey(CommitteeAssignment, null=True, blank=True)
 
     def __unicode__(self):

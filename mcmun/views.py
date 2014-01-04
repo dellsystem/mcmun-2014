@@ -6,10 +6,12 @@ from django.db.models import Sum
 from django_xhtml2pdf.utils import generate_pdf
 from django.shortcuts import render, redirect
 
-from committees.forms import CommitteeAssignmentFormSet, DelegateAssignmentFormset
+from committees.forms import CommitteeAssignmentFormset, \
+     DelegateAssignmentFormset
 from committees.models import DelegateAssignment
 from committees.utils import get_committee_from_email
-from mcmun.forms import RegistrationForm, ScholarshipForm, EventForm, CommitteePrefsForm
+from mcmun.forms import RegistrationForm, ScholarshipForm, EventForm, \
+     CommitteePrefsForm
 from mcmun.constants import MIN_NUM_DELEGATES, MAX_NUM_DELEGATES
 from mcmun.models import RegisteredSchool, ScholarshipApp
 from mcmun.utils import is_spam
@@ -103,7 +105,7 @@ def dashboard(request):
         school = RegisteredSchool.objects.get(pk=1)
 
     com_assignments = school.committeeassignment_set.all()
-    formset = CommitteeAssignmentFormSet(queryset=com_assignments, prefix='lol')
+    formset = CommitteeAssignmentFormset(queryset=com_assignments, prefix='lol')
     del_forms = []
     for com_assignment in com_assignments:
         del_forms.append(DelegateAssignmentFormset(queryset=com_assignment.delegateassignment_set.all(), prefix='%d' % com_assignment.id))
@@ -135,7 +137,7 @@ def assignments(request):
     if request.method == 'POST' and user_schools.count() == 1:
         school = user_schools[0]
         com_assignments = school.committeeassignment_set.all()
-        formset = CommitteeAssignmentFormSet(request.POST, request.FILES, queryset=com_assignments, prefix='lol')
+        formset = CommitteeAssignmentFormset(request.POST, request.FILES, queryset=com_assignments, prefix='lol')
         formset.save()
         for com_ass in com_assignments:
             formset = DelegateAssignmentFormset(request.POST, request.FILES, queryset=com_ass.delegateassignment_set.all(), prefix='%d' % com_ass.id)

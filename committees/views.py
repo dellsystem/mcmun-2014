@@ -9,7 +9,7 @@ from django.views.static import serve
 
 from committees.models import Committee, position_paper_upload_path
 from committees.forms import AdHocAppForm, DEFCONAppForm, ICCAppForm, \
-     CEAAppForm, UFCAppForm, GreatEmpireAppForm
+     CEAAppForm, UFCAppForm, GreatEmpireAppForm, AwardAssignmentFormset
 from committees.utils import get_committee_from_email
 
 
@@ -22,6 +22,8 @@ def view(request, slug):
     # for a joint committee. Just show a link to the umbrella committee, whose
     # slug should be entered in the description field.
     is_subcommittee = committee.is_assignable and not committee.is_visible
+    show_manage_link = (committee.allow_manager(request.user) and
+                        committee.is_assignable)
 
     data = {
         'title': committee.name,
@@ -29,7 +31,7 @@ def view(request, slug):
         'committee': committee,
         'dais_template': 'dais_photos/%s.html' % committee.slug,
         'DAIS_PHOTO_URL': '%simg/dais/%s/' % (settings.STATIC_URL, committee.slug),
-        'show_manage_link': committee.allow_manager(request.user),
+        'show_manage_link': show_manage_link,
     }
 
     return render(request, 'committee.html', data)
@@ -109,6 +111,11 @@ def serve_papers(request, file_name):
 @login_required
 def manage(request, slug):
     committee = get_object_or_404(Committee, slug=slug)
+
+    # Disable the dashboard for umbrella committees.
+    if not committee.is_assignable:
+        raise Http404
+
     if not committee.allow_manager(request.user):
         raise PermissionDenied
 
@@ -126,9 +133,21 @@ def awards(request, slug):
     if not committee.allow_manager(request.user):
         raise PermissionDenied
 
+    awards = committee.awards.all()
+    if request.method == 'POST':
+        formset = AwardAssignmentFormset(request.POST, queryset=awards)
+        if formset.is_valid():
+            formset.save()
+        else:
+            print "onooo"
+    else:
+        formset = AwardAssignmentFormset(queryset=awards)
+
     context = {
         'committee': committee,
         'title': 'Awards dashboard for %s' % committee.name,
+        'formset': formset,
+        'positions': committee.committeeassignment_set.all(),
     }
 
     return render(request, 'committee_awards.html', context)
