@@ -3,10 +3,11 @@
 #sans-serif{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
 .inline-block{display:inline-block;zoom:1;*display:inline;}
 .hidden{display:none;}
-.left-float{float:left;margin:0 30px;}
-.right-float{float:right;margin:0 30px;}
+.left-float{float:left;}
+.right-float{float:right;}
 .center-align{text-align:center;}
 .alert{background:#cdf5d4;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;border:1px solid #A2EDB0;padding:5px;margin-top:5px;margin-bottom:10px;}
+.clear{clear:both;}
 #menu-wrapper{background-color:#eeeeee;background-repeat:repeat-x;background-image:-khtml-gradient(linear, left top, left bottom, from(#ffffff), to(#eeeeee));background-image:-moz-linear-gradient(top, #ffffff, #eeeeee);background-image:-ms-linear-gradient(top, #ffffff, #eeeeee);background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #eeeeee));background-image:-webkit-linear-gradient(top, #ffffff, #eeeeee);background-image:-o-linear-gradient(top, #ffffff, #eeeeee);background-image:linear-gradient(top, #ffffff, #eeeeee);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#eeeeee', GradientType=0);margin:0 auto;width:960px;padding:0 30px;}
 #menu{font-family:'Open Sans',sans-serif;z-index:3;position:relative;height:40px;margin:0 auto;width:960px;}#menu ul{list-style-type:none;}
 #menu>ul li{display:inline-block;zoom:1;*display:inline;}#menu>ul li ul li a{height:35px;}
@@ -38,7 +39,7 @@ a{color:#1598c7;text-decoration:none;}a:hover{text-decoration:underline;color:#0
 #content{margin:0 auto;width:960px;padding:30px 0;position:relative;font-size:13px;overflow:auto;}#content ul,#content ol{margin:10px 0 10px 20px;}#content ul.horizontal,#content ol.horizontal{margin-left:0;}#content ul.horizontal li,#content ol.horizontal li{display:inline-block;zoom:1;*display:inline;}
 h1,h2,h3,h4,h5,h6{font-family:'Open Sans',sans-serif;padding-top:25px;padding-bottom:10px;clear:both;}
 h1{padding-top:0;font-size:3.5em;}
-h1+h2{padding-top:10px;}
+h1+h2{padding-top:0;color:#cccccc;margin-top:-10px;margin-bottom:10px;}
 h2+h3,h3+h3{padding-top:0px;}
 h2+h3{padding-bottom:0px;}
 h2{font-size:2.0em;color:#1e1e1e;}
@@ -65,7 +66,7 @@ hr{margin:15px 0;}
 #sec-bios .photo:hover img{border-color:#d40000;}
 #sec-bios .photo .title-hover{position:absolute;bottom:7px;left:5px;right:5px;background:#141414;background:rgba(20, 20, 20, 0.7);color:#ffffff;padding:5px;display:none;}
 #fee-information{display:none;padding-top:10px;}
-#staffing-signup{padding-top:20px;}#staffing-signup form{float:right;margin:0 30px;}
+#staffing-signup{padding-top:20px;}#staffing-signup form{float:right;}
 #dashboard-table td{vertical-align:top;}#dashboard-table td h2,#dashboard-table td h3{padding-top:10px;}
 #scholarship-form input[type=text],#scholarship-form textarea{width:520px;}
 #scholarship-form dt{width:300px !important;margin-right:50px;}
