@@ -1,6 +1,6 @@
 from committees.models import AdHocApplication, DEFCONApplication, \
      ICCApplication, CEAApplication, UFCApplication, GreatEmpireApplication, \
-     CommitteeAssignment, DelegateAssignment
+     CommitteeAssignment, DelegateAssignment, AwardAssignment
 
 from django import forms
 
@@ -35,8 +35,8 @@ class GreatEmpireAppForm(forms.ModelForm):
         model = GreatEmpireApplication
 
 
-CommitteeAssignmentFormSet = forms.models.modelformset_factory(CommitteeAssignment,
-    fields=('position_paper',), extra=0)
+AwardAssignmentFormset = forms.models.modelformset_factory(AwardAssignment,
+    fields=('position',), extra=0)
 
 DelegateAssignmentFormset = forms.models.modelformset_factory(DelegateAssignment,
     fields=('delegate_name',), extra=0)
