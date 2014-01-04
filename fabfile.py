@@ -21,3 +21,6 @@ def stats():
 
 def pubcrawl():
     local('python manage.py get_pubcrawl_stats')
+
+def sh():
+    local('python manage.py shell')
