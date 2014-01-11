@@ -198,6 +198,12 @@ class RegisteredSchool(models.Model):
 
         return total_cost
 
+    def get_num_assignments(self):
+        DelegateAssignment = models.loading.get_model('committees',
+            'DelegateAssignment')
+        return DelegateAssignment.objects.filter(
+            committee_assignment__school=self).count()
+
     def get_pub_crawl_total_owed(self):
         return "$%.2f" % (PUB_CRAWL_COST * self.num_pub_crawl)
 
