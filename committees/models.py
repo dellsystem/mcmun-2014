@@ -168,7 +168,7 @@ class CommitteeAssignment(models.Model):
     is_voting = models.BooleanField(default=True)
 
     def __unicode__(self):
-        return "%s" % self.assignment
+        return "%s in %s" % (self.assignment, self.committee)
 
     def is_filled(self):
         return self.delegateassignment_set.filter(delegate_name__isnull=False).count() == self.num_delegates
