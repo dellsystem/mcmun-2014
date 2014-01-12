@@ -24,3 +24,7 @@ def pubcrawl():
 
 def sh():
     local('python manage.py shell')
+
+def awards():
+    local('python manage.py generate_awards_slideshow awards.svg')
+    local('inkscapeslide updated_awards.svg')
