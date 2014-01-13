@@ -23,8 +23,17 @@ class Command(BaseCommand):
         for g in doc.lastChild.childNodes:
             if g.nodeName == 'g':
                 label = g.getAttribute('inkscape:label')
-                if label in committees_dict:
-                    committee = committees_dict[label]
+
+                # Chop off the number and ! at the end to get the committee name
+                # This is a really hacky workaround to using a regex
+                if label.endswith('!'):
+                    committee_name = label[:-2]
+                else:
+                    # Don't need to change anything, it's not a committee
+                    continue
+
+                if committee_name in committees_dict:
+                    committee = committees_dict[committee_name]
                     # Fill in the context dict (for string replacements)
                     awards = committee.awards.order_by('-pk')
                     context = {}
