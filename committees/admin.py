@@ -40,6 +40,7 @@ class CommitteeAdmin(admin.ModelAdmin):
 
 class AwardAssignmentAdmin(admin.ModelAdmin):
     list_display = ('award', 'committee', 'position')
+    list_per_page = 108  # show all the awards on one page
 
 
 admin.site.register(Category)
