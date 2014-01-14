@@ -39,9 +39,16 @@ class CommitteeAdmin(admin.ModelAdmin):
 
 
 class AwardAssignmentAdmin(admin.ModelAdmin):
-    list_display = ('award', 'committee', 'position')
+    list_display = ('position', 'award', 'committee', 'school')
     list_per_page = 108  # show all the awards on one page
 
+    def school(self, obj):
+        if obj.position:
+            return "%s" % obj.position.school
+        else:
+            return "(None)"
+    school.short_description = 'School'
+    school.admin_order_field  = 'position__school'
 
 admin.site.register(Category)
 admin.site.register(Committee, CommitteeAdmin)
