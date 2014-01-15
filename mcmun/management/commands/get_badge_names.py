@@ -11,10 +11,12 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         csv_writer = csv.writer(open('badges.csv', 'wb'))
-        csv_writer.writerow(['name', 'school', 'committee', 'character'])
+        csv_writer.writerow(['id', 'name', 'school', 'committee', 'character'])
+        delegates = D.objects.filter(delegate_name__isnull=False).order_by('id')
 
-        for i, d in enumerate(D.objects.filter(delegate_name__isnull=False)):
+        for i, d in enumerate(delegates):
             data = [
+                str(d.id),
                 d.delegate_name,
                 d.committee_assignment.school.school_name,
                 d.committee_assignment.committee.name,
