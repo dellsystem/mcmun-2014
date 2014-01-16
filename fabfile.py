@@ -28,3 +28,9 @@ def sh():
 def awards():
     local('python manage.py generate_awards_slideshow awards.svg')
     local('inkscapeslide updated_awards.svg')
+
+def check():
+    local('python manage.py check_assignments')
+
+def badges():
+    local('python manage.py get_badge_names')
