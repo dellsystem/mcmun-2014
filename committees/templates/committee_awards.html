@@ -42,7 +42,7 @@ $(document).ready(function () {
                         {% for position in positions %}
                             <option value="{{ position.id }}"
                             {% if position == a.position %}selected {% endif %}>
-                                {{ position }} ({{ position.school }})
+                                {{ position.assignment }} ({{ position.school }})
                             </option>
                         {% endfor %}
                     </select>
