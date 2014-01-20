@@ -4,6 +4,7 @@ import sys
 from django.core.management.base import BaseCommand, CommandError
 
 from committees.models import DelegateAssignment as D
+from mcmun.models import RegisteredSchool as S
 
 
 class Command(BaseCommand):
@@ -24,4 +25,11 @@ class Command(BaseCommand):
             ]
             csv_writer.writerow(map(lambda s: s.encode('utf-8'), data))
 
-        print i
+        print 'Badges generated: %d' % (i + 1)
+
+        # Get all the emails for the schools with missing badge info
+        lazy_schools = S.objects.filter(
+            is_approved=True,
+            committeeassignment__delegateassignment__delegate_name__isnull=True)
+        print "Schools for Loreena to hustle"
+        print ', '.join(school.email for school in lazy_schools.distinct())

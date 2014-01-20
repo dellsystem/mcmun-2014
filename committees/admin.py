@@ -35,6 +35,7 @@ class CommitteeAssignmentInline(admin.StackedInline):
 
 
 class CommitteeAdmin(admin.ModelAdmin):
+    list_display = ('name', 'slug')
     inlines = [CommitteeAssignmentInline]
 
 
