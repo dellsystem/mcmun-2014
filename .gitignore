@@ -5,3 +5,7 @@ tmp
 uploads
 *~
 mcmun/conf.py
+*.json
+*.csv
+updated_awards.pdf
+updated_awards.svg
