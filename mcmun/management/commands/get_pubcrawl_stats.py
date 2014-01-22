@@ -11,7 +11,8 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         schools = RegisteredSchool.objects.filter(pub_crawl_final=True) \
-                                          .exclude(id__in=TEST_SCHOOLS)
+                                          .exclude(id__in=TEST_SCHOOLS) \
+                                          .order_by('email')
 
         total = schools.aggregate(Sum('num_pub_crawl'))['num_pub_crawl__sum']
 
@@ -19,7 +20,7 @@ class Command(BaseCommand):
         self.stdout.write("===========================")
         for school in schools:
             if school.num_pub_crawl > 0:
-                row = ["%s" % school.school_name,
+                row = ['"%s"' % school.school_name,
                     school.email,
                     str(school.num_pub_crawl),
                     school.get_pub_crawl_total_owed()
