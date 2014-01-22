@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+<script src="{{ STATIC_URL }}js/timer.js"></script>
+{% endblock %}
+
+{% block content %}
+<p>
+    <a href="{% url 'committee_manage' committee.slug %}">
+        &laquo; Back to committee dashboard
+    </a>
+</p>
+<h1>Committee timer</h1>
+<h2>{{ committee }}</h2>
+
+<hr />
+
+<h2 id="timer-topic" contenteditable="true">Edit this to set the topic</h2>
+
+<div id="timer">
+    <ul class="times">
+        <li class="active">0:30</li>
+        <li>0:45</li>
+        <li>1:00</li>
+        <li>1:30</li>
+        <li>5:00</li>
+        <li>10:00</li>
+        <li class="other">other</li>
+    </ul>
+
+    <br clear="all" />
+
+    <div class="clock">
+        00:00
+    </div>
+
+    <div class="buttons">
+        <div class="button green" id="start-timer">
+            Start
+        </div>
+        <div class="button blue disabled" id="next-timer">
+            Next
+        </div>
+        <div class="button red disabled" id="stop-timer">
+            Stop
+        </div>
+    </div>
+</div>
+{% endblock %}

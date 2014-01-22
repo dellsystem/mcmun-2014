@@ -108,6 +108,15 @@ def serve_papers(request, file_name):
         raise PermissionDenied
 
 
+def timer(request, slug):
+    committee = get_object_or_404(Committee, slug=slug)
+    context = {
+        'committee': committee,
+    }
+
+    return render(request, 'timer.html', context)
+
+
 @login_required
 def manage(request, slug):
     committee = get_object_or_404(Committee, slug=slug)
@@ -116,12 +125,16 @@ def manage(request, slug):
     if not committee.is_assignable:
         raise Http404
 
+    # Only the dais for this committee and other admins can access this
     if not committee.allow_manager(request.user):
         raise PermissionDenied
+
+    assignments = committee.committeeassignment_set.order_by('assignment')
 
     context = {
         'committee': committee,
         'title': 'Committee dashboard for %s' % committee.name,
+        'assignments': assignments,
     }
 
     return render(request, 'committee_manage.html', context)
@@ -138,8 +151,6 @@ def awards(request, slug):
         formset = AwardAssignmentFormset(request.POST, queryset=awards)
         if formset.is_valid():
             formset.save()
-        else:
-            print "onooo"
     else:
         formset = AwardAssignmentFormset(queryset=awards)
 
@@ -151,22 +162,3 @@ def awards(request, slug):
     }
 
     return render(request, 'committee_awards.html', context)
-
-
-@login_required
-def list_papers(request, slug):
-    committee = get_object_or_404(Committee, slug=slug)
-
-    # Only the dais for this committee and other admins can access this
-    if (get_committee_from_email(request.user.username) == committee
-        or request.user.is_staff):
-        assignments = committee.committeeassignment_set.order_by('assignment')
-        data = {
-            'title': 'Position papers for %s' % committee.name,
-            'committee': committee,
-            'assignments': assignments,
-        }
-
-        return render(request, 'list_papers.html', data)
-    else:
-        raise PermissionDenied
