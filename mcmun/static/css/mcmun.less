@@ -538,3 +538,92 @@ hr {
         width: 775px;
     }
 }
+
+#timer {
+    .times {
+        width: 750px;
+        margin: 0 auto;
+        list-style-type: none;
+        font-size: 2.0em;
+
+        li {
+            float: left;
+            text-align: center;
+            width: 100px;
+            cursor: pointer;
+            color: @lightBlue;
+
+            &:hover {
+                color: lighten(@lightBlue, 15%);
+            }
+
+            &.active {
+                background: @lighterGrey;
+                color: white;
+                .border-radius(5px);
+            }
+
+            &.other {
+                width: 150px;
+            }
+        }
+    }
+
+    .clock {
+        width: 400px;
+        margin: 30px auto;
+        height: 100px;
+        border: 2px solid @lighterGrey;
+        font-size: 5.5em;
+        line-height: 100px;
+        text-align: center;
+
+        &.done {
+            background: @red;
+            color: @white;
+        }
+    }
+
+    .buttons {
+        margin: 30px 0;
+        text-align: center;
+    }
+
+    .button {
+        display: inline-block;
+        width: 200px;
+        height: 50px;
+        line-height: 50px;
+        font-size: 1.7em;
+        font-weight: bold;
+        color: @white;
+        .border-radius(5px);
+        cursor: pointer;
+
+        &.disabled {
+            font-weight: normal;
+            background: @lighterGrey !important;
+            color: @lightGrey;
+            cursor: default;
+        }
+    }
+
+    #start-timer {
+        .lighten-on-hover(@green);
+    }
+
+    #next-timer {
+        .lighten-on-hover(@lightBlue);
+    }
+
+    #stop-timer {
+        .lighten-on-hover(@red);
+    }
+}
+
+#timer-topic {
+    text-align: center;
+    font-size: 4.0em;
+    margin-bottom: 40px;
+    text-decoration: underline;
+}

@@ -108,6 +108,15 @@ def serve_papers(request, file_name):
         raise PermissionDenied
 
 
+def timer(request, slug):
+    committee = get_object_or_404(Committee, slug=slug)
+    context = {
+        'committee': committee,
+    }
+
+    return render(request, 'timer.html', context)
+
+
 @login_required
 def manage(request, slug):
     committee = get_object_or_404(Committee, slug=slug)

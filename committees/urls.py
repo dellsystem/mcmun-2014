@@ -9,5 +9,6 @@ urlpatterns = patterns('',
     url(SLUG + '/papers$', 'committees.views.list_papers', name='list_papers'),
     url(SLUG + '/manage$', 'committees.views.manage', name='committee_manage'),
     url(SLUG + '/awards$', 'committees.views.awards', name='committee_awards'),
+    url(SLUG + '/timer$', 'committees.views.timer', name='committee_timer'),
     url(SLUG, 'committees.views.view', name='committee_view'),
 )

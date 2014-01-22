@@ -70,3 +70,12 @@
 .clear {
     clear: both;
 }
+
+// The background lightens on hover
+.lighten-on-hover(@background) {
+    background: @background;
+
+    &:hover {
+        background: lighten(@background, 15);
+    }
+}
