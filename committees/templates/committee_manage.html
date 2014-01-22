@@ -3,27 +3,54 @@
 {% block content %}
 <h1>Committee dashboard</h1>
 <h2>{{ committee }}</h2>
+
+<div class="buttons">
+    <div class="button blue">
+        <a href="{% url 'committee_awards' committee.slug %}">
+            Assign awards
+        </a>
+    </div>
+    <div class="button blue">
+        <a href="{% url 'committee_timer' committee.slug %}">
+            Committee timer
+        </a>
+    </div>
+</div>
+
+<br />
+
 <p>
     This committee has {{ committee.get_num_delegates }} delegates.
 </p>
 
-<hr />
-
-<ul>
-    <li>
-        <a href="{% url 'list_papers' committee.slug %}">
-            View position papers
-        </a>
-    </li>
-    <li>
-        <a href="{% url 'committee_awards' committee.slug %}">
-            Choose award winners
-        </a>
-    </li>
-    <li>
-        <a href="{% url 'committee_timer' committee.slug %}">
-            Timer
-        </a>
-    </li>
-</ul>
+<table>
+    <thead>
+        <tr>
+            <th>Position</th>
+            <th>Delegate name(s)</th>
+            <th>School</th>
+            <th>Position paper</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for assignment in assignments %}
+        <tr>
+            <td>{{ assignment.assignment }}</td>
+            <td>
+                {% for delegate in assignment.delegateassignment_set.all %}
+                {{ delegate }}<br />
+                {% endfor %}
+            </td>
+            <td>{{ assignment.school }}</td>
+            <td>
+                {% if assignment.position_paper %}
+                <strong><a href="/{{ assignment.position_paper }}">Download</a></strong>
+                {% else %}
+                N/A
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}
