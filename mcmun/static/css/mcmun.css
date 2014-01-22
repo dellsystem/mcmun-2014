@@ -89,3 +89,13 @@ hr{margin:15px 0;}
 @media only screen and (max-width:760px){#overlay{display:none;}}.red-text,.red-text:hover{color:#d40000;}
 .merch-pic{width:160px;display:inline-block;zoom:1;*display:inline;}.merch-pic img{width:150px;}
 .merch-order-form{vertical-align:top;display:inline-block;zoom:1;*display:inline;}.merch-order-form ul{width:775px;}
+#timer .times{width:750px;margin:0 auto;list-style-type:none;font-size:2.0em;}#timer .times li{float:left;text-align:center;width:100px;cursor:pointer;color:#1598c7;}#timer .times li:hover{color:#3ebdeb;}
+#timer .times li.active{background:#cccccc;color:white;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;}
+#timer .times li.other{width:150px;}
+#timer .clock{width:400px;margin:30px auto;height:100px;border:2px solid #cccccc;font-size:5.5em;line-height:100px;text-align:center;}#timer .clock.done{background:#d40000;color:#ffffff;}
+#timer-topic{text-align:center;font-size:4.0em;margin-bottom:40px;text-decoration:underline;}
+.buttons{margin:30px 0;text-align:center;}.buttons .button{display:inline-block;width:200px;height:50px;line-height:50px;font-size:1.7em;font-weight:bold;color:#ffffff;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;cursor:pointer;}.buttons .button a{color:#ffffff;}
+.buttons .button.disabled{font-weight:normal;background:#cccccc !important;color:#777777;cursor:default;}
+.buttons .button.blue{background:#1598c7;}.buttons .button.blue:hover{background:#3ebdeb;}
+.buttons .button.green{background:#37c876;}.buttons .button.green:hover{background:#73d99f;}
+.buttons .button.red{background:#d40000;}.buttons .button.red:hover{background:#ff2121;}
