@@ -4,7 +4,7 @@ from committees.models import *
 
 
 class CommitteeAssignmentAdmin(admin.ModelAdmin):
-    list_display = ('school', 'committee', 'assignment')
+    list_display = ('school', 'committee', 'assignment', 'position_paper')
     search_fields = ('school__school_name', 'committee__name', 'assignment')
 
 
