@@ -5,6 +5,11 @@
 {% endblock %}
 
 {% block content %}
+<p>
+    <a href="{% url 'committee_manage' committee.slug %}">
+        &laquo; Back to committee dashboard
+    </a>
+</p>
 <h1>Committee timer</h1>
 <h2>{{ committee }}</h2>
 
