@@ -583,11 +583,18 @@ hr {
             color: @white;
         }
     }
+}
 
-    .buttons {
-        margin: 30px 0;
-        text-align: center;
-    }
+#timer-topic {
+    text-align: center;
+    font-size: 4.0em;
+    margin-bottom: 40px;
+    text-decoration: underline;
+}
+
+.buttons {
+    margin: 30px 0;
+    text-align: center;
 
     .button {
         display: inline-block;
@@ -600,30 +607,27 @@ hr {
         .border-radius(5px);
         cursor: pointer;
 
+        a {
+            color: @white;
+        }
+
         &.disabled {
             font-weight: normal;
             background: @lighterGrey !important;
             color: @lightGrey;
             cursor: default;
         }
-    }
 
-    #start-timer {
-        .lighten-on-hover(@green);
-    }
+        &.blue {
+            .lighten-on-hover(@lightBlue);
+        }
 
-    #next-timer {
-        .lighten-on-hover(@lightBlue);
-    }
+        &.green {
+            .lighten-on-hover(@green);
+        }
 
-    #stop-timer {
-        .lighten-on-hover(@red);
+        &.red {
+            .lighten-on-hover(@red);
+        }
     }
-}
-
-#timer-topic {
-    text-align: center;
-    font-size: 4.0em;
-    margin-bottom: 40px;
-    text-decoration: underline;
 }
