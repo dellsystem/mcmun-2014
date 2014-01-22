@@ -147,8 +147,6 @@ def awards(request, slug):
         formset = AwardAssignmentFormset(request.POST, queryset=awards)
         if formset.is_valid():
             formset.save()
-        else:
-            print "onooo"
     else:
         formset = AwardAssignmentFormset(queryset=awards)
 
