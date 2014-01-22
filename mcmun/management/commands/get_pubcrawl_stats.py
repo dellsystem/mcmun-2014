@@ -20,7 +20,7 @@ class Command(BaseCommand):
         self.stdout.write("===========================")
         for school in schools:
             if school.num_pub_crawl > 0:
-                row = ["%s" % school.school_name,
+                row = ['"%s"' % school.school_name,
                     school.email,
                     str(school.num_pub_crawl),
                     school.get_pub_crawl_total_owed()
