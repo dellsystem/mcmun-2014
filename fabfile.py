@@ -1,4 +1,5 @@
 from fabric.api import local, run, env, settings
+from fabric.context_managers import lcd
 
 
 def less():
@@ -34,3 +35,9 @@ def check():
 
 def badges():
     local('python manage.py get_badge_names')
+    local('cp badges.csv badges')
+
+    # Generate additions and deletions since last commit
+    with lcd('badges'):
+        local('git diff | grep "^-" > deleted.csv')
+        local('git diff | grep "^+" > added.csv')
