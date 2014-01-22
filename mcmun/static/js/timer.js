@@ -25,6 +25,8 @@
 
             var clock = $('#timer .clock');
             var self = this;
+
+            // Update the displayed time on the clock every second
             interval = setInterval(function() {
                 numSeconds++;
 
@@ -97,23 +99,25 @@
             $(this).addClass('active');
         });
 
-        $('#start-timer').on('click', function() {
-            if (!$(this).hasClass('disabled')) {
-                timer.start();
-            }
+        var addButtonEvent = function(buttonId, callback) {
+            $(buttonId).on('click', function() {
+                if (!$(this).hasClass('disabled')) {
+                    callback();
+                }
+            });
+        };
+
+        addButtonEvent('#start-timer', function() {
+            timer.start();
         });
 
-        $('#stop-timer').on('click', function() {
-            if (!$(this).hasClass('disabled')) {
-                timer.stop();
-            }
+        addButtonEvent('#next-timer', function() {
+            timer.stop();
+            timer.start();
         });
 
-        $('#next-timer').on('click', function() {
-            if (!$(this).hasClass('disabled')) {
-                timer.stop();
-                timer.start();
-            }
+        addButtonEvent('#stop-timer', function() {
+            timer.stop();
         });
     });
 })();
