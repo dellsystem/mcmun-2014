@@ -140,6 +140,7 @@ INSTALLED_APPS = (
     'staffapps',
     'search',
     'merchandise',
+    'twitter',
 ) + conf.INSTALLED_APPS
 
 # A sample logging configuration. The only tangible logging
