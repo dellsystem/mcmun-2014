@@ -5,7 +5,7 @@ from staffapps.models import CoordinatorApp, LogisticalApp, CommitteesApp
 
 class StaffAppAdmin(admin.ModelAdmin):
     list_display = ('full_name', 'phone_number')
-    search_Fields = ('full_name',)
+    search_fields = ('full_name',)
 
 
 admin.site.register(CoordinatorApp, StaffAppAdmin)
