@@ -43,6 +43,9 @@ $(document).ready(function () {
                             <option value="{{ position.id }}"
                             {% if position == a.position %}selected {% endif %}>
                                 {{ position.assignment }} ({{ position.school }})
+                                {% if not position.position_paper %}
+                                &mdash; NO POSITION PAPER
+                                {% endif %}
                             </option>
                         {% endfor %}
                     </select>
