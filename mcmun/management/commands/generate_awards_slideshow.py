@@ -18,8 +18,8 @@ def calculate_best_delegations():
     award_points = {
         'Best Delegate': 5,
         'Outstanding Delegate': 4,
-        'Honorable Mention': 1,
         'Book Award': 3,
+        'Honorable Mention': 1,
     }
 
     # Calculate the points, and the number of winners, for each school
@@ -84,7 +84,11 @@ class Command(BaseCommand):
                     if committee_name in committees_dict:
                         committee = committees_dict[committee_name]
                         # Fill in the context dict (for string replacements)
-                        awards = committee.awards.order_by('-pk')
+                        awards = [award for award in committee.awards.all()]
+
+                        # Move the honourable mention to the end
+                        honourable_mention = awards.pop(2)
+                        awards.append(honourable_mention)
                         context = {}
                         for i, award in enumerate(awards):
                             j = i + 1
