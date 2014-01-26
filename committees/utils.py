@@ -24,7 +24,8 @@ email_committee_map = {
     'ppr-marcos@mcmun.org': 'ppr-af',
     'ppr-cardinal@mcmun.org': 'ppr-namfrel',
     'manifestdestiny-us@mcmun.org': 'manifest-destiny-us',
-    'manifestdestiny-latinamerica@mcmun.org': 'manifest-destiny-sa',
+    # The actual email is -latinamerica
+    'manifestdestiny-sa@mcmun.org': 'manifest-destiny-sa',
     'icc@mcmun.org': 'icc',
     'adhoc@mcmun.org': 'adhoc',
 }
