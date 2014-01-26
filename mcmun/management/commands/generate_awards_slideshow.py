@@ -12,14 +12,14 @@ from mcmun.models import RegisteredSchool as S
 
 def get_highest_value(d):
     """Sort the dictionary by value and return the top entry's key."""
-    return sorted(d.items(), key=itemgetter(1))[0][0]
+    return sorted(d.items(), key=itemgetter(1), reverse=True)[0][0]
 
 def calculate_best_delegations():
     award_points = {
         'Best Delegate': 5,
         'Outstanding Delegate': 4,
-        'Honorable Mention': 3,
-        'Book Award': 1,
+        'Honorable Mention': 1,
+        'Book Award': 3,
     }
 
     # Calculate the points, and the number of winners, for each school
