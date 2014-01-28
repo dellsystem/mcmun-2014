@@ -84,13 +84,15 @@ class Command(BaseCommand):
                     if committee_name in committees_dict:
                         committee = committees_dict[committee_name]
                         # Fill in the context dict (for string replacements)
-                        awards = [award for award in committee.awards.all()]
+                        awards = [award for award in committee.awards.order_by('award__name')]
 
-                        # Move the honourable mention to the end
-                        honourable_mention = awards.pop(2)
-                        awards.append(honourable_mention)
+                        # Move the outstanding one up, before book award
+                        outstanding = awards.pop()
+                        awards.insert(1, outstanding)
                         context = {}
-                        for i, award in enumerate(awards):
+                        print "-----------------------"
+                        for i, award in enumerate(reversed(awards)):
+                            print award.award
                             j = i + 1
                             if award.position:
                                 delegate_name = award.position.assignment
