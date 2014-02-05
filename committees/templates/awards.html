@@ -1,0 +1,9 @@
+{% for committee in committees %}
+    <h2>{{ committee }}</h2>
+    <dl>
+    {% for award in committee.get_awards %}
+        <dt>{{ award.award.name }}</dt>
+        <dd>{{ award.position.assignment }} ({{ award.position.school }})</dd>
+    {% endfor %}
+    </dl>
+{% endfor %}

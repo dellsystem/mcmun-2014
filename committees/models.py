@@ -53,6 +53,15 @@ class Committee(models.Model):
         return self.committeeassignment_set.aggregate(
             total_delegates=models.Sum('num_delegates'))['total_delegates']
 
+    def get_awards(self):
+        awards = self.awards.order_by('award__name')
+        # Move outstanding delegate to after best delegate
+        # Should be fixed properly in the future (new field on Award)
+        awards = [award for award in awards]
+        outstanding = awards.pop()
+        awards.insert(1, outstanding)
+        return awards
+
 
 class CommitteeApplication(models.Model):
     """
